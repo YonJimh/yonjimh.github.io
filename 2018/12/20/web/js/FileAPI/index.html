@@ -97,16 +97,16 @@
 <link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=6.4.2">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.4.2">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.4.2">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="red">
+  <link rel="mask-icon" href="/images/favicon.ico?v=6.4.2" color="red">
 
 
 
@@ -162,7 +162,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="在HTML5中新增了File API，用于表示Web应用程序中的文件对象，以及以编程方式选择它们并访问它们的数据。做一下简单的总结。有兴趣的可以访问网站详细了解。  FileListFileList 对象针对表单的 file 控件。当用户通过 file 控件选取文件后，这个控件的 files 属性值就是 FileList 对象。 123456&amp;lt;input type=&apos;file&apos; multi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-19T14:27:38.855Z">
+<meta property="og:updated_time" content="2019-08-01T14:00:04.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="File API">
 <meta name="twitter:description" content="在HTML5中新增了File API，用于表示Web应用程序中的文件对象，以及以编程方式选择它们并访问它们的数据。做一下简单的总结。有兴趣的可以访问网站详细了解。  FileListFileList 对象针对表单的 file 控件。当用户通过 file 控件选取文件后，这个控件的 files 属性值就是 FileList 对象。 123456&amp;lt;input type=&apos;file&apos; multi">
@@ -508,8 +508,10 @@
 <p>在HTML5中新增了File API，用于表示Web应用程序中的文件对象，以及以编程方式选择它们并访问它们的数据。做一下简单的总结。有兴趣的可以访问<a href="https://www.w3.org/TR/FileAPI/" target="_blank" rel="noopener">网站</a>详细了解。</p>
 </blockquote>
 <h1 id="FileList"><a href="#FileList" class="headerlink" title="FileList"></a>FileList</h1><p>FileList 对象针对表单的 file 控件。<br>当用户通过 file 控件选取文件后，这个控件的 <code>files</code> 属性值就是 <code>FileList 对象</code>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">'file'</span> multiple id=<span class="string">"fileInput"</span> /&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">'fileInput'</span>).onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.files)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<p>除了用 file 控件，采用<a href="http://www.cnblogs.com/zichi/p/5080147.html" target="_blank" rel="noopener"><strong>拖放方式</strong></a>，也可以得到 FileList 对象。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">multiple</span> <span class="attr">id</span>=<span class="string">"fileInput"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'fileInput'</span>).onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.files)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>除了用 file 控件，采用[<strong>拖放方式</strong>]，也可以得到 FileList 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dropZone = <span class="built_in">document</span>.getElementById(<span class="string">'drop_zone'</span>);</span><br><span class="line">dropZone.addEventListener(<span class="string">'drop'</span>, handleFileSelect, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    evt.stopPropagation();</span><br><span class="line">    evt.preventDefault();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> files = evt.dataTransfer.files; <span class="comment">// FileList object.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码的 handleFileSelect 是拖放事件的回调函数，它的参数evt是一个事件对象，该参数的dataTransfer.files属性就是一个FileList对象，里面包含了拖放的文件。</p>
 <h1 id="File"><a href="#File" class="headerlink" title="File"></a>File</h1><p>File对象可以用来获取某个文件的信息，还可以用来读取这个文件的内容。通常情况下，File对象是来自用户在一个 <code>&lt;input/&gt;</code>元素上选择文件后返回的FileList对象，也可以是来自由拖放操作生成的<a href="https://blog.csdn.net/qq_39198420/article/details/78059092" target="_blank" rel="noopener"><strong>DataTransfer对象</strong></a>。  </p>
 <p>File 对象含有以下属性值：</p>
 <ul>
@@ -520,15 +522,17 @@
 <li>lastModifiedDate：文件的上次修改时间，格式为 Date 对象实例</li>
 </ul>
 <h1 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h1><p>File 对象是继承自 <code>Blob</code> 对象的。<br><code>Blob（Binary Large Object）</code>对象代表了一段二进制数据，提供了一系列操作接口。其他操作二进制数据的 API（比如 File 对象），都是建立在 Blob 对象基础上的，继承了它的属性和方法。</p>
-<p>Blob构造函数，接受两个参数。第一个参数是一个包含实际数据的数组，第二个参数是数据的类型，这两个参数都不是必需的。数组元素可以是任意多个的ArrayBuffer，ArrayBufferView (typed array)， Blob，或者 DOMString对象。</p>
+<p>Blob构造函数，接受两个参数。<br>第一个参数是一个包含实际数据的数组<br>第二个参数是数据的类型，这两个参数都不是必需的。数组元素可以是任意多个的ArrayBuffer，ArrayBufferView (typed array)， Blob，或者 DOMString对象。</p>
 <p>生成 Blob 对象有两种方法：一种是使用 Blob 构造函数，另一种是对现有的 Blob 对象使用 slice 方法切出一部分。</p>
 <p>Blob 对象有两个只读属性：</p>
 <ul>
 <li>size：二进制数据的大小，单位为字节。（文件上传时可以在前端判断文件大小是否合适）</li>
 <li>type：二进制数据的 MIME 类型，全部为小写，如果类型未知，则该值为空字符串。（文件上传时可以在前端判断文件类型是否合适）</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'hello world'</span>];</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob(arr, &#123; <span class="string">"type"</span> : <span class="string">"text/plain"</span> &#125;); <span class="comment">// the blob</span></span><br><span class="line"><span class="built_in">console</span>.log(blob);</span><br></pre></td></tr></table></figure>
 <h1 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h1><p><code>FileReader</code>对象用于读取文件，即把文件内容读入内存。它的参数是 File 对象或 Blob 对象。<br>对于不同类型的文件，FileReader 提供不同的方法读取文件。</p>
 <ul>
+<li>readAsBinaryString(Blob|File)：返回二进制字符串，该字符串每个字节包含一个0到255之间的整数。</li>
 <li>readAsText(Blob|File, encode)：返回文本字符串。默认情况下，文本编码格式是 UTF-8，可以通过可选的格式参数，指定其他编码格式的文本</li>
 <li>readAsDataURL(Blob|File)：返回一个基于 Base64 编码的 data-uri 对象（可用于 <code>&lt;img&gt;</code> 标签中的 src 属性，从而达到上传图片预览的效果）</li>
 <li>readAsArrayBuffer(Blob|File)：返回一个 ArrayBuffer 对象</li>
@@ -540,8 +544,9 @@
 <li>onload 方法：读取成功后触发。</li>
 <li>onloadend 方法：读取完成后触发，不管是否成功。触发顺序排在 onload 或 onerror 后面。</li>
 <li>onloadstart 方法：读取将要开始时触发。</li>
-<li>onprogress 方法：读取过程中周期性触发。（可以用来获取文件读取的进度）</li>
+<li>onprogress 方法：读取过程中周期性触发。<code>（可以用来获取文件读取的进度）</code></li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(reader.result)</span><br><span class="line">  <span class="built_in">console</span>.log(e.target.result)</span><br><span class="line">  <span class="keyword">var</span> text = reader.result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">'hello world'</span>];</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob(arr, &#123; <span class="string">"type"</span> : <span class="string">"text/plain"</span> &#125;); <span class="comment">// the blob</span></span><br><span class="line"><span class="comment">// console.log(blob);</span></span><br><span class="line"><span class="keyword">var</span> encoding = <span class="string">'UTF-8'</span></span><br><span class="line">reader.readAsText(blob, encoding);</span><br></pre></td></tr></table></figure>
 <h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><blockquote>
 <p>除了可以使用base64字符串作为内容的DataURI将一个文件嵌入到另外一个文档里，还可以使用URL对象。URL对象用于生成指向File对象或Blob对象的URL。</p>
 </blockquote>
@@ -559,7 +564,7 @@
 <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>用 <code>FormData</code> 对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个”form”.比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> FormData (form? : HTMLFormElement)</span><br></pre></td></tr></table></figure>
 <p>form 参数可选，是一个HTML表单元素，可以包含任何形式的表单控件,包括文件输入框。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>append() 给当前FormData对象添加一个键/值对</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><code>append() 给当前FormData对象添加一个键/值对</code></p>
 <blockquote>
 <p>1 void append(DOMString 键, Blob 值, [可选] DOMString 文件名);<br>2 void append(DOMString 键, DOMString 值);</p>
 </blockquote>
@@ -567,8 +572,12 @@
 <li>name 字段名称</li>
 <li>value 字段值，可以是Blob value，或者一个字符串，如果全都不是，则该值会被自动转换成字符串</li>
 </ul>
+<!-- ```js
+var fd = new FormData(); // 构造FromData对象
+fd.append('hello', 'hello world');
+``` -->
 <blockquote>
-<p>参考链接：<br><a href="https://www.cnblogs.com/zichi/p/html5-file-api.html" target="_blank" rel="noopener">HTML5 File API — 让前端操作文件变的可能</a><br><a href="https://blog.csdn.net/mr_wuch/article/details/70141674?utm_source=blogxgwz0" target="_blank" rel="noopener">Html5——File、FileReader、Blob、Fromdata对象</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/FormData</a> FormData</p>
+<p>参考链接：<br><a href="https://segmentfault.com/a/1190000006600936" target="_blank" rel="noopener">JavaScript进阶学习（三）—— 基于html5 File API的文件操作</a><br><a href="https://blog.csdn.net/mr_wuch/article/details/70141674?utm_source=blogxgwz0" target="_blank" rel="noopener">Html5——File、FileReader、Blob、Fromdata对象</a><br><a href="http://javascript.ruanyifeng.com/htmlapi/file.html" target="_blank" rel="noopener">文件和二进制数据的操作</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/FormData</a> FormData</p>
 </blockquote>
 
       
@@ -919,7 +928,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
   
 
 

@@ -31,7 +31,7 @@
     this.pinnedOffset = null;
 
     this.checkPosition();
-    console.log('checkPosition checkPosition checkPosition');
+    // console.log('checkPosition checkPosition checkPosition');
 
   };
 

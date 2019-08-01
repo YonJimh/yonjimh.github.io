@@ -291,7 +291,7 @@ $(document).ready(function() {
     },
 
     postList: function(integrator) {
-        console.log('motion postList');
+        // console.log('motion postList');
 
       //var $post = $('.post');
       var $postBlock = $('.post-block, .pagination, .comments');
