@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="jQuery的extend方法可以说是jQuery最核心的方法了，这几天复习js的基础，参考了JavaScript 复制对象【Object.assign方法无法实现深复制】这篇文章看了一下jQuery的extend方法的源码。 jQuery.extend || jQuery.fn.extend$.extend方法的一些特点  没有任何参数时，直接返回一个空对象 当只有一个参数时（这个参数可以任何数">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T13:26:13.666Z">
+<meta property="og:updated_time" content="2019-08-09T16:10:22.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery的extend方法">
 <meta name="twitter:description" content="jQuery的extend方法可以说是jQuery最核心的方法了，这几天复习js的基础，参考了JavaScript 复制对象【Object.assign方法无法实现深复制】这篇文章看了一下jQuery的extend方法的源码。 jQuery.extend || jQuery.fn.extend$.extend方法的一些特点  没有任何参数时，直接返回一个空对象 当只有一个参数时（这个参数可以任何数">
@@ -544,13 +544,14 @@
 <li>如果第一个参数是Null和Undefined，则会报错；如果Null和Undefined不是位于第一个参数，则会略过该参数的复制</li>
 </ul>
 </li>
+<li>slice()，concat()，Array.from() 这几个到底是深拷贝还是浅拷贝（我纠结了很久，ヽ(ー_ー)ノ），跟Object.assign()差不多，那到底是深拷贝还是浅拷贝呢？我觉得用浅拷贝更合适一点，不过我们要记住它们仅适用于对不包含引用对象的一维数组的深拷贝。</li>
 </ol>
 <h3 id="一些小问题"><a href="#一些小问题" class="headerlink" title="一些小问题"></a>一些小问题</h3><ol>
 <li><p>为什么我们通常会写Object.assign()的一个参数为<code>{}</code>空对象<br> 我们知道Object.assign方法用于对象的合并，如果是实现对象的复制的话，就需要将一个空对象传入，切断与目标对象的引用。</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test1 = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> test2 = &#123;<span class="attr">b</span>:<span class="number">1</span>,<span class="attr">a</span>:<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> res = <span class="built_in">Object</span>.assign(test1, test2);  <span class="comment">// res和test1同一个引用</span></span><br><span class="line">res.c = <span class="number">233</span>;</span><br><span class="line"><span class="built_in">console</span>.log(test1); <span class="comment">// &#123;a: 2, b: 1, c: 233&#125;</span></span><br><span class="line"><span class="keyword">var</span> res = <span class="built_in">Object</span>.assign(&#123;&#125;, test1, test2); <span class="comment">// res和test1不同引用</span></span><br><span class="line">res.c = <span class="number">666</span>;</span><br><span class="line"><span class="built_in">console</span>.log(test1); <span class="comment">// &#123;a: 2, b: 1, c: 233&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(res); <span class="comment">// &#123;a: 2, b: 1, c: 666&#125;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>参考链接：<br><a href="https://www.cnblogs.com/libin-1/p/6845458.html" target="_blank" rel="noopener">JavaScript 复制对象【Object.assign方法无法实现深复制】</a><br><a href="https://www.zhihu.com/question/23031215" target="_blank" rel="noopener">javascript中的深拷贝和浅拷贝？</a></p>
+<p>参考链接：<br><a href="https://www.cnblogs.com/libin-1/p/6845458.html" target="_blank" rel="noopener">JavaScript 复制对象【Object.assign方法无法实现深复制】</a><br><a href="https://www.zhihu.com/question/23031215" target="_blank" rel="noopener">javascript中的深拷贝和浅拷贝？</a><br><a href="https://www.cnblogs.com/echolun/p/7889848.html" target="_blank" rel="noopener">深拷贝与浅拷贝的区别，实现深拷贝的几种方法</a></p>
 
       
     </div>
@@ -668,7 +669,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

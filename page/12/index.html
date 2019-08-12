@@ -397,10 +397,10 @@
   
   <div class="post-date">
 			<div class="post-month">12月</div>
-			<div class="post-day">26</div>
+			<div class="post-day">31</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/nginx/Nginx6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/web/Comet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -419,8 +419,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/26/nginx/Nginx6/" itemprop="url">
-                  Nginx（六）进阶 高级模块 （secure_link和geoip）
+                <a class="post-title-link" href="/2018/12/31/web/Comet/" itemprop="url">
+                  Comet
                 </a>
               
             
@@ -446,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2018-12-26 21:27:11" itemprop="dateCreated datePublished" datetime="2018-12-26T21:27:11+08:00">2018-12-26</time>
+              <time title="创建时间：2018-12-31 17:39:45" itemprop="dateCreated datePublished" datetime="2018-12-31T17:39:45+08:00">2018-12-31</time>
             
 
             
@@ -464,7 +464,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
 
                 
                 
@@ -478,7 +478,7 @@
 
           
           
-             <span id="/2018/12/26/nginx/Nginx6/" class="leancloud_visitors" data-flag-title="Nginx（六）进阶 高级模块 （secure_link和geoip）">
+             <span id="/2018/12/31/web/Comet/" class="leancloud_visitors" data-flag-title="Comet">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -511,48 +511,67 @@
       
         
           
-            <h1 id="secure-link-module-模块"><a href="#secure-link-module-模块" class="headerlink" title="secure_link_module 模块"></a><a href="http://nginx.org/en/docs/http/ngx_http_secure_link_module.html" target="_blank" rel="noopener">secure_link_module 模块</a></h1><p>ngx_http_secure_link_module模块用于检查请求链接的真伪，保护资源免受未经授权的访问，并限制链接的寿命。</p>
-<p>该模块提供两种备选操作模式。第一种模式由secure_link_secret指令启用，用于检查请求链接的真实性以及保护资源免受未经授权的访问。第二种模式由secure_link和secure_link_md5指令启用， 可以用于限制链接的生命周期。</p>
-<p>默认情况下不构建此模块，应使用–with-http_secure_link_module 配置参数启用它。</p>
-<ol>
-<li>制定并允许检查请求的链接的真实性以及保护资源避遭未经授权的访问</li>
-<li>限制链接生效周期</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location /s/ &#123;</span><br><span class="line">    #资源链接由后端生成，请求中传递的MD5哈希值以base64url编码。</span><br><span class="line">    # secure_link定义一个包含变量的字符串，从中提取链接的校验和值和生命周期。</span><br><span class="line">    secure_link $arg_md5,$arg_expires;</span><br><span class="line"></span><br><span class="line">    # $secure_link_expiress是请求中传递的链接的生命周期;仅用于secure_link_md5指令。</span><br><span class="line">    secure_link_md5 &quot;$secure_link_expires$uri$remote_addr secret&quot;;</span><br><span class="line"></span><br><span class="line">    # 将从字符串中提取的校验和值与secure_link_md5指令定义的表达式的MD5哈希值进行比较。如果校验和不同，则将$secure_link变量设置为空字符串。如果校验和相同，则检查链路生存期。请求中传递的MD5哈希值以base64url编码。</span><br><span class="line">    if ($secure_link = &quot;&quot;) &#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if ($secure_link = &quot;0&quot;) &#123;</span><br><span class="line">        return 410;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="geoip-module-模块"><a href="#geoip-module-模块" class="headerlink" title="geoip_module 模块"></a><a href="http://nginx.org/en/docs/http/ngx_http_geoip_module.html" target="_blank" rel="noopener">geoip_module 模块</a></h1><p>http_geoip_module模块会机遇IP地址匹配MaxMind GeoIP二进制文件，读取IP所在地域信息。</p>
-<p>默认情况下不构建此模块，应使用–with-http_geoip_module 配置参数启用它。</p>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
-<li>区别国内外作HTTP访问规则</li>
-<li>区别国内城市地域作HTTP访问规则</li>
-</ol>
-<h2 id="Centos-进行安装使用geoip-module"><a href="#Centos-进行安装使用geoip-module" class="headerlink" title="Centos 进行安装使用geoip_module"></a>Centos 进行安装使用geoip_module</h2><ol>
-<li><p>yum安装 （记得配置nginx的源，安装nginx前应该已经配置好了）</p>
-<pre><code>yum install nginx-module-geoip
-</code></pre></li>
-<li><p>安装完成到 <code>/etc/nginx/modules</code> 目录可以看到<code>geoip_module</code>相关文件</p>
-</li>
-<li><p>在nginx配置文件中动态加载<code>geoip_module</code></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">load_module &quot;module/ngx_http_geoip_module.so&quot;;</span><br><span class="line">load_module &quot;module/ngx_stream_geoip_module.so&quot;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>到 <a href="https://dev.maxmind.com/zh-hans/geoip/geoip2/geolite2/" title="MaxMind" target="_blank" rel="noopener">MaxMind</a> 下载IP地域文件（GeoLite2 City和GeoLite2 Country） 解压</p>
-<blockquote>
-<p>注意：MaxMind从2018年4月1日起停止更新GeoLite Legacy数据库。GeoLite Legacy数据库不再可供下载。尝试下载GeoLite Legacy数据库文件将导致错误：”找不到数据库版本”。<br>现在只能下载GeoLite2数据库了,GeoLite2数据库是GeoLite Legacy地理定位数据库的免费，更现代的版本。</p>
+            <blockquote>
+<p>Comet 是 Alex Russell 发明的一个词儿，指的是一种更高级的 Ajax 技术（经常也有人称为“服务器<br>推送”）。 Ajax 是一种从页面向服务器请求数据的技术，而 Comet 则是一种服务器向页面推送数据的技<br>术。 Comet 能够让信息近乎实时地被推送到页面上，非常适合处理体育比赛的分数和股票报价。</p>
 </blockquote>
-</li>
-<li><p>在配置文件中配置geoip_module的 geoip_country 和 geoip_city 指令 （两个指令都在http块配置）</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">geoip_country /yourPath/GeoLite2-Country.mmdb;</span><br><span class="line">geoip_city /yourPath/GeoLite2-City.mmdb;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>现在已经可以读取客户端的IP所在地域信息啦，详细参数请到<a href="http://nginx.org/en/docs/http/ngx_http_geoip_module.html#geoip_country" target="_blank" rel="noopener">这里</a>查看</p>
-<pre><code>$geoip_country_code 两个字母的国家/地区代码
-$geoip_country_code3 三个字母的国家/地区代码
-$geoip_country_name 国家/地区名称
-$geoip_city 城市名称
-</code></pre></li>
-</ol>
+<h1 id="两种实现-Comet-的方式：-长轮询和流"><a href="#两种实现-Comet-的方式：-长轮询和流" class="headerlink" title="两种实现 Comet 的方式： 长轮询和流"></a>两种实现 Comet 的方式： 长轮询和流</h1><h2 id="长轮询"><a href="#长轮询" class="headerlink" title="长轮询"></a>长轮询</h2><p><code>长轮询</code>把短轮询颠倒了一下。页面发起一个到服务器的请求，然后服务器一直保持连接打开，直到<br>有数据可发送。发送完数据之后，浏览器关闭连接，随即又发起一个到服务器的新请求。这一过程在页<br>面打开期间一直持续不断。</p>
+<h3 id="长轮询和短轮询的区别"><a href="#长轮询和短轮询的区别" class="headerlink" title="长轮询和短轮询的区别"></a>长轮询和短轮询的区别</h3><p><code>长轮询</code>是传统轮询（也称为短轮询）的一个翻版，即浏览器定时向服务器发送请求，看有没有更新的数据。</p>
+<ul>
+<li>两者最大的区别<br>  在于服务器如何发送数据。短轮询是服务器立即发送响应，无论数据是否有效，而长轮询是等待发送响<br>  应。轮询的优势是所有浏览器都支持，因为使用 XHR 对象和 setTimeout()就能实现。而你要做的就<br>  是决定什么时候发送请求。</li>
+</ul>
+<h2 id="HTTP-流"><a href="#HTTP-流" class="headerlink" title="HTTP 流"></a>HTTP 流</h2><p>流不同于上述两种轮询，因为它在页面的整个生命周期内只使用一个 HTTP 连接。具体来说，就是浏览器向服务器发送一个请求，而服务器保持连接打开，然后周期性地向浏览器发送数据。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>($j = <span class="number">1</span>; $j &lt;= <span class="number">10</span>; $j++) &#123;  </span><br><span class="line"><span class="keyword">echo</span> $j.<span class="string">" "</span>;  </span><br><span class="line">ob_flush();</span><br><span class="line">flush(); <span class="comment">// flush()刷新缓冲区的内容，输出。这一步会使缓冲区新增的内容被挤出去，显示到浏览器上   </span></span><br><span class="line">sleep(<span class="number">1</span>); <span class="comment">//等1秒钟</span></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ($i=<span class="number">10</span>; $i&gt;<span class="number">2</span>; $i--)&#123;</span><br><span class="line">    <span class="keyword">echo</span> $i.<span class="string">'&lt;br /&gt;'</span>;</span><br><span class="line">    ob_flush();</span><br><span class="line">    flush();</span><br><span class="line">    sleep(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">ob_end_flush();</span><br></pre></td></tr></table></figure>
+<p>所有服务器端语言都支持打印到输出缓存然后刷新（将输出缓存中的内容一次性全部发送到客户<br>端）的功能。而这正是实现 HTTP 流的关键所在。</p>
+<p>通过侦听 readystatechange 事件及检测 readyState 的值是否为 3，就可以利用 XHR 对象实现 HTTP 流。在上述这些浏览器中，随着不断从服务器接收数据， readyState 的值会周期性地变为 3。</p>
+<h1 id="SSE（Server-Sent-Events，服务器发送事件）"><a href="#SSE（Server-Sent-Events，服务器发送事件）" class="headerlink" title="SSE（Server-Sent Events，服务器发送事件）"></a>SSE（Server-Sent Events，服务器发送事件）</h1><blockquote>
+<p><code>SSE（Server-Sent Events，服务器发送事件）</code>是围绕只读 Comet 交互推出的 API 或者模式。 SSE API<br>用于创建到服务器的单向连接，服务器通过这个连接可以发送任意数量的数据。服务器响应的 MIME 类型必须是 <code>text/event-stream</code>，而且是浏览器中的 JavaScript API 能解析格式输出。 SSE 支持短轮询、长轮询和 HTTP 流，而且能在断开连接时自动确定何时重新连接。</p>
+</blockquote>
+<h2 id="SSE-API"><a href="#SSE-API" class="headerlink" title="SSE API"></a>SSE API</h2><p>要预订新的事件流，首先要创建一个新的 EventSource 对象，并传进一个入口点：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> source = <span class="keyword">new</span> EventSource(<span class="string">"myevents.php"</span>)  <span class="comment">// 注意，传入的 URL 必须与创建对象的页面同源（相同的 URL 模式、域及端口）。</span></span><br></pre></td></tr></table></figure>
+<p>EventSource 的实例有一个 readyState 属性，值为 0 表示正连接到服务器，值为 1 表示打开了连接，值为 2 表示关闭<br>了连接。</p>
+<p>还有以下三个事件。</p>
+<ul>
+<li>open：在建立连接时触发。</li>
+<li>message：在从服务器接收到新事件时触发。</li>
+<li>error：在无法建立连接时触发。</li>
+</ul>
+<h3 id="close-强制立即断开连接"><a href="#close-强制立即断开连接" class="headerlink" title="close() 强制立即断开连接"></a>close() 强制立即断开连接</h3><p>默认情况下， EventSource 对象会保持与服务器的活动连接。如果连接断开，还会重新连接。这就意味着 SSE 适合长轮询和 HTTP 流。如果想强制立即断开连接并且不再重新连接，可以调用 close() 方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source.close();</span><br></pre></td></tr></table></figure>
+<h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>所谓的服务器事件会通过一个持久的 HTTP 响应发送，这个响应的 MIME 类型为 text/event-stream。响应的格式是纯文本，最简单的情况是每个数据项都带有前缀 data:。</p>
+<p>通过 id:前缀可以给特定的事件指定一个关联的 ID，这个 ID 行位于 data:行前面或后面皆可：<br>data: foo<br>id: 1<br>设置了 ID 后， EventSource 对象会跟踪上一次触发的事件。如果连接断开，会向服务器发送一个<br>包含名为 Last-Event-ID 的特殊 HTTP 头部的请求，以便服务器知道下一次该触发哪个事件。在多次<br>连接的事件流中，这种机制可以确保浏览器以正确的顺序收到连接的数据段。</p>
+<h1 id="Web-Sockets"><a href="#Web-Sockets" class="headerlink" title="Web Sockets"></a>Web Sockets</h1><blockquote>
+<p><code>Web Sockets</code> 的目标是在一个单独的持久连接上提供全双工、双向通信。在 JavaScript 中创建了 <code>Web Socket</code> 之后，会有一个 HTTP 请求发送到浏览器以发起连接。在取得服务器响应后，建立的连接会使用 HTTP 升级从 HTTP 协议交换为 <code>Web Socket</code> 协议。也就是说，使用标准的 HTTP 服务器无法实现 <code>Web Sockets</code>，只有支持这种协议的专门服务器才能正常工作。</p>
+</blockquote>
+<h2 id="Web-Sockets-API"><a href="#Web-Sockets-API" class="headerlink" title="Web Sockets API"></a>Web Sockets API</h2><p>要创建 Web Socket，先实例一个 WebSocket 对象并传入要连接的 URL：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意，必须给 WebSocket 构造函数传入绝对 URL。同源策略对 Web Sockets 不适用，因此可以通过它打开到任何站点的连接。至于是否会与某个域中的页面通信，则完全取决于服务器。</span></span><br><span class="line"><span class="keyword">var</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://www.example.com/server.php"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>与 XHR 类似， WebSocket 也有一个表示当前状态的 readyState 属性。不过，这个属性的值与 XHR 并不相同，而是如下所示。</p>
+<ul>
+<li>WebSocket.OPENING (0)：正在建立连接。</li>
+<li>WebSocket.OPEN (1)：已经建立连接。</li>
+<li>WebSocket.CLOSING (2)：正在关闭连接。</li>
+<li>WebSocket.CLOSE (3)：已经关闭连接。</li>
+</ul>
+<p>WebSocket 没有 readystatechange 事件；不过，它有其他事件，对应着不同的状态。readyState的值永远从 0 开始。<br>要关闭 Web Socket 连接，可以在任何时候调用 close()方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">socket.close();</span><br></pre></td></tr></table></figure>
+<p>调用了 close()之后， readyState 的值立即变为 2（正在关闭），而在关闭连接后就会变成 3</p>
+<h2 id="发送和接收数据"><a href="#发送和接收数据" class="headerlink" title="发送和接收数据"></a>发送和接收数据</h2><p>Web Socket 打开之后，就可以通过连接发送和接收数据。要向服务器发送数据，使用 send()方法并传入任意字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> socket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://www.example.com/12.php"</span>);</span><br><span class="line">socket.send(<span class="string">"Hello world!"</span>);</span><br></pre></td></tr></table></figure>
+<p>因为 <strong><em>Web Sockets 只能通过连接发送纯文本数据</em></strong>，所以对于复杂数据结构，在通过连接发送之前，必须进行序列化。服务器要读取其中的数据，就要解析接收到的 JSON 字符串.</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>WebSocket 对象几个事件，在连接生命周期的不同阶段触发。</p>
+<ul>
+<li>message：当服务器向客户端发来消息时触发</li>
+<li>open：在成功建立连接时触发。</li>
+<li>error：在发生错误时触发，连接不能持续。</li>
+<li>close：在连接关闭时触发。</li>
+</ul>
+<p>WebSocket 对象不支持 DOM 2 级事件侦听器，因此必须使用 DOM 0 级语法分别定义每个事件处理程序。</p>
+<p>只有 close 事件的 event 对象有额外的信息。这个事件的事件对象有三个额外的属性： <code>wasClean</code>、 <code>code</code> 和 <code>reason</code>。其中，<br>wasClean 是一个布尔值，表示连接是否已经明确地关闭；<br>code 是服务器返回的数值状态码；<br>reason 是一个字符串，包含服务器发回的消息。  </p>
+<blockquote>
+<p>参考资料：JavaScript高级程序设计</p>
+</blockquote>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/26/nginx/Nginx6/#更多" rel="contents">
+              <a class="btn" href="/2018/12/31/web/Comet/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -609,10 +628,10 @@ $geoip_city 城市名称
   
   <div class="post-date">
 			<div class="post-month">12月</div>
-			<div class="post-day">20</div>
+			<div class="post-day">28</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/web/js/FileAPI/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/28/web/js/基础/JavaScript动态解析和执行字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -631,8 +650,8 @@ $geoip_city 城市名称
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/20/web/js/FileAPI/" itemprop="url">
-                  File API
+                <a class="post-title-link" href="/2018/12/28/web/js/基础/JavaScript动态解析和执行字符串/" itemprop="url">
+                  JavaScript动态解析和执行字符串
                 </a>
               
             
@@ -658,7 +677,7 @@ $geoip_city 城市名称
                 
               
 
-              <time title="创建时间：2018-12-20 12:22:55" itemprop="dateCreated datePublished" datetime="2018-12-20T12:22:55+08:00">2018-12-20</time>
+              <time title="创建时间：2018-12-28 14:05:58" itemprop="dateCreated datePublished" datetime="2018-12-28T14:05:58+08:00">2018-12-28</time>
             
 
             
@@ -690,7 +709,7 @@ $geoip_city 城市名称
 
           
           
-             <span id="/2018/12/20/web/js/FileAPI/" class="leancloud_visitors" data-flag-title="File API">
+             <span id="/2018/12/28/web/js/基础/JavaScript动态解析和执行字符串/" class="leancloud_visitors" data-flag-title="JavaScript动态解析和执行字符串">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -723,85 +742,28 @@ $geoip_city 城市名称
       
         
           
-            <blockquote>
-<p>在HTML5中新增了File API，用于表示Web应用程序中的文件对象，以及以编程方式选择它们并访问它们的数据。做一下简单的总结。有兴趣的可以访问<a href="https://www.w3.org/TR/FileAPI/" target="_blank" rel="noopener">网站</a>详细了解。</p>
-</blockquote>
-<h1 id="FileList"><a href="#FileList" class="headerlink" title="FileList"></a>FileList</h1><p>FileList 对象针对表单的 file 控件。<br>当用户通过 file 控件选取文件后，这个控件的 <code>files</code> 属性值就是 <code>FileList 对象</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">multiple</span> <span class="attr">id</span>=<span class="string">"fileInput"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'fileInput'</span>).onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.files)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>除了用 file 控件，采用[<strong>拖放方式</strong>]，也可以得到 FileList 对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dropZone = <span class="built_in">document</span>.getElementById(<span class="string">'drop_zone'</span>);</span><br><span class="line">dropZone.addEventListener(<span class="string">'drop'</span>, handleFileSelect, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    evt.stopPropagation();</span><br><span class="line">    evt.preventDefault();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> files = evt.dataTransfer.files; <span class="comment">// FileList object.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码的 handleFileSelect 是拖放事件的回调函数，它的参数evt是一个事件对象，该参数的dataTransfer.files属性就是一个FileList对象，里面包含了拖放的文件。</p>
-<h1 id="File"><a href="#File" class="headerlink" title="File"></a>File</h1><p>File对象可以用来获取某个文件的信息，还可以用来读取这个文件的内容。通常情况下，File对象是来自用户在一个 <code>&lt;input/&gt;</code>元素上选择文件后返回的FileList对象，也可以是来自由拖放操作生成的<a href="https://blog.csdn.net/qq_39198420/article/details/78059092" target="_blank" rel="noopener"><strong>DataTransfer对象</strong></a>。  </p>
-<p>File 对象含有以下属性值：</p>
-<ul>
-<li>name：文件名，该属性只读</li>
-<li>size：文件大小，单位为字节，该属性只读</li>
-<li>type：文件的 MIME 类型，如果分辨不出类型，则为空字符串，该属性只读</li>
-<li>lastModified：文件的上次修改时间，格式为时间戳</li>
-<li>lastModifiedDate：文件的上次修改时间，格式为 Date 对象实例</li>
-</ul>
-<h1 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h1><p>File 对象是继承自 <code>Blob</code> 对象的。<br><code>Blob（Binary Large Object）</code>对象代表了一段二进制数据，提供了一系列操作接口。其他操作二进制数据的 API（比如 File 对象），都是建立在 Blob 对象基础上的，继承了它的属性和方法。</p>
-<p>Blob构造函数，接受两个参数。<br>第一个参数是一个包含实际数据的数组<br>第二个参数是数据的类型，这两个参数都不是必需的。数组元素可以是任意多个的ArrayBuffer，ArrayBufferView (typed array)， Blob，或者 DOMString对象。</p>
-<p>生成 Blob 对象有两种方法：一种是使用 Blob 构造函数，另一种是对现有的 Blob 对象使用 slice 方法切出一部分。</p>
-<p>Blob 对象有两个只读属性：</p>
-<ul>
-<li>size：二进制数据的大小，单位为字节。（文件上传时可以在前端判断文件大小是否合适）</li>
-<li>type：二进制数据的 MIME 类型，全部为小写，如果类型未知，则该值为空字符串。（文件上传时可以在前端判断文件类型是否合适）</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'hello world'</span>];</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob(arr, &#123; <span class="string">"type"</span> : <span class="string">"text/plain"</span> &#125;); <span class="comment">// the blob</span></span><br><span class="line"><span class="built_in">console</span>.log(blob);</span><br></pre></td></tr></table></figure>
-<h1 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h1><p><code>FileReader</code>对象用于读取文件，即把文件内容读入内存。它的参数是 File 对象或 Blob 对象。<br>对于不同类型的文件，FileReader 提供不同的方法读取文件。</p>
-<ul>
-<li>readAsBinaryString(Blob|File)：返回二进制字符串，该字符串每个字节包含一个0到255之间的整数。</li>
-<li>readAsText(Blob|File, encode)：返回文本字符串。默认情况下，文本编码格式是 UTF-8，可以通过可选的格式参数，指定其他编码格式的文本</li>
-<li>readAsDataURL(Blob|File)：返回一个基于 Base64 编码的 data-uri 对象（可用于 <code>&lt;img&gt;</code> 标签中的 src 属性，从而达到上传图片预览的效果）</li>
-<li>readAsArrayBuffer(Blob|File)：返回一个 ArrayBuffer 对象</li>
-</ul>
-<p><code>FileReader</code> 对象采用异步方式读取文件，内置回调函数。</p>
-<ul>
-<li>onabort 方法：读取中断或调用 reader.abort() 方法时触发。</li>
-<li>onerror 方法：读取出错时触发。</li>
-<li>onload 方法：读取成功后触发。</li>
-<li>onloadend 方法：读取完成后触发，不管是否成功。触发顺序排在 onload 或 onerror 后面。</li>
-<li>onloadstart 方法：读取将要开始时触发。</li>
-<li>onprogress 方法：读取过程中周期性触发。<code>（可以用来获取文件读取的进度）</code></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(reader.result)</span><br><span class="line">  <span class="built_in">console</span>.log(e.target.result)</span><br><span class="line">  <span class="keyword">var</span> text = reader.result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">'hello world'</span>];</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob(arr, &#123; <span class="string">"type"</span> : <span class="string">"text/plain"</span> &#125;); <span class="comment">// the blob</span></span><br><span class="line"><span class="comment">// console.log(blob);</span></span><br><span class="line"><span class="keyword">var</span> encoding = <span class="string">'UTF-8'</span></span><br><span class="line">reader.readAsText(blob, encoding);</span><br></pre></td></tr></table></figure>
-<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><blockquote>
-<p>除了可以使用base64字符串作为内容的DataURI将一个文件嵌入到另外一个文档里，还可以使用URL对象。URL对象用于生成指向File对象或Blob对象的URL。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.URL</span><br></pre></td></tr></table></figure>
-<ul>
-<li>URL.createObjectURL()</li>
-</ul>
-<p>该方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL。这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectURL = URL.createObjectURL(blob);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>URL.revokeObjectURL()</li>
-</ul>
-<p>该方法用来释放一个之前通过调用 URL.createObjectURL() 创建的已经存在的 URL 对象。当你结束使用某个 URL 对象时，应该通过调用这个方法来让浏览器知道不再需要保持这个文件的引用了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// objectURL 是一个 DOMString，表示通过调用 URL.createObjectURL() 方法产生的 URL 对象</span></span><br><span class="line"><span class="built_in">window</span>.URL.revokeObjectURL(objectURL);</span><br></pre></td></tr></table></figure>
-<h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>用 <code>FormData</code> 对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个”form”.比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> FormData (form? : HTMLFormElement)</span><br></pre></td></tr></table></figure>
-<p>form 参数可选，是一个HTML表单元素，可以包含任何形式的表单控件,包括文件输入框。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><code>append() 给当前FormData对象添加一个键/值对</code></p>
+            <p>在JavaScript中<code>eval</code>和<code>new Function</code>都可以动态解析和执行字符串。但两者有一定的区别。我这里总结一下自己了解的相关知识点。</p>
+<h1 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h1><p>整个ECMAScript语言中最强大的一个方法<code>eval()</code>。<code>eval()</code>方法就像是一个完整的 ECMAScript 解析器，它只接受一个参数，即要执行的<code>ECMAScript（或 JavaScript）字符串</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="string">"alert('Hello World!')"</span>);</span><br></pre></td></tr></table></figure>
+<p>当解析器发现代码中调用 <code>eval()</code> 方法时，它会将传入的参数当作实际的 ECMAScript 语句来解析，然后把执行结果插入到原位置。<br>通过 <code>eval()</code> 执行的代码被认为是包含该次调用的<code>执行环境</code>的一部分，因此被执行的代码具有与该执行环境相同的作用域链。这意味着通过 eval() 执行的代码可以引用在包含环境中定义的变量。<a href="#eval和new-Function的区别">案例</a></p>
+<h1 id="Function-构造函数"><a href="#Function-构造函数" class="headerlink" title="Function 构造函数"></a>Function 构造函数</h1><p>使用 Function 构造函数定义函数的方式。 Function 构造函数可以接收任意数量的参数，但最后一个参数始终都被看成是函数体，而前面的参数则枚举出了新函数的参数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>, <span class="string">"arg2"</span>, <span class="string">"return arg1 + arg2"</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="eval和new-Function"><a href="#eval和new-Function" class="headerlink" title="eval和new Function"></a>eval和new Function</h1><p>在JavaScript中动态解析和执行字符串时我们可以用到eval和new Function。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = <span class="string">'&#123;a:1,b:2&#125;'</span>；</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">eval</span>(<span class="string">'('</span>+data+<span class="string">')'</span>));</span><br><span class="line"><span class="built_in">console</span>.log((<span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'return'</span> + data))());</span><br></pre></td></tr></table></figure>
+<h2 id="eval和new-Function的区别。"><a href="#eval和new-Function的区别。" class="headerlink" title="eval和new Function的区别。"></a>eval和new Function的区别。</h2><p>eval中的代码执行时的作用域为当前作用域。它可以访问到函数中的局部变量。<br>new Function中的代码执行时的作用域为全局作用域，不论它的在哪个地方调用的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="string">'local'</span></span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">'console.log(x)'</span>)</span><br><span class="line">    ;(<span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'console.log(x)'</span>))()</span><br><span class="line">&#125;</span><br><span class="line">a()</span><br><span class="line"><span class="comment">// local</span></span><br><span class="line"><span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+<h1 id="问题：eval-‘-‘-jsondata-’-’-为什么还要加’-‘和’-’"><a href="#问题：eval-‘-‘-jsondata-’-’-为什么还要加’-‘和’-’" class="headerlink" title="问题：eval(‘(‘+jsondata+’)’)为什么还要加’(‘和’)’"></a>问题：eval(‘(‘+jsondata+’)’)为什么还要加’(‘和’)’</h1><p>由于json是以”<code>{}</code>“的方式来开始以及结束的，在JS中，它会被当成一个语句块来处理，所以必须强制性的将它转换成一种表达式。加上圆括号的目的是迫使eval函数在处理JavaScript代码的时候强制将括号内的表达式（expression）转化为对象，而不是作为语句（statement）来执行。</p>
+<h2 id="扩展-function与感叹号"><a href="#扩展-function与感叹号" class="headerlink" title="扩展 function与感叹号"></a>扩展 function与感叹号</h2><p>平时我们可能对使用感叹号 (!) 或者添加括号来调用匿名函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">'iifksp'</span>)&#125;()  <span class="comment">// true</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">'iifksp'</span>)&#125;())</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;alert(<span class="string">'iifksp'</span>)&#125;)()</span><br></pre></td></tr></table></figure>
+<p>其实无论是括号，还是感叹号，让整个语句合法做的事情只有一件，就是让一个函数声明语句变成了一个表达式。</p>
+<p>使用括号包裹定义函数体，解析器将会以函数表达式的方式去调用定义函数。也就是说，任何能将函数变成一个函数表达式的作法，都可以使解析器正确的调用定义函数。而 ! 就是其中一个，而 + - || 等都有这样的功能。</p>
 <blockquote>
-<p>1 void append(DOMString 键, Blob 值, [可选] DOMString 文件名);<br>2 void append(DOMString 键, DOMString 值);</p>
-</blockquote>
-<ul>
-<li>name 字段名称</li>
-<li>value 字段值，可以是Blob value，或者一个字符串，如果全都不是，则该值会被自动转换成字符串</li>
-</ul>
-<!-- ```js
-var fd = new FormData(); // 构造FromData对象
-fd.append('hello', 'hello world');
-``` -->
-<blockquote>
-<p>参考链接：<br><a href="https://segmentfault.com/a/1190000006600936" target="_blank" rel="noopener">JavaScript进阶学习（三）—— 基于html5 File API的文件操作</a><br><a href="https://blog.csdn.net/mr_wuch/article/details/70141674?utm_source=blogxgwz0" target="_blank" rel="noopener">Html5——File、FileReader、Blob、Fromdata对象</a><br><a href="http://javascript.ruanyifeng.com/htmlapi/file.html" target="_blank" rel="noopener">文件和二进制数据的操作</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/FormData</a> FormData</p>
+<p>参考：<a href="https://swordair.com/function-and-exclamation-mark/" target="_blank" rel="noopener">https://swordair.com/function-and-exclamation-mark/</a></p>
 </blockquote>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/20/web/js/FileAPI/#更多" rel="contents">
+              <a class="btn" href="/2018/12/28/web/js/基础/JavaScript动态解析和执行字符串/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -846,7 +808,7 @@ fd.append('hello', 'hello world');
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -891,7 +853,7 @@ fd.append('hello', 'hello world');
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

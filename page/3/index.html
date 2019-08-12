@@ -396,11 +396,11 @@
   
   
   <div class="post-date">
-			<div class="post-month">03月</div>
-			<div class="post-day">09</div>
+			<div class="post-month">08月</div>
+			<div class="post-day">02</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/web/js/基础/事件冒泡和默认事件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/02/web/js/基础/location对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -419,8 +419,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/09/web/js/基础/事件冒泡和默认事件/" itemprop="url">
-                  事件冒泡和默认事件
+                <a class="post-title-link" href="/2019/08/02/web/js/基础/location对象/" itemprop="url">
+                  location 对象 和 history 对象
                 </a>
               
             
@@ -446,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2019-03-09 15:40:43" itemprop="dateCreated datePublished" datetime="2019-03-09T15:40:43+08:00">2019-03-09</time>
+              <time title="创建时间：2019-08-02 23:22:59" itemprop="dateCreated datePublished" datetime="2019-08-02T23:22:59+08:00">2019-08-02</time>
             
 
             
@@ -478,7 +478,7 @@
 
           
           
-             <span id="/2019/03/09/web/js/基础/事件冒泡和默认事件/" class="leancloud_visitors" data-flag-title="事件冒泡和默认事件">
+             <span id="/2019/08/02/web/js/基础/location对象/" class="leancloud_visitors" data-flag-title="location 对象 和 history 对象">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -511,22 +511,53 @@
       
         
           
-            <p>今天又遇到事件冒泡的问题，专门找时间整理一下相关的资料，记录一下。ヽ(ー_ー)ノ</p>
-<h1 id="事件冒泡（event-bubbling）"><a href="#事件冒泡（event-bubbling）" class="headerlink" title="事件冒泡（event bubbling）"></a>事件冒泡（event bubbling）</h1><p>我们先来理解一下事件冒泡是什么。（事件捕获与之相反我这里就不展开了）(<em>^▽^</em>)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html onclick=<span class="string">"alert('h')"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;Event Bubbling Example&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body onclick=<span class="string">"alert('b')"</span>&gt;</span><br><span class="line">    &lt;div onclick=<span class="string">"alert('d')"</span> id=<span class="string">"myDiv"</span>&gt;Click Me&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果你单击了页面中的 <code>&lt;div&gt;</code> 元素, click 事件首先在 <code>&lt;div&gt;</code> 元素上发生，而这个元素就是我们单击的元素。然后， click事件沿 DOM 树向上传播，在每一级节点上都会发生，直至传播到 document 对象。 这就是事件冒泡</p>
-<p><img src="/2019/03/09/web/js/基础/事件冒泡和默认事件/微信图片_20190309160135.png" width="30%" height="30%"></p>
-<h1 id="阻止事件冒泡-默认事件"><a href="#阻止事件冒泡-默认事件" class="headerlink" title="阻止事件冒泡/默认事件"></a>阻止事件冒泡/默认事件</h1><p>一般我们处理事件时出现奇怪的现像，大多数都是由事件冒泡引起的，或者我们想阻止一下默认事件（也可以叫默认行为，eg：链接的默认行为就是在被单击时会导航到其 href 特性指定的 URL，表单提交等），接下来我们来看一下怎么解决吧！</p>
-<h2 id="return-false"><a href="#return-false" class="headerlink" title="return false"></a>return false</h2><p>为什么我要第一个讲它，因为在网上找<code>阻止事件冒泡和默认事件</code>的方法会出现<code>return false</code>这个方法，这里我要点一下的是在<code>JQuery！JQuery！JQuery！</code>封装的事件函数中<code>return false</code>确实是可以<code>阻止事件冒泡和默认事件</code>的（这就是我挖到的坑ko(╥﹏╥)o，原理我还没去看），但在原生的事件处理程序里可以用来阻止<code>默认事件，只有阻止默认事件</code>！</p>
-<h2 id="stopPropagation-preventDefault"><a href="#stopPropagation-preventDefault" class="headerlink" title="stopPropagation()/preventDefault()"></a>stopPropagation()/preventDefault()</h2><p>这两个方法是<code>DOM事件对象</code>的，<code>stopPropagation()</code>用来阻止事件冒泡（如果事件对象的bubbles为true ，则可以使用这个方法），<code>preventDefault()</code>用来取消事件的默认行为（如果事件对象的cancelable为true ，则可以使用这个方法）。</p>
-<h3 id="stopImmediatePropagation"><a href="#stopImmediatePropagation" class="headerlink" title="stopImmediatePropagation()"></a>stopImmediatePropagation()</h3><p>stopImmediatePropagation()方法是DOM3级事件中新增的取消事件的进一步捕获或冒泡，并且阻止相同事件的其他侦听器被调用。</p>
-<p><code>如果有多个相同类型事件的事件监听函数绑定到同一个元素</code>，当该类型的事件触发时，它们会按照被添加的顺序执行。如果其中某个监听函数执行了event.stopImmediatePropagation() 方法，则当前元素剩下的监听函数将不会被执行。（注意区别 event.stopPropagation()）</p>
-<h2 id="cancelBubble-returnValue"><a href="#cancelBubble-returnValue" class="headerlink" title="cancelBubble/returnValue"></a>cancelBubble/returnValue</h2><p>这两个属性是<code>IE事件对象</code>的，<code>cancelBubble</code>属性（默认值为false）用来阻止事件冒泡（与 DOM 中的 <code>stopPropagation()</code>方法作用相同），<code>returnValue</code>属性（默认值为true）用来取消事件的默认行为（相当 DOM 中的 <code>preventDefault()</code>方法）。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">        height: 200px;</span></span><br><span class="line"><span class="undefined">        width: 600px;</span></span><br><span class="line"><span class="undefined">        margin: 0 auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="undefined">        display: block;</span></span><br><span class="line"><span class="undefined">        height: 50%;</span></span><br><span class="line"><span class="undefined">        width: 50%;</span></span><br><span class="line"><span class="undefined">        background: red;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">onclick</span>=<span class="string">"alert('body')"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"link"</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span>1111111111<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.bootcss.com/jquery/3.3.1/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementsByClassName(<span class="string">"box"</span>)[<span class="number">0</span>].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">                alert(<span class="string">'box'</span>)</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">'link'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">                alert(<span class="string">'link'</span>)</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                event.stopPropagation(); <span class="comment">// 阻止事件冒泡</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// event.preventDefault() // 阻止默认行为，页面不会跳转</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// event.returnValue = false // 阻止默认行为</span></span></span><br><span class="line"><span class="actionscript">                <span class="comment">// event.cancelBubble = true // 阻止事件冒泡</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 阻止默认行为 会将returnValue变成true</span></span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+            <p>在html中路由相关的知识非常重要，主要是我经常忘记。所以这篇文章复习记录一下BOM中的location 对象 和 history 对象。</p>
+<h2 id="location-对象"><a href="#location-对象" class="headerlink" title="location 对象"></a>location 对象</h2><p>location 是最有用的 BOM 对象之一，它提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。事实上，location 对象是很特别的一个对象，因为<code>它既是 window 对象的属性，也是 document 对象的属性</code>；换句话说，<code>window.location 和 document.location</code> 引用的是同一个对象。</p>
+<h3 id="Location-对象属性"><a href="#Location-对象属性" class="headerlink" title="Location 对象属性"></a>Location 对象属性</h3><p>包含有关当前 URL 的信息。可以通过不同的属性访问这些 URL 片段。<br>修改 location 对象的属性(hash 除外)也可以改变当前加载的页面。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假设初始 URL 为 http://www.wrox.com/WileyCDA/</span></span><br><span class="line">location.protocol <span class="comment">// http</span></span><br><span class="line">location.pathname <span class="comment">// /WileyCDA/</span></span><br><span class="line">location.href = <span class="string">"http://www.wrox.com/WileyCDA/"</span>; <span class="comment">// 最常用的 设置为一个 URL 值，也会以该值调用 assign() 方法。</span></span><br><span class="line"><span class="comment">//将 URL 修改为"http://www.wrox.com/WileyCDA/#section1"</span></span><br><span class="line">location.hash = <span class="string">"#section1"</span>;  </span><br><span class="line"><span class="comment">//将 URL 修改为"http://www.wrox.com/WileyCDA/?q=javascript"</span></span><br><span class="line">location.search = <span class="string">"?q=javascript"</span>;</span><br><span class="line"><span class="comment">//将 URL 修改为"http://www.yahoo.com/WileyCDA/"</span></span><br><span class="line">location.hostname = <span class="string">"www.yahoo.com"</span>;</span><br><span class="line"><span class="comment">//将 URL 修改为"http://www.yahoo.com/mydir/"</span></span><br><span class="line">location.pathname = <span class="string">"mydir"</span>;</span><br><span class="line"><span class="comment">//将 URL 修改为"http://www.yahoo.com:8080/WileyCDA/"</span></span><br><span class="line">location.port = <span class="number">8080</span>;</span><br><span class="line"><span class="comment">// 每次修改 location 的属性（hash 除外），页面都会以新 URL 重新加载。</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改 hash 的值会在浏览器的历史记录中生成一条新记录。在 IE 的早期版本中， hash 属性不会在用户单击“后退”和“前进”按钮时被更新，而只会在用户单击包含 hash 的 URL 时才会被更新。</p>
+</blockquote>
+<h3 id="Location-对象方法"><a href="#Location-对象方法" class="headerlink" title="Location 对象方法"></a>Location 对象方法</h3><p>location 对象可以通过很多方式来改变浏览器的位置。</p>
+<ul>
+<li>assign() 立即打开新 URL 并在浏览器的历史记录中生成一条记录。<code>如果是将 location.href 或 window.location 设置为一个 URL 值，也会以该值调用 assign() 方法。</code></li>
+<li>replace() 接受一个参数，即要导航到的 URL；结果虽然会导致浏览器位置改变，但不会在历史记录中生成新记录。</li>
+<li>reload() 作用是重新加载当前显示的页面。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// assign()</span></span><br><span class="line">location.assign(<span class="string">'https://www.baidu.com'</span>)</span><br><span class="line">location.href = <span class="string">'https://www.baidu.com'</span></span><br><span class="line"><span class="built_in">window</span>.location = <span class="string">'https://www.baidu.com'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// reload()</span></span><br><span class="line">location.replace(<span class="string">"https://www.bilibili.com/"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// reload()</span></span><br><span class="line">location.reload(); <span class="comment">//重新加载（有可能从缓存中加载）</span></span><br><span class="line">location.reload(<span class="literal">true</span>); <span class="comment">//重新加载（从服务器重新加载）</span></span><br></pre></td></tr></table></figure>
+<h2 id="history-对象"><a href="#history-对象" class="headerlink" title="history 对象"></a>history 对象</h2><p>history 对象保存着用户上网的历史记录，从窗口被打开的那一刻算起。出于安全方面的考虑，开发人员无法得知用户浏览过的 URL。不过，借由用户访问<br>过的页面列表，同样可以在不知道实际 URL 的情况下实现后退和前进。</p>
+<ul>
+<li>go()      可以在用户的历史记录中任意跳转。这个方法接受一个参数，表示向后或向前跳转的页面数的一个整数值。</li>
+<li>back()    后退</li>
+<li>forward() 前进</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//后退一页</span></span><br><span class="line">history.go(<span class="number">-1</span>);</span><br><span class="line"><span class="comment">//前进一页</span></span><br><span class="line">history.go(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//前进两页</span></span><br><span class="line">history.go(<span class="number">2</span>);</span><br><span class="line"><span class="comment">//后退一页</span></span><br><span class="line">history.back();</span><br><span class="line"><span class="comment">//前进一页</span></span><br><span class="line">history.forward();</span><br><span class="line"></span><br><span class="line">history.length <span class="comment">//  length 属性，保存着历史记录的数量</span></span><br></pre></td></tr></table></figure>
+<h3 id="HTML5-新增（重点）历史状态管理"><a href="#HTML5-新增（重点）历史状态管理" class="headerlink" title="HTML5 新增（重点）历史状态管理"></a>HTML5 新增（重点）<code>历史状态管理</code></h3><p>历史状态管理是现代 Web 应用开发中的一个难点。在现代 Web 应用中（随着 ajax 的出现，页面实现非 reload 就能刷新数据，也给前端路由的出现奠定了基础），用户的每次操作不一定会打开一个全新的页面，因此“后退”和“前进”按钮也就失去了作用，导致用户很难在不同状态间切换。</p>
+<p>目前两种主流方式实现前端路由的方式 History API 和 Hash。</p>
+<h4 id="History-API"><a href="#History-API" class="headerlink" title="History API"></a>History API</h4><p>新增两个的API history.pushState 和 history.replaceState，pushState会增加一条新的历史记录，而replaceState则会替换当前的历史记录。都接收三个参数：</p>
+<ul>
+<li>状态对象 – 一个JavaScript对象</li>
+<li>新状态的标题 – 第二个参数目前还没有浏览器实现，因此完全可以只传入一个空字</li>
+<li>URL（可选） – 新的URL不一定是绝对路径；如果是相对路径，它将以当前URL为基准；传入的URL与当前URL应该是<code>同源</code>的，否则，pushState()会抛出异常。该参数是可选的；不指定的话则为文档当前URL。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记得去到打开百度在执行下面</span></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"https://www.baidu.com/test"</span>);</span><br><span class="line"><span class="comment">// https://www.baidu.com/test</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"?name=orange"</span>);</span><br><span class="line"><span class="comment">// https://www.baidu.com/test?name=orange</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"name=test"</span>);</span><br><span class="line"><span class="comment">// https://www.baidu.com/name=test</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"/name/test"</span>);</span><br><span class="line"><span class="comment">// https://www.baidu.com/name/test</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.history.pushState(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">"name/test"</span>);</span><br><span class="line"><span class="comment">// https://www.baidu.com/name/name/test</span></span><br></pre></td></tr></table></figure>
+<p><code>popstate 事件</code></p>
+<p>因为 pushState() 会创建新的历史状态，所以你会发现“后退”按钮也能使用了。按下“后退” popstate事件的事件对象有一个 state 属性，这个属性就包含着当初以第一个参数传递给 pushState() 的状态对象按钮，会触发 window 对象的 popstate 事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, (event) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"location: "</span> + <span class="built_in">document</span>.location + <span class="string">", state: "</span> + <span class="built_in">JSON</span>.stringify(event.state));</span><br><span class="line">&#125;);</span><br><span class="line">history.pushState(&#123;<span class="attr">page</span>: <span class="number">1</span>&#125;, <span class="string">"title 1"</span>, <span class="string">"?page=1"</span>);</span><br><span class="line">history.pushState(&#123;<span class="attr">page</span>: <span class="number">2</span>&#125;, <span class="string">"title 2"</span>, <span class="string">"?page=2"</span>);</span><br><span class="line">history.replaceState(&#123;<span class="attr">page</span>: <span class="number">3</span>&#125;, <span class="string">"title 3"</span>, <span class="string">"?page=3"</span>);</span><br><span class="line">history.back(); <span class="comment">// Logs "location: http://example.com/example.html?page=1, state: &#123;"page":1&#125;"</span></span><br><span class="line">history.back(); <span class="comment">// Logs "location: http://example.com/example.html, state: null  -- 浏览器加载的第一个页面没有状态，因此单击“后退”按钮返回浏览器加载的第一个页面时， event.state 值为 null</span></span><br><span class="line">history.go(<span class="number">2</span>);  <span class="comment">// Logs "location: http://example.com/example.html?page=3, state: &#123;"page":3&#125;</span></span><br><span class="line"></span><br><span class="line">history.state   <span class="comment">// Logs &#123; "page":3&#125;  --  它返回当前状态的状态对象</span></span><br></pre></td></tr></table></figure>
+<h4 id="Hash-（兼容性比较好）"><a href="#Hash-（兼容性比较好）" class="headerlink" title="Hash （兼容性比较好）"></a>Hash （兼容性比较好）</h4><p>修改 hash 的值会在浏览器的历史记录中生成一条新记录。我们经常在 url 中看到 #，这个 # 有两种情况，一个是锚点。一个是路由里的 # 不叫锚点，我们称之为 hash，大型框架的路由系统大多都是哈希实现的。</p>
+<p>HTML5 新增了 hashchange 事件，以便在 URL 的参数列表（及 URL 中“#”号后面的所有字符串）发生变化时通知开发人员。之所以新增这个事件，是因为在 Ajax 应用中，开发人员经常要利用 URL 参数列表来保存状态或导航信息。</p>
+<blockquote>
+<p>支持 hashchange 事件的浏览器有 IE8+、Firefox 3.6+、Safari 5+、Chrome 和 Opera 10.6+。在这些<br>浏览器中，只有 Firefox 6+、Chrome 和 Opera 支持 oldURL 和 newURL 属性</p>
+</blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/hashchange_event" target="_blank" rel="noopener"><code>MDN</code></a> 上实现兼容的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果浏览器原生支持该事件,则退出  </span></span><br><span class="line"><span class="keyword">if</span> ( <span class="string">"onhashchange"</span> <span class="keyword">in</span> <span class="built_in">window</span>.document.body ) &#123; <span class="keyword">return</span>; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> location = <span class="built_in">window</span>.location,</span><br><span class="line">    oldURL = location.href,</span><br><span class="line">    oldHash = location.hash;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 每隔100ms检测一下location.hash是否发生变化</span></span><br><span class="line">  setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newURL = location.href,</span><br><span class="line">      newHash = location.hash;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果hash发生了变化,且绑定了处理函数...</span></span><br><span class="line">    <span class="keyword">if</span> ( newHash != oldHash &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">window</span>.onhashchange === <span class="string">"function"</span> ) &#123;</span><br><span class="line">      <span class="comment">// execute the handler</span></span><br><span class="line">      <span class="built_in">window</span>.onhashchange(&#123;</span><br><span class="line">        type: <span class="string">"hashchange"</span>,</span><br><span class="line">        oldURL: oldURL,</span><br><span class="line">        newURL: newURL</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      oldURL = newURL;</span><br><span class="line">      oldHash = newHash;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">&#125;)(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>参考链接： <a href="https://segmentfault.com/a/1190000007238999" target="_blank" rel="noopener">前端路由的两种实现原理</a></p>
+</blockquote>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2019/03/09/web/js/基础/事件冒泡和默认事件/#更多" rel="contents">
+              <a class="btn" href="/2019/08/02/web/js/基础/location对象/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -582,11 +613,11 @@
   
   
   <div class="post-date">
-			<div class="post-month">03月</div>
-			<div class="post-day">09</div>
+			<div class="post-month">07月</div>
+			<div class="post-day">14</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/web/js/基础/事件流和事件处理程序/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/bookmarks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -605,8 +636,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/09/web/js/基础/事件流和事件处理程序/" itemprop="url">
-                  事件流和事件处理程序
+                <a class="post-title-link" href="/2019/07/14/bookmarks/" itemprop="url">
+                  Awesome
                 </a>
               
             
@@ -632,31 +663,13 @@
                 
               
 
-              <time title="创建时间：2019-03-09 14:29:37" itemprop="dateCreated datePublished" datetime="2019-03-09T14:29:37+08:00">2019-03-09</time>
+              <time title="创建时间：2019-07-14 23:54:12" itemprop="dateCreated datePublished" datetime="2019-07-14T23:54:12+08:00">2019-07-14</time>
             
 
             
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -664,7 +677,7 @@
 
           
           
-             <span id="/2019/03/09/web/js/基础/事件流和事件处理程序/" class="leancloud_visitors" data-flag-title="事件流和事件处理程序">
+             <span id="/2019/07/14/bookmarks/" class="leancloud_visitors" data-flag-title="Awesome">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -697,52 +710,84 @@
       
         
           
-            <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>JavaScript的<code>事件流</code>（事件流描述的是从页面中接收事件的顺序）有三种，分别是：事件冒泡、事件捕获、DOM事件流。</p>
-<ol>
-<li>IE 的事件流叫做事件冒泡（event bubbling），即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）</li>
-<li>Netscape Communicator团队提出的另一种事件流叫做事件捕获（event capturing）。事件捕获的思想<br>是不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。事件捕获的用意在于在<br>事件到达预定目标之前捕获它。</li>
-<li>“DOM2级事件”规定的事件流包括三个阶段：<a href="/2019/03/09/web/js/基础/事件冒泡和事件捕获/">事件捕获阶段、处于目标阶段和事件冒泡阶段。</a></li>
-</ol>
-<blockquote>
-<p>IE9、Opera、Firefox、Chrome 和 Safari 都支持 DOM 事件流；IE8 及更早版本不支持 DOM 事件流。</p>
-</blockquote>
-<h1 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h1><p>事件就是用户或浏览器自身执行的某种动作。诸如 click 、 load 和 mouseover ，都是事件的名字。而响应某个事件的函数就叫做<code>事件处理程序</code>（或<code>事件侦听器</code>）。事件处理程序的名字以 “on” 开头，因此click 事件的事件处理程序就是 onclick …</p>
-<h2 id="HTML事件处理程序"><a href="#HTML事件处理程序" class="headerlink" title="HTML事件处理程序"></a>HTML事件处理程序</h2><p>某个元素支持的每种事件，都可以使用一个与相应事件处理程序同名的<code>HTML 特性</code>来指定。这个特性的值应该是能够执行的 JavaScript 代码。例如，要在按钮被单击时执行一些 JavaScript，可以像下面这样编写代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"Click Me"</span> onclick=<span class="string">"alert('Clicked')"</span> /&gt;</span><br></pre></td></tr></table></figure>
-<p>缺点：  </p>
-<ol>
-<li>样扩展事件处理程序的作用域链在不同浏览器中会导致不同结果。不同 JavaScript引擎遵循的标识符解析规则略有差异，很可能会在访问非限定对象成员时出错。</li>
-<li>HTML 与 JavaScript 代码紧密耦合。如果要更换事件处理程序，就要改动两个地方：HTML 代码和 JavaScript 代码。</li>
-</ol>
-<h2 id="DOM0-级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）"><a href="#DOM0-级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）" class="headerlink" title="DOM0 级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）"></a>DOM0 级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）</h2><p>通过 JavaScript 指定事件处理程序的传统方式，就是<code>将一个函数赋值给一个事件处理程序属性</code>。这种为事件处理程序赋值的方法是在第四代 Web 浏览器中出现的，而且至今仍然<code>为所有现代浏览器所支持</code>。原因一是简单，二是具有跨浏览器的优势。<code>以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。~~</code></p>
-<p>每个元素（包括 window 和 document ）都有自己的事件处理程序属性，这些属性通常全部小写，例如 onclick 。将这种属性的值设置为一个函数，就可以指定事件处理程序，如下所示：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Clicked"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>缺点：  </p>
-<ol>
-<li>一个元素只能添加一个事件处理程序。</li>
-</ol>
-<h3 id="移除-DOM0-级方法指定的事件处理程序"><a href="#移除-DOM0-级方法指定的事件处理程序" class="headerlink" title="移除 DOM0 级方法指定的事件处理程序"></a>移除 DOM0 级方法指定的事件处理程序</h3><p>只要像下面这样将事件处理程序属性的值设置为 null 即可：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="literal">null</span>; <span class="comment">//删除事件处理程序</span></span><br></pre></td></tr></table></figure>
-<h2 id="DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）"><a href="#DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）" class="headerlink" title="DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）"></a>DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）</h2><p><code>“DOM2级事件”</code>定义了两个方法，用于处理指定和删除事件处理程序的操作： <code>addEventListener()</code>和 <code>removeEventListener()</code> 。所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：要处理的事件名（没有on）、作为事件处理程序的函数和一个布尔值。<code>最后这个布尔值参数如果是 true ，表示在捕获阶段调用事件处理程序；如果是 false ，表示在冒泡阶段调用事件处理程序</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">    btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="移除-DOM2-级事件处理程序"><a href="#移除-DOM2-级事件处理程序" class="headerlink" title="移除 DOM2 级事件处理程序"></a>移除 DOM2 级事件处理程序</h3><p>传入 removeEventListener() 中的事件处理程序函数必须与传入addEventListener() 中的相同才可以移除！！！</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;;</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 这里省略了其他代码</span></span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>); <span class="comment">// 有效！</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>IE9、Firefox、Safari、Chrome和 Opera 支持 DOM2 级事件处理程序。</p>
-</blockquote>
-<h2 id="IE事件处理程序-（只支持事件冒泡）"><a href="#IE事件处理程序-（只支持事件冒泡）" class="headerlink" title="IE事件处理程序 （只支持事件冒泡）"></a>IE事件处理程序 （只支持事件冒泡）</h2><p>IE 实现了与 DOM 中类似的两个方法： <code>attachEvent() 和 detachEvent()</code>。这两个方法接受相同的两个参数：事件处理程序名称（<code>以 &quot;on&quot; 开头的, 区别DOM</code>）与事件处理程序函数。由于 IE8 及更早版本只支持事件冒泡，所以通过attachEvent() 添加的事件处理程序都会被添加到冒泡阶段。 移除跟 DOM2 级事件处理程序一样参数必须相同！</p>
-<p>要使用 attachEvent() 为按钮添加一个事件处理程序，可以使用以下代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Clicked"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="注意！"><a href="#注意！" class="headerlink" title="注意！"></a>注意！</h3><p>在 IE 中使用 attachEvent() 与使用 DOM0 级方法的主要区别在于事件处理程序的作用域。在使用 DOM0 级方法的情况下，事件处理程序会在其所属元素的作用域内运行；<code>在使用 attachEvent() 方法的情况下，事件处理程序会在全局作用域中运行，因此 this 等于 window 。</code></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">    btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span> === <span class="built_in">window</span>); <span class="comment">//true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>支持 IE 事件处理程序的浏览器有 IE 和 Opera。</p>
-</blockquote>
-<p>整理自<code>JavaScript高级程序设计</code>。</p>
+            <p><strong>个人技术收藏集</strong><br><strong>一些平时用到的库，常用，有趣的网站和小工具。</strong></p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
+<li><a href="https://github.com/hammerjs/hammer.js" target="_blank" rel="noopener">hammer</a> 移动端手势库</li>
+<li><a href="https://github.com/xx45/dayjs" target="_blank" rel="noopener">dayjs</a> 一个轻量级类 API 时间库 moment.js</li>
+<li><a href="https://github.com/hotoo/pinyin" target="_blank" rel="noopener">pinyin</a> 汉字拼音转换</li>
+<li><a href="https://github.com/transloadit/uppy" target="_blank" rel="noopener">uppy</a> 一款时尚的模块化JavaScript文件上传器</li>
+<li><a href="https://github.com/pqina/filepond" target="_blank" rel="noopener">Filepond</a> 一个小巧灵活而有趣的JavaScript文件上传库</li>
+<li><a href="https://regex101.com/" target="_blank" rel="noopener">Regular Expressions</a> 在线正则网站 挺好用的</li>
+<li><a href="https://jex.im/regulex/" target="_blank" rel="noopener">jex</a> 正则可视化网站，可以导出图片，配合上面的 Regular Expressions，写正则方便很多</li>
+<li><a href="https://github.com/sindresorhus/awesome-nodejs" target="_blank" rel="noopener">awesome-nodejs</a> Node.js包和资源</li>
+<li><a href="https://github.com/PrismJS/prism" target="_blank" rel="noopener">primjs</a> 让页面支持代码高亮 pre标签 code标签</li>
+<li><a href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener">highlight.js</a> Javascript语法高亮</li>
+<li><a href="https://github.com/RevillWeb/img-2" target="_blank" rel="noopener">img-2</a> 一个提高图片加载性能和体验的库，懒加载、web worker、模糊预览</li>
+<li><a href="https://github.com/transloadit/uppy" target="_blank" rel="noopener">uppy</a> 浏览器上传器</li>
+<li><a href="https://github.com/h5bp/html5-boilerplate" target="_blank" rel="noopener">html5-boilerplate</a> 一个专业的前端模板，用于构建快速，健壮且适应性强的Web应用程序或站点</li>
+</ul>
+<h3 id="Css"><a href="#Css" class="headerlink" title="Css"></a>Css</h3><ul>
+<li><a href="http://apps.eky.hk/css-triangle-generator/" target="_blank" rel="noopener">CSS triangle generator</a> 帮你快速用 css 做出三角形</li>
+<li><a href="http://www.cssarrowplease.com/" target="_blank" rel="noopener">cssarrowplease</a> 帮你做对话框三角的</li>
+<li><a href="http://bennettfeely.com/clippy/" target="_blank" rel="noopener">clippy</a> 在线帮你使用 css clip-path 做出各种形状的</li>
+<li><a href="https://www.toptal.com/developers/css/sprite-generator" target="_blank" rel="noopener">sprite-generator</a> 生成雪碧图</li>
+<li><a href="https://github.com/QiShaoXuan/css_tricks" target="_blank" rel="noopener">css_tricks</a> Some CSS tricks,一些 CSS 常用样式</li>
+</ul>
+<h3 id="一些前端开发中可能会用到的"><a href="#一些前端开发中可能会用到的" class="headerlink" title="一些前端开发中可能会用到的"></a>一些前端开发中可能会用到的</h3><ul>
+<li><a href="https://github.com/WickyNilliams/headroom.js" target="_blank" rel="noopener">Headroom.js</a>  Hide your header until you need it. 控制header的显示隐藏</li>
+<li><a href="https://github.com/greensock/GreenSock-JS" target="_blank" rel="noopener">gsap</a> JavaScript动画库</li>
+<li><a href="https://github.com/mattboldt/typed.js" target="_blank" rel="noopener">typed.js</a> 打字机效果</li>
+<li><a href="https://github.com/Browsersync/browser-sync" target="_blank" rel="noopener">browser-sync</a> 浏览器同步测试工具</li>
+<li><a href="https://github.com/rstacruz/nprogress" target="_blank" rel="noopener">NProgress</a> 进度</li>
+<li><a href="https://github.com/defunkt/jquery-pjax" target="_blank" rel="noopener">jquery-pjax</a> pjax是一个jQuery插件，它使用ajax和pushState通过真实的永久链接，页面标题和工作后退按钮提供快速浏览体验。</li>
+<li><a href="https://css.loli.net/" target="_blank" rel="noopener">css.loli.net</a> 常用前端公共库 CDN 服务  Google 公共库、字体库</li>
+<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="noopener">fastclick</a> 解决移动端浏览器在派发点击事件的时候会出现300ms左右的延迟</li>
+<li><a href="https://github.com/fancyapps/fancybox" target="_blank" rel="noopener">fancyBox</a> JQ图片预览的插件</li>
+<li><a href="https://github.com/julianshapiro/velocity" target="_blank" rel="noopener">velocity</a> 非常火的一个动画库</li>
+<li><a href="https://github.com/zenorocha/clipboard.js/" target="_blank" rel="noopener">clipboard.js</a> 前端复制粘贴的库</li>
+</ul>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ul>
+<li><a href="https://github.com/baianat/vee-validate" target="_blank" rel="noopener">vee-validate</a> 基于 vue 的验证</li>
+<li><a href="https://github.com/shentao/vue-multiselect" target="_blank" rel="noopener">vue-multiselect</a> select 组件</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><a href="https://obfuscator.io/" target="_blank" rel="noopener">JavaScript Obfuscator Tool</a> js 代码混淆工具</li>
+<li><a href="https://www.hipdf.cn/" target="_blank" rel="noopener">hipdf</a> 一站式在线 PDF 解决方案</li>
+<li><a href="https://github.com/RelaxedJS/ReLaXed" target="_blank" rel="noopener">ReLaXed</a> 一个将 document html 转成 PDF 的工具</li>
+<li><a href="https://tinypng.com" target="_blank" rel="noopener">tinypng</a> 压缩图片</li>
+<li><a href="https://picsum.photos/" target="_blank" rel="noopener">Lorem Picsum</a> 提供免费的占位图 相比dummyimage的图片是很好看的</li>
+<li><a href="https://sm.ms/" target="_blank" rel="noopener">sm.ms</a> 免费图床</li>
+<li><a href="https://colorkitty.com/" target="_blank" rel="noopener">colorkitty</a> 从你的图片中提取配色</li>
+<li><a href="https://devhints.io/" target="_blank" rel="noopener">devhints.io</a> cheatsheets  开发者语言速查</li>
+<li><a href="https://github.com/gre/bezier-easing" target="_blank" rel="noopener">bezier-easing</a> JavaScript动画缓动的cubic-bezier实现</li>
+<li><a href="https://github.com/gkajs/gka" target="_blank" rel="noopener">gka</a> 一款高效、高性能的帧动画生成工具</li>
+<li><a href="https://github.com/joshbuchea/HEAD" target="_blank" rel="noopener">HEAD</a> 放在文档head标签的所有内容列表</li>
+</ul>
+<h2 id="Chrome拓展"><a href="#Chrome拓展" class="headerlink" title="Chrome拓展"></a>Chrome拓展</h2><ul>
+<li><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">Tampermonkey</a> 油猴 最强的浏览器插件</li>
+<li><a href="https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco/related?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">扩展管理器</a> 一键管理所有扩展，快速开启/禁用、批量闪电管理，智能排序，右键卸载、锁定、选项配置，角标提醒，大小布局随心配。快捷、简单、安全。</li>
+<li><a href="https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg" target="_blank" rel="noopener">The Great Suspender</a> chrome 太吃内存了，当页面开的很多时候会很卡，它就完美的解决了这个问题。我就经常放着一大堆网页没有关闭，对我帮助很大。多标签爱好者福音,临时冻结不用网页。</li>
+<li><a href="https://chrome.google.com/webstore/detail/infinity-new-tab-pro/nnnkddnnlpamobajfibfdgfnbcnkgngh?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">infinity</a> 非常实用的chrome新标签页</li>
+<li><a href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb" target="_blank" rel="noopener">Adblock Plus</a> 免费广告拦截程序 装机必备</li>
+<li><a href="https://chrome.google.com/webstore/detail/save-all-resources/abpdnfjocnmdomablahdcfnoggeeiedb" target="_blank" rel="noopener">Save All Resources</a> 可以直接下载浏览器sources资源 安装完DevTools会多了一个ResourceSaver，之后就是下载了</li>
+<li><a href="https://chrome.google.com/webstore/detail/web%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bfehelper/pkgccpejnmalmdinmhkkfafefagiiiad" target="_blank" rel="noopener">WEB 前端助手</a> 包含多个独立小应用，比如：Json工具、代码美化工具、代码压缩、二维码工具、markdown工具、网页油猴工具、便签笔记工具、信息加密与解密、随机密码生成、Crontab等等！</li>
+<li><a href="https://chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj" target="_blank" rel="noopener">JSON-handle</a> 对JSON格式的内容进行浏览和编辑，以树形图样式展现JSON文档，并可实时编辑。</li>
+<li><a href="https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc" target="_blank" rel="noopener">Octotree</a> github 上看代码显示目录结构</li>
+<li><a href="https://github.com/npmhub/npmhub" target="_blank" rel="noopener">npmhub</a>在 README 下方显示 npm 依赖信息 可能快速找到相应依赖的代码库</li>
+<li><a href="https://www.crx4chrome.com/crx/37241/" target="_blank" rel="noopener">hostAdmin App</a> 修改host的应用 安装方式：修改下载的crx为zip解压 然后加载chrome的扩展程序中点击加载已解压的扩展程序按钮</li>
+</ul>
+<h2 id="好玩"><a href="#好玩" class="headerlink" title="好玩"></a>好玩</h2><ul>
+<li><a href="https://github.com/Blankj/awesome-comment" target="_blank" rel="noopener">awesome-comment</a> 里面收集了很多有趣的代码注释</li>
+<li><a href="https://hitokoto.cn/" target="_blank" rel="noopener">hitokoto</a> 提供一句话服务。</li>
+<li><a href="http://www.alloyteam.com/" target="_blank" rel="noopener">alloyteam</a> 腾讯全端 AlloyTeam 团队 里面有很多有意思的项目</li>
+</ul>
+<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><ul>
+<li><a href="https://github.com/kentcdodds/cross-env" target="_blank" rel="noopener">cross-env</a> 解决跨平台设置NODE_ENV的问题</li>
+</ul>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2019/03/09/web/js/基础/事件流和事件处理程序/#更多" rel="contents">
+              <a class="btn" href="/2019/07/14/bookmarks/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -787,7 +832,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -832,7 +877,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
