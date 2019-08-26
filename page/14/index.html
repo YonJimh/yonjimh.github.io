@@ -222,8 +222,6 @@
   </style>
 </noscript>
 
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -398,11 +396,11 @@
   
   
   <div class="post-date">
-			<div class="post-month">12月</div>
-			<div class="post-day">14</div>
+			<div class="post-month">11月</div>
+			<div class="post-day">01</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/14/nginx/Nginx5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/01/web/glup/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -421,8 +419,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/14/nginx/Nginx5/" itemprop="url">
-                  Nginx（五）进阶 Rewrite
+                <a class="post-title-link" href="/2018/11/01/web/glup/" itemprop="url">
+                  glup 自动化构建学习笔记
                 </a>
               
             
@@ -448,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2018-12-14 12:27:11" itemprop="dateCreated datePublished" datetime="2018-12-14T12:27:11+08:00">2018-12-14</time>
+              <time title="创建时间：2018-11-01 19:49:05" itemprop="dateCreated datePublished" datetime="2018-11-01T19:49:05+08:00">2018-11-01</time>
             
 
             
@@ -466,7 +464,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
 
                 
                 
@@ -480,7 +478,7 @@
 
           
           
-             <span id="/2018/12/14/nginx/Nginx5/" class="leancloud_visitors" data-flag-title="Nginx（五）进阶 Rewrite">
+             <span id="/2018/11/01/web/glup/" class="leancloud_visitors" data-flag-title="glup 自动化构建学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -513,47 +511,68 @@
       
         
           
-            <h1 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h1><blockquote>
-<p>通过中间件将动态请求和静态请求分离<br>分离资源，减少不必要的请求消耗，减少请求延时。</p>
-</blockquote>
-<h1 id="Rewrite-重写规则"><a href="#Rewrite-重写规则" class="headerlink" title="Rewrite 重写规则"></a>Rewrite 重写规则</h1><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><ol>
-<li>URL访问跳转，支持开发设计（页面跳转、兼容性支持、展示效果等）</li>
-<li>SEO优化</li>
-<li>维护（后台维护、流量转发等）</li>
-<li>安全（伪静态）</li>
-</ol>
-<h2 id="常用配置语法-ngx-http-rewrite-module"><a href="#常用配置语法-ngx-http-rewrite-module" class="headerlink" title="常用配置语法 ngx_http_rewrite_module"></a>常用配置语法 <a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html" title="ngx_http_rewrite_module" target="_blank" rel="noopener">ngx_http_rewrite_module</a></h2><h3 id="rewrite-指令"><a href="#rewrite-指令" class="headerlink" title="rewrite 指令"></a>rewrite 指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Syntax:	rewrite regex（正则） replacement（替换成的） [flag];</span><br><span class="line">Default:	—</span><br><span class="line">Context:	server, location, <span class="keyword">if</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># flag 参数</span></span><br><span class="line"><span class="comment"># last 停止rewrite检测 并开始搜索与更改的URI匹配的新位置</span></span><br><span class="line"><span class="comment"># break 停止rewrite检测，停止处理当前的指令集</span></span><br><span class="line"><span class="comment"># redirect 返回302临时重定向，地址栏会显示跳转后的地址</span></span><br><span class="line"><span class="comment"># permanent 返回301永久重定向，地址栏会显示跳转后的地址</span></span><br></pre></td></tr></table></figure>
-<h3 id="if-指令"><a href="#if-指令" class="headerlink" title="if 指令"></a>if 指令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Syntax: <span class="keyword">if</span> (condition) &#123; ... &#125;</span><br><span class="line">Default: —</span><br><span class="line">Context: server, location</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果变量的值为空字符串或”0”，则为false ;</li>
-<li>使用”=”和”!=”运算符比较变量和字符串;</li>
-<li>使用”~”（对于区分大小写的匹配）和”~<em>“（对于不区分大小写的匹- 配）运算符，将变量与正则表达式进行匹配。正则表达式可以包含可供以后在$1.. $9变量中重用的捕获。负操作符”!~”和”!~</em>“也可用。如果正则表达式包含”}”或”;”字符，则整个表达式应包含在单引号或双引号中。</li>
-<li>使用”-f”和”!-f”运算符检查文件是否存在;</li>
-<li>使用”-d”和”!-d”运算符检查目录是否存在;</li>
-<li>使用”-e”和”!-e”运算符检查文件，目录或符号链接是否存在;</li>
-<li>使用”-x”和”!-x”运算符检查可执行文件。</li>
+            <!-- **gulp.js** - 基于流的自动化构建工具。 -->
+<blockquote><p>gulp.js 4.0以上的版本</p>
+<footer><strong>gulp.js</strong><cite><a href="https://gulpjs.com/" target="_blank" rel="noopener">基于流的自动化构建工具</a></cite></footer></blockquote>
+<h1 id="自动化构建工具"><a href="#自动化构建工具" class="headerlink" title="自动化构建工具"></a>自动化构建工具</h1><ul>
+<li>ant<br>  ant是一个非常流行的自动化构建工具，类似于make，用Java编写并使用XML文件格式。</li>
+<li>Maven<br>  它可用来做依赖管理和构建，并且主要用于Java项目。</li>
+<li>Gradle<br>  它使用一种基于Groovy的特定领域语言(DSL)来声明项目设置，抛弃了基于XML的各种繁琐配置。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (!-e $request_filename)&#123;</span><br><span class="line">    rewrite  ^(.*)$  /index.php?s=$1  last;   break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="return-指令"><a href="#return-指令" class="headerlink" title="return 指令"></a>return 指令</h3><p>停止处理并将指定的内容返回code给客户端。非标准代码444在不发送响应头的情况下关闭连接。</p>
-<pre><code>Syntax: return code [text];
-        return code URL;
-        return URL;
-Default: —
-Context: server, location, if
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    return 200 &apos;233&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="set-指令"><a href="#set-指令" class="headerlink" title="set 指令"></a>set 指令</h3><p>设置一个变量，该变量的value可以包含文本，变量，文本和变量的组合。</p>
-<pre><code>Syntax: set $variable value;
-Default: —
-Context: server, location, if
-</code></pre><h3 id="Rewrite-规则优先级"><a href="#Rewrite-规则优先级" class="headerlink" title="Rewrite 规则优先级"></a>Rewrite 规则优先级</h3><ol>
-<li>执行server块的rewrite指令</li>
-<li>执行location匹配</li>
-<li>执行location块的rewrite指令</li>
+<!-- Npm Script -->
+<h1 id="前端构建工具-webpack和browserify，gulp和grunt"><a href="#前端构建工具-webpack和browserify，gulp和grunt" class="headerlink" title="前端构建工具 webpack和browserify，gulp和grunt"></a>前端构建工具 webpack和browserify，gulp和grunt</h1><ul>
+<li><p>webpack和<a href="http://browserify.org/" target="_blank" rel="noopener">browserify</a> 前端模块化方案<br>  预编译模块的方案<br>  webpack 是一个模块打包器。<br>  Browserify 可以让你使用类似于 node 的 require() 的方式来组织浏览器端的 Javascript 代码。</p>
+</li>
+<li><p>gulp和grunt 前端自动化构建的工具<br>  压缩css、js、编译less、sass等等</p>
+</li>
+</ul>
+<h1 id="gulp-Api-部分，有需要再更新"><a href="#gulp-Api-部分，有需要再更新" class="headerlink" title="gulp Api (部分，有需要再更新)"></a>gulp Api (部分，有需要再更新)</h1><h2 id="gulp-task-gulp4-只支持两个参数"><a href="#gulp-task-gulp4-只支持两个参数" class="headerlink" title="gulp.task (gulp4 只支持两个参数)"></a>gulp.task (gulp4 只支持两个参数)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两个参数，分别是任务名和运行任务的函数。 </span></span><br><span class="line"><span class="comment">// 也可以直接传入一个普通函数。gulp.task能把函数名转成任务名。</span></span><br><span class="line"><span class="comment">// 注意因为gulp4没有了第二个参数deps(前置依赖)，所以你懂的。</span></span><br><span class="line"><span class="comment">// default表示默认执行的任务。</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">1111</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以给任务定义描述 gulp --tasks查看</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">styles</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line">styles.displayName = <span class="string">"displayName"</span>; <span class="comment">// 取一个新名字？</span></span><br><span class="line">styles.description = <span class="string">"This is so cool"</span>;</span><br><span class="line">gulp.task(styles);</span><br><span class="line"><span class="comment">// 添加描述 不能传第二个参数</span></span><br><span class="line">gulp.task(<span class="string">'default'</span>).description = <span class="string">"Does Default Stuff"</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>异步任务支持</p>
+<ul>
+<li><strong>执行的是同步任务，在Gulp3中不需要写任何其他代码，但是在Gulp4中就不能如此轻松了：现在也你必须运行done回调。</strong></li>
+<li><p>你执行的是异步任务，你则有三个选择来确保Gulp能够检测到你的任务真的完成了，方法如下：</p>
+<ol>
+<li><p>接受一个 callback</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 你可以在你的任务函数的参数中提供一个回调函数并且在你的任务完成后调用它：</span></span><br><span class="line"><span class="keyword">var</span> del = <span class="built_in">require</span>(<span class="string">'del'</span>);</span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    del([<span class="string">'.build/'</span>], done);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// del() 会返回一个Promise对象 也就是方法三</span></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> del([<span class="string">'.build/'</span>]); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回一个 stream<br> 你也可以返回一个流，通常通过gulp.src或vinyl-source-stream这个库来创建。这一般也是最常用的方式：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'somename'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> gulp.src(<span class="string">'client/**/*.js'</span>)</span><br><span class="line">        .pipe(minify())</span><br><span class="line">        .pipe(gulp.dest(<span class="string">'build'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回一个 promise</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Q = <span class="built_in">require</span>(<span class="string">'q'</span>);</span><br><span class="line">gulp.task(<span class="string">'somename'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> deferred = Q.defer();</span><br><span class="line"><span class="comment">// 执行异步的操作</span></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    deferred.resolve();</span><br><span class="line">&#125;, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> deferred.promise;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="gulp-watch"><a href="#gulp-watch" class="headerlink" title="gulp.watch"></a>gulp.watch</h2><ul>
+<li>gulp.watch(glob [, opts], tasks) 或 gulp.watch(glob [, opts, cb])</li>
+<li>gulp.watch将像之前一样会返回一个的“观察”对象，不过你可以对它添加各种事件监听(glup3 好像只会在change时触发), 不用再使用 <a href="https://www.npmjs.com/package/gulp-watch" target="_blank" rel="noopener">gulp-watch</a> 了  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> watcher = gulp.watch(<span class="built_in">String</span> or <span class="built_in">Array</span>)</span><br><span class="line">watcher.on(<span class="string">'all/changle/add/unlink'</span>, (event) =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'File '</span> + event.path + <span class="string">' was '</span> + event.type + <span class="string">', running tasks...'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="gulp-series-和-gulp-parallel-gulp4新增-都会返回一个函数"><a href="#gulp-series-和-gulp-parallel-gulp4新增-都会返回一个函数" class="headerlink" title="gulp.series 和 gulp.parallel (gulp4新增,都会返回一个函数)"></a>gulp.series 和 gulp.parallel (gulp4新增,都会返回一个函数)</h2><ul>
+<li>都可以接受数个函数或任务名作为参数 (以<code>,</code>间隔起来 或者 一个数组)<br>  gulp.series会返回一个函数用来<strong>串行</strong>执行它所接受的任务/函数<br>  gulp.parallel返回的函数则会<strong>并行</strong>的运行它们</li>
+<li>这两个的api使我们不再需要其他的第三方依赖（如：run-sequence）</li>
+</ul>
+<h2 id="gulp-dest"><a href="#gulp-dest" class="headerlink" title="gulp.dest"></a>gulp.dest</h2><pre><code>能被 pipe 进来，并且将会写文件。并且重新输出（emits）所有数据，因此你可以将它 pipe 到多个文件夹。如果某文件夹不存在，将会自动创建它。
+</code></pre><h2 id="gulp-src-globs-options"><a href="#gulp-src-globs-options" class="headerlink" title="gulp.src(globs[, options])"></a>gulp.src(globs[, options])</h2><ul>
+<li>输出（Emits）符合所提供的匹配模式（glob）或者匹配模式的数组（array of globs）的文件。 将返回一个 <strong><a href="https://github.com/gulpjs/vinyl-fs" title="vinyl" target="_blank" rel="noopener">Vinyl files</a> 的 stream</strong> 它可以被 piped 到别的插件中。</li>
+<li>globs参数<br>  类型： String 或 Array</li>
+<li>options参数 类型： Object<br>  传递给选项的值必须是预期的类型，否则将被忽略。</li>
+</ul>
+<h2 id="gulp-lastRun"><a href="#gulp-lastRun" class="headerlink" title="gulp.lastRun"></a>gulp.lastRun</h2><ul>
+<li>gulp.lastRun(name,timePrecision)<br>  name: 任务名<br>  timePrecision： 时间精度 eg: 1000/10</li>
+</ul>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><h2 id="CoffeeScript"><a href="#CoffeeScript" class="headerlink" title="CoffeeScript"></a>CoffeeScript</h2><p>CoffeeScript是一套JavaScript的转译语言,CoffeeScript 会将类似 <a href="http://www.ruby-lang.org/zh_cn/" title="Ruby" target="_blank" rel="noopener">Ruby</a> 语法的代码编译成 JavaScript，而且大部分结构都相似，但不同的是 CoffeeScript 拥有更严格的语法。<br>在gulp中使用 gulp-coffee</p>
+<blockquote>
+<p>参考链接: <a href="https://segmentfault.com/a/1190000005357048" target="_blank" rel="noopener">【译】相对完整的Gulp4升级指南</a></p>
+</blockquote>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/14/nginx/Nginx5/#更多" rel="contents">
+              <a class="btn" href="/2018/11/01/web/glup/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -609,11 +628,11 @@ Context: server, location, if
   
   
   <div class="post-date">
-			<div class="post-month">12月</div>
-			<div class="post-day">12</div>
+			<div class="post-month">10月</div>
+			<div class="post-day">31</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/PHP/当初就不该学PHP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/blog/blog-buliding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -632,8 +651,8 @@ Context: server, location, if
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/12/PHP/当初就不该学PHP/" itemprop="url">
-                  当初就不该学PHP
+                <a class="post-title-link" href="/2018/10/31/blog/blog-buliding/" itemprop="url">
+                  搭建个人博客
                 </a>
               
             
@@ -659,31 +678,13 @@ Context: server, location, if
                 
               
 
-              <time title="创建时间：2018-12-12 21:43:15" itemprop="dateCreated datePublished" datetime="2018-12-12T21:43:15+08:00">2018-12-12</time>
+              <time title="创建时间：2018-10-31 19:15:22" itemprop="dateCreated datePublished" datetime="2018-10-31T19:15:22+08:00">2018-10-31</time>
             
 
             
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -691,7 +692,7 @@ Context: server, location, if
 
           
           
-             <span id="/2018/12/12/PHP/当初就不该学PHP/" class="leancloud_visitors" data-flag-title="当初就不该学PHP">
+             <span id="/2018/10/31/blog/blog-buliding/" class="leancloud_visitors" data-flag-title="搭建个人博客">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -724,77 +725,247 @@ Context: server, location, if
       
         
           
-            <p>舍友推荐的一首歌，真的扎心了。这里附上他的<a href="http://www.huangzhongxin.cn/" target="_blank" rel="noopener">博客</a> 有兴趣的去逛一逛哈。</p>
-<blockquote>
-<p>当初就不该学php – 黄灰红 词 : 黄绿蓝 曲 : 黄绿蓝</p>
-</blockquote>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=472112352&auto=0&height=66"></iframe>
+            <p>&emsp;&emsp;一直想搭个博客，也可以学习一下markdown。折腾了一天终于将第一个博客搭起来了，简单记录一下这个过程。</p>
+<h1 id="搭建博客的选择"><a href="#搭建博客的选择" class="headerlink" title="搭建博客的选择"></a>搭建博客的选择</h1><ol>
+<li><p>选择网上流行的论坛或者社区平台</p>
+<p> 这里列出常见的几个： <a href="https://www.jianshu.com/" title="简书" target="_blank" rel="noopener">简书</a>, <a href="https://juejin.im/" title="掘金" target="_blank" rel="noopener">掘金</a>, <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">知乎</a>,<a href="https://www.jianshu.com/" title="博客园" target="_blank" rel="noopener">博客园</a>,<a href="https://www.csdn.net/" title="CSDN" target="_blank" rel="noopener">CSDN</a>,<a href="https://segmentfault.com/" title="SegmentFault" target="_blank" rel="noopener">SegmentFault</a>等。相信这里面总有一个你见过的,我就直接进入主题吧。</p>
+</li>
+<li><p>选择自己搭建</p>
+<p> 现在网上常见的几个方法：</p>
+<ol>
+<li><p>使用WordPress （PHP语言开发的博客平台，也可以当一个CMS来使用）搭建。 （要氪金）<br>需要配置服务器，域名，数据库等。如果你熟悉PHP和web知识可以选择这个哦。</p>
+</li>
+<li><p>hexo/jekyll + Github Pages/Coding Pages（氪金，不存在的！）<br>hexo和jekyll都是静态博客框架，在本地生成静态html后上传到Github或者Coding等代码托管平台。可以简单快捷搭建出一个静态博客，我就是用了hexo + Github Pages搭建的。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="Hexo-Github-Pages-博客搭建"><a href="#Hexo-Github-Pages-博客搭建" class="headerlink" title="Hexo + Github Pages 博客搭建"></a>Hexo + Github Pages 博客搭建</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><ol>
+<li><p>Hexo 官网 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">https://hexo.io/docs/</a></p>
+<p> 详细步骤请参考在<a href="https://hexo.io/docs/" title="hexo" target="_blank" rel="noopener">Hexo</a>的官网，我在这里简单描述一下几个重要的步骤。</p>
+</li>
+<li><p>先安装一下应用程序<br> <a href="https://nodejs.org/zh-cn/" title="node" target="_blank" rel="noopener">Node.js</a><br> <a href="https://git-scm.com/" title="Git" target="_blank" rel="noopener">Git</a></p>
+</li>
+<li><p>安装 hexo</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化项目</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre></li>
+<li><p>启动服务器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p> 打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 你会发现博客已在本地搭建成功。<br> 详细配置请到<a href="https://hexo.io/docs/" title="hexo" target="_blank" rel="noopener">官网</a>查看。</p>
+</li>
+</ol>
+<h2 id="推送到GitHub"><a href="#推送到GitHub" class="headerlink" title="推送到GitHub"></a>推送到GitHub</h2><ol>
+<li>首先你得要有一个<a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">GitHub</a>账号，注册过程非常简单，我就不展示了。</li>
+<li>新建一个仓库，仓库命名格式为 (你的github账号名称).github.io。<br> <img src="/asset/images/github-repo.png" alt="github-repo" title="github-repo"></li>
+<li><p>使用ssh密钥方式推送（也可以使用https的方式）</p>
+<ul>
+<li><p>生成秘钥（window用户需要使用Git Bash输入），按回车三下，即生成成功。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<img src="/2018/10/31/blog/blog-buliding/2018-11-04_201852.png" title="ssh-keygen">
+</li>
+<li><p>命令行输入<code>cat ~/.ssh/id_rsa.pub</code>，将显示的内容复制。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加到 github。</p>
+  <img src="/2018/10/31/blog/blog-buliding/setting.png" title="ssh-keygen">
+  <img src="/2018/10/31/blog/blog-buliding/ssh_key.png" title="ssh-keygen">
+  <img src="/2018/10/31/blog/blog-buliding/new.png" title="ssh-keygen">
+  <img src="/2018/10/31/blog/blog-buliding/add.png" title="ssh-keygen">
+<p>  点击Add SHH key按钮。就ok了。</p>
+</li>
+<li><p>测试是否成功添加。<br>  命令行输入<code>ssh git@github.com</code>。<br>  若出现<code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>，恭喜你，添加成功了。请跳过下面的步骤。</p>
+<p>  若出现<code>ssh: connect to host github.com port 22: Connection refused</code>。<br>  进入用户的.ssh目录<code>cd ~/.ssh</code>(windwo用户进入<code>C:\Users\Administrator\.ssh</code>)，新建config文件<code>touch config</code><br>  输入配置信息</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com  </span><br><span class="line">User 这里填写你注册时使用的邮箱  </span><br><span class="line">Hostname ssh.github.com  </span><br><span class="line">PreferredAuthentications publickey  </span><br><span class="line">IdentityFile ~/.ssh/id_rsa  </span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo 部署（详细可以到hexo官网查看）<br>  安装 hexo-deployer-git。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>  修改配置（初始化目录下的_config.yml）。</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repo:</span> <span class="string">git@github.com:你的github账号名称/你的github账号名称.github.io.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>  推送到github上之前，不要忘记执行<code>hexo g</code>命令生成静态文件。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>  执行<code>hexo d</code>命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>  最后出现<code>INFO  Deploy done: git</code>，表示已经推送到github上了。</p>
+</li>
+</ul>
+</li>
+<li><p>您的Hexo博客已经搭建好啦~~ 打开浏览器输入https://你的github账号名称.github.io。</p>
+</li>
+<li><p>更换主题<br> 如果你想要更换主题可以到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a>，找到你喜欢的主题。<br> 把下载的主题放到初始化目录的themes目录下，修改初始化目录的_config.yml</p>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">下载的主题文件夹名称</span></span><br></pre></td></tr></table></figure>
+<p> 执行命令</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p> 你会发现主题已经更换成功了！</p>
+<p> 我使用的是next的主题，附上<a href="http://theme-next.iissnan.com/getting-started.html" title="next" target="_blank" rel="noopener">主题文档</a></p>
+</li>
+</ol>
+<!-- 参考式链接 -->
 
-<pre><code>2013的某一天
-他认识了PHP
-可他从不敢相信
-那是噩梦的开启
-2015的某一天
-加班到无法休息
-忙里偷闲打开微信
-却没人发消息
-2017的某一天
-面试之前认真复习
-上上知乎问问建议
-当初就不该学PHP
-他们说用Python的
-看不起用Java的啊
-Java的也只能骂PHP啦
-就算你们都是用Python的呀
-Python3和Python2也势不两立啊
-用AS的看不起用Eclipse的啊
-可苹果也看不起做Android的
-Vim和Emacs吵个不停啦
-还天天骂Sublime的智障吗
-用React的看不起用Angular的
-Git用户天天骂SVN傻瓜
-Docker用户说
-Puppet是上个世纪的吗
-用图形界面不用命令
-智商不够用吗
-用Debian的瞧不起用Ubuntu的
-用MBP的说用win没钱吗
-BAT的说小公司也算公司吗
-独角兽说我分十亿你分得起吗
-黑轴茶轴天天纠缠不休啊
-难怪双飞燕的妹子插不上话
-坐Aeron的看不起坐办公椅的
-站着打代码的说你俩会长胖的
-985的看不起211的啊
-他们还天天骂北大青鸟呢
-考计算机二级是有病吗
-Gayhub没有一千星星别来丢人啦
-啊别再骂啦
-女朋友呢 找到了吗
-</code></pre><!-- 
-        <div id="aplayer-xdplGAPa" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-xdplGAPa"),
-            narrow: false,
-            autoplay: false,
-            showlrc: false,
-            music: {
-              title: "她的睫毛",
-              author: "周杰伦",
-              url: "http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3",
-              pic: "http://home.ustc.edu.cn/~mmmwhy/jay.jpg",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script> –&gt;-->
              
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/12/PHP/当初就不该学PHP/#更多" rel="contents">
+              <a class="btn" href="/2018/10/31/blog/blog-buliding/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">10月</div>
+			<div class="post-day">31</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/index/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/index/" itemprop="url">
+                  Hello World！
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-31 17:39:45" itemprop="dateCreated datePublished" datetime="2018-10-31T17:39:45+08:00">2018-10-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/31/index/" class="leancloud_visitors" data-flag-title="Hello World！">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1544774900991&amp;di=469a7d238c9e1d86930ceaa98c24be2c&amp;imgtype=0&amp;src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F4e0497372e6bad20813c84ae4588c5529c338e6a.jpg" alt="Hello World!" title="111"><br><!-- <pre></pre> --></p>
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/10/31/index/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -839,7 +1010,7 @@ Gayhub没有一千星星别来丢人啦
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span>
   </nav>
 
 
@@ -884,7 +1055,7 @@ Gayhub没有一千星星别来丢人啦
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

@@ -396,11 +396,11 @@
   
   
   <div class="post-date">
-			<div class="post-month">12月</div>
-			<div class="post-day">26</div>
+			<div class="post-month">11月</div>
+			<div class="post-day">08</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/nginx/Nginx6/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/web/css/sass/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -419,8 +419,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/26/nginx/Nginx6/" itemprop="url">
-                  Nginx（六）进阶 高级模块 （secure_link和geoip）
+                <a class="post-title-link" href="/2018/11/08/web/css/sass/" itemprop="url">
+                  sass 学习笔记
                 </a>
               
             
@@ -446,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2018-12-26 21:27:11" itemprop="dateCreated datePublished" datetime="2018-12-26T21:27:11+08:00">2018-12-26</time>
+              <time title="创建时间：2018-11-08 19:51:59" itemprop="dateCreated datePublished" datetime="2018-11-08T19:51:59+08:00">2018-11-08</time>
             
 
             
@@ -464,7 +464,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Css/" itemprop="url" rel="index"><span itemprop="name">Css</span></a></span>
 
                 
                 
@@ -478,7 +478,7 @@
 
           
           
-             <span id="/2018/12/26/nginx/Nginx6/" class="leancloud_visitors" data-flag-title="Nginx（六）进阶 高级模块 （secure_link和geoip）">
+             <span id="/2018/11/08/web/css/sass/" class="leancloud_visitors" data-flag-title="sass 学习笔记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -511,48 +511,35 @@
       
         
           
-            <h1 id="secure-link-module-模块"><a href="#secure-link-module-模块" class="headerlink" title="secure_link_module 模块"></a><a href="http://nginx.org/en/docs/http/ngx_http_secure_link_module.html" target="_blank" rel="noopener">secure_link_module 模块</a></h1><p>ngx_http_secure_link_module模块用于检查请求链接的真伪，保护资源免受未经授权的访问，并限制链接的寿命。</p>
-<p>该模块提供两种备选操作模式。第一种模式由secure_link_secret指令启用，用于检查请求链接的真实性以及保护资源免受未经授权的访问。第二种模式由secure_link和secure_link_md5指令启用， 可以用于限制链接的生命周期。</p>
-<p>默认情况下不构建此模块，应使用–with-http_secure_link_module 配置参数启用它。</p>
+            <pre><code>简单记录一下 sass 内容 （超简单的部分啊）
+</code></pre><h1 id="CSS-预处理器语言"><a href="#CSS-预处理器语言" class="headerlink" title="CSS 预处理器语言"></a>CSS 预处理器语言</h1><p><a href="https://www.sass.hk/" target="_blank" rel="noopener">Sass（SCSS</a>, LESS, Stylus, Turbine, Swithch CSS, CSS CacheerDT CSS</p>
+<h1 id="进入-SASS"><a href="#进入-SASS" class="headerlink" title="进入 SASS"></a>进入 SASS</h1><p>Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式文件，以及更高效地开发项目。</p>
+<h2 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h2><p>sass使用<code>$</code>符号来标识变量</p>
+<ul>
+<li><p>变量名用中划线还是下划线分隔;</p>
 <ol>
-<li>制定并允许检查请求的链接的真实性以及保护资源避遭未经授权的访问</li>
-<li>限制链接生效周期</li>
+<li>sass的变量名可以与css中的属性名和选择器名称相同，包括中划线和下划线。</li>
+<li>在sass的大 多数地方，中划线命名的内容和下划线命名的内容是互通的，除了变量，也包括对混合器和Sass函数的命名。但是在sass中纯css部分不互通，比如类名、ID或属性名。<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$link-color</span>: blue;</span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: <span class="variable">$link_color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location /s/ &#123;</span><br><span class="line">    #资源链接由后端生成，请求中传递的MD5哈希值以base64url编码。</span><br><span class="line">    # secure_link定义一个包含变量的字符串，从中提取链接的校验和值和生命周期。</span><br><span class="line">    secure_link $arg_md5,$arg_expires;</span><br><span class="line"></span><br><span class="line">    # $secure_link_expiress是请求中传递的链接的生命周期;仅用于secure_link_md5指令。</span><br><span class="line">    secure_link_md5 &quot;$secure_link_expires$uri$remote_addr secret&quot;;</span><br><span class="line"></span><br><span class="line">    # 将从字符串中提取的校验和值与secure_link_md5指令定义的表达式的MD5哈希值进行比较。如果校验和不同，则将$secure_link变量设置为空字符串。如果校验和相同，则检查链路生存期。请求中传递的MD5哈希值以base64url编码。</span><br><span class="line">    if ($secure_link = &quot;&quot;) &#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if ($secure_link = &quot;0&quot;) &#123;</span><br><span class="line">        return 410;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="geoip-module-模块"><a href="#geoip-module-模块" class="headerlink" title="geoip_module 模块"></a><a href="http://nginx.org/en/docs/http/ngx_http_geoip_module.html" target="_blank" rel="noopener">geoip_module 模块</a></h1><p>http_geoip_module模块会机遇IP地址匹配MaxMind GeoIP二进制文件，读取IP所在地域信息。</p>
-<p>默认情况下不构建此模块，应使用–with-http_geoip_module 配置参数启用它。</p>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
-<li>区别国内外作HTTP访问规则</li>
-<li>区别国内城市地域作HTTP访问规则</li>
-</ol>
-<h2 id="Centos-进行安装使用geoip-module"><a href="#Centos-进行安装使用geoip-module" class="headerlink" title="Centos 进行安装使用geoip_module"></a>Centos 进行安装使用geoip_module</h2><ol>
-<li><p>yum安装 （记得配置nginx的源，安装nginx前应该已经配置好了）</p>
-<pre><code>yum install nginx-module-geoip
-</code></pre></li>
-<li><p>安装完成到 <code>/etc/nginx/modules</code> 目录可以看到<code>geoip_module</code>相关文件</p>
 </li>
-<li><p>在nginx配置文件中动态加载<code>geoip_module</code></p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">load_module &quot;module/ngx_http_geoip_module.so&quot;;</span><br><span class="line">load_module &quot;module/ngx_stream_geoip_module.so&quot;;</span><br></pre></td></tr></table></figure>
+<li><p>默认变量值 !default<br>  一般情况下，你反复声明一个变量，只有最后一处声明有效且它会覆盖前边的值。<br>  Sass的默认变量一般是用来设置默认值，然后根据需求来覆盖的，覆盖的方式也很简单，只需要在默认变量之前重新声明下变量即可。</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">'red.scss'</span>;   <span class="comment">//  $link-color: red;</span></span><br><span class="line"><span class="variable">$link-color</span>: blue;</span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: <span class="variable">$link_color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">import</span> <span class="string">'./test.scss'</span>;  <span class="comment">//  $link-color: red;</span></span><br><span class="line"><span class="variable">$link-color</span>: blue !default;</span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: <span class="variable">$link_color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 编译后</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>到 <a href="https://dev.maxmind.com/zh-hans/geoip/geoip2/geolite2/" title="MaxMind" target="_blank" rel="noopener">MaxMind</a> 下载IP地域文件（GeoLite2 City和GeoLite2 Country） 解压</p>
-<blockquote>
-<p>注意：MaxMind从2018年4月1日起停止更新GeoLite Legacy数据库。GeoLite Legacy数据库不再可供下载。尝试下载GeoLite Legacy数据库文件将导致错误：”找不到数据库版本”。<br>现在只能下载GeoLite2数据库了,GeoLite2数据库是GeoLite Legacy地理定位数据库的免费，更现代的版本。</p>
-</blockquote>
-</li>
-<li><p>在配置文件中配置geoip_module的 geoip_country 和 geoip_city 指令 （两个指令都在http块配置）</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">geoip_country /yourPath/GeoLite2-Country.mmdb;</span><br><span class="line">geoip_city /yourPath/GeoLite2-City.mmdb;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>现在已经可以读取客户端的IP所在地域信息啦，详细参数请到<a href="http://nginx.org/en/docs/http/ngx_http_geoip_module.html#geoip_country" target="_blank" rel="noopener">这里</a>查看</p>
-<pre><code>$geoip_country_code 两个字母的国家/地区代码
-$geoip_country_code3 三个字母的国家/地区代码
-$geoip_country_name 国家/地区名称
-$geoip_city 城市名称
-</code></pre></li>
-</ol>
+</ul>
+<h2 id="导入SASS文件"><a href="#导入SASS文件" class="headerlink" title="导入SASS文件"></a>导入SASS文件</h2><h3 id="使用SASS部分文件"><a href="#使用SASS部分文件" class="headerlink" title="使用SASS部分文件"></a>使用SASS部分文件</h3><p>那些专门为@import命令而编写的sass文件，<strong>并不需要生成对应的独立css文件</strong>，这样的sass文件称为局部文件。对此，sass有一个特殊的约定来命名这些文件。sass局部文件的文件名以下划线开头(<code>_test.scss</code>)。这样，sass就不会在编译时单独编译这个文件输出css，而只把这个文件用作导入。<br>当你@import一个局部文件时，还可以不写文件的全名，即省略文件名开头的下划线。举例来说，你想导入themes/_night-sky.scss这个局部文件里的变量，你只需在样式表中写@import “themes/night-sky”;。</p>
+<h3 id="嵌套导入"><a href="#嵌套导入" class="headerlink" title="嵌套导入"></a>嵌套导入</h3><p>sass允许@import命令写在css规则内。这种导入方式下，生成对应的css文件时，局部文件会被直接插入到css规则内导入它的地方。</p>
+<h3 id="原生的CSS导入"><a href="#原生的CSS导入" class="headerlink" title="原生的CSS导入"></a>原生的CSS导入</h3><p>被导入文件的名字以.css结尾；<br>被导入文件的名字是一个URL地址（比如<a href="http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；" target="_blank" rel="noopener">http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；</a><br>被导入文件的名字是CSS的url()值。</p>
+<h2 id="混合器"><a href="#混合器" class="headerlink" title="混合器"></a>混合器</h2><p>@mixin<br>@include</p>
+<h2 id="继承-extend"><a href="#继承-extend" class="headerlink" title="继承 @extend"></a>继承 @extend</h2><p>使用<code>sass</code>的时候，最后一个减少重复的主要特性就是选择器继承。基于<code>Nicole Sullivan</code>面向对象的css的理念，选择器继承是说一个选择器可以继承为另一个选择器定义的所有样式。这个通过<code>@extend</code>语法实现。<br><code>混合器主</code>要用于展示性样式的重用，而类名用于语义化样式的重用。因为继承是基于类的（有时是基于其他类型的选择器），所以继承应该是建立在语义化的关系上。</p>
+<ul>
+<li>基本用法</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.error</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fdd</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .error;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">3px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// compiled</span></span><br><span class="line"><span class="selector-class">.error</span>, <span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fdd</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">3px</span>;</span><br><span class="line">&#125;</span><br><span class="line">--------------------------------------------</span><br><span class="line"><span class="comment">// .seriousError不仅会继承.error自身的所有样式，</span></span><br><span class="line"><span class="comment">// 跟.error有关的组合选择器样式也会被.seriousError以组合选择器的形式继承</span></span><br><span class="line"><span class="selector-class">.error</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span><span class="selector-class">.error</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">1.2rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .error;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">3px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// compiled</span></span><br><span class="line"><span class="selector-class">.error</span> <span class="selector-tag">h1</span>, <span class="selector-class">.seriousError</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span><span class="selector-class">.error</span>, <span class="selector-tag">h1</span><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">3px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/26/nginx/Nginx6/#更多" rel="contents">
+              <a class="btn" href="/2018/11/08/web/css/sass/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -608,11 +595,11 @@ $geoip_city 城市名称
   
   
   <div class="post-date">
-			<div class="post-month">12月</div>
-			<div class="post-day">20</div>
+			<div class="post-month">11月</div>
+			<div class="post-day">05</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/web/js/FileAPI/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/linux/linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -631,8 +618,8 @@ $geoip_city 城市名称
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/20/web/js/FileAPI/" itemprop="url">
-                  File API
+                <a class="post-title-link" href="/2018/11/05/linux/linux/" itemprop="url">
+                  Linux Commands
                 </a>
               
             
@@ -658,7 +645,7 @@ $geoip_city 城市名称
                 
               
 
-              <time title="创建时间：2018-12-20 12:22:55" itemprop="dateCreated datePublished" datetime="2018-12-20T12:22:55+08:00">2018-12-20</time>
+              <time title="创建时间：2018-11-05 14:54:27" itemprop="dateCreated datePublished" datetime="2018-11-05T14:54:27+08:00">2018-11-05</time>
             
 
             
@@ -676,7 +663,14 @@ $geoip_city 城市名称
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/常用命令整合/" itemprop="url" rel="index"><span itemprop="name">常用命令整合</span></a></span>
 
                 
                 
@@ -690,7 +684,7 @@ $geoip_city 城市名称
 
           
           
-             <span id="/2018/12/20/web/js/FileAPI/" class="leancloud_visitors" data-flag-title="File API">
+             <span id="/2018/11/05/linux/linux/" class="leancloud_visitors" data-flag-title="Linux Commands">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -723,85 +717,332 @@ $geoip_city 城市名称
       
         
           
-            <blockquote>
-<p>在HTML5中新增了File API，用于表示Web应用程序中的文件对象，以及以编程方式选择它们并访问它们的数据。做一下简单的总结。有兴趣的可以访问<a href="https://www.w3.org/TR/FileAPI/" target="_blank" rel="noopener">网站</a>详细了解。</p>
-</blockquote>
-<h1 id="FileList"><a href="#FileList" class="headerlink" title="FileList"></a>FileList</h1><p>FileList 对象针对表单的 file 控件。<br>当用户通过 file 控件选取文件后，这个控件的 <code>files</code> 属性值就是 <code>FileList 对象</code>。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">multiple</span> <span class="attr">id</span>=<span class="string">"fileInput"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">'fileInput'</span>).onchange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.files)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>除了用 file 控件，采用[<strong>拖放方式</strong>]，也可以得到 FileList 对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dropZone = <span class="built_in">document</span>.getElementById(<span class="string">'drop_zone'</span>);</span><br><span class="line">dropZone.addEventListener(<span class="string">'drop'</span>, handleFileSelect, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFileSelect</span>(<span class="params">evt</span>) </span>&#123;</span><br><span class="line">    evt.stopPropagation();</span><br><span class="line">    evt.preventDefault();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> files = evt.dataTransfer.files; <span class="comment">// FileList object.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面代码的 handleFileSelect 是拖放事件的回调函数，它的参数evt是一个事件对象，该参数的dataTransfer.files属性就是一个FileList对象，里面包含了拖放的文件。</p>
-<h1 id="File"><a href="#File" class="headerlink" title="File"></a>File</h1><p>File对象可以用来获取某个文件的信息，还可以用来读取这个文件的内容。通常情况下，File对象是来自用户在一个 <code>&lt;input/&gt;</code>元素上选择文件后返回的FileList对象，也可以是来自由拖放操作生成的<a href="https://blog.csdn.net/qq_39198420/article/details/78059092" target="_blank" rel="noopener"><strong>DataTransfer对象</strong></a>。  </p>
-<p>File 对象含有以下属性值：</p>
-<ul>
-<li>name：文件名，该属性只读</li>
-<li>size：文件大小，单位为字节，该属性只读</li>
-<li>type：文件的 MIME 类型，如果分辨不出类型，则为空字符串，该属性只读</li>
-<li>lastModified：文件的上次修改时间，格式为时间戳</li>
-<li>lastModifiedDate：文件的上次修改时间，格式为 Date 对象实例</li>
+            <pre><code>一些linux的知识点。未分类。未分类。未分类。说三遍。
+</code></pre><h1 id="sh-bash-source"><a href="#sh-bash-source" class="headerlink" title="sh, bash, source, ./"></a>sh, bash, source, ./</h1><pre><code>- source 用法 `source filename` 可以用`.`来代替。source(或.)命令通常用于重新执行刚修改的初始化文档。（会改变当前process环境）
+- bash/sh 用法 都是打开一个subshell去读取、执行脚本，subshell里运行的脚本里设置变量，不会影响到父shell的。
+- ./ 用法 打开一个subshell去读取、执行脚本，但脚本需要有&quot;执行权限&quot;, 使用chmod +x filename
+直接运行./name.sh，首先你会查找脚本第一行是否指定了解释器，如果没指定，那么就用当前系统默认的shell(大多数linux默认是bash)，如果指定了解释器，那么就将该脚本交给指定的解释器。
+</code></pre><h1 id="find-grep"><a href="#find-grep" class="headerlink" title="find / grep"></a>find / grep</h1><pre><code>find /PATH -name &quot;*.h&quot; -exec grep -in &quot;helloworld&quot; {} \;
+</code></pre><h1 id="service目录"><a href="#service目录" class="headerlink" title="service目录"></a>service目录</h1><pre><code>/etc/init.d  # /etc/init.d 是 /etc/rc.d/init.d 的软链接(soft link)
+</code></pre><h1 id="netstat查看网络状态、端口状态"><a href="#netstat查看网络状态、端口状态" class="headerlink" title="netstat查看网络状态、端口状态"></a>netstat查看网络状态、端口状态</h1><pre><code>&gt; netstat -luntp 查看端口被占用情况 // t 指TCP端口 u 指UDP端口
+</code></pre><h1 id="etc-profile-etc-bashrc-bash-profile-bashrc（修改之后使用source命令进行初始化）"><a href="#etc-profile-etc-bashrc-bash-profile-bashrc（修改之后使用source命令进行初始化）" class="headerlink" title="/etc/profile, /etc/bashrc, ~/.bash_profile, ~/.bashrc（修改之后使用source命令进行初始化）"></a>/etc/profile, /etc/bashrc, ~/.bash_profile, ~/.bashrc（修改之后使用source命令进行初始化）</h1><ul>
+<li>/etc/profile: 此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行.并从/etc/profile.d目录的配置文件中搜集shell的设置.</li>
+<li>/etc/bashrc:  为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取.</li>
+<li>~/.bash_profile: 每个用户都可使用该文件输入<code>专用于自己</code>使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些<a href="#$PATH-变量">环境变量</a>,执行用户的.bashrc文件.</li>
+<li>~/.bashrc: 权限控制到用户级别,该文件包含<code>专用于你</code>的bash shell的bash信息,当登录时以及每次打开新的shell时,该文件被读取. tip: alias 一般在这里设置永久生效</li>
 </ul>
-<h1 id="Blob"><a href="#Blob" class="headerlink" title="Blob"></a>Blob</h1><p>File 对象是继承自 <code>Blob</code> 对象的。<br><code>Blob（Binary Large Object）</code>对象代表了一段二进制数据，提供了一系列操作接口。其他操作二进制数据的 API（比如 File 对象），都是建立在 Blob 对象基础上的，继承了它的属性和方法。</p>
-<p>Blob构造函数，接受两个参数。<br>第一个参数是一个包含实际数据的数组<br>第二个参数是数据的类型，这两个参数都不是必需的。数组元素可以是任意多个的ArrayBuffer，ArrayBufferView (typed array)， Blob，或者 DOMString对象。</p>
-<p>生成 Blob 对象有两种方法：一种是使用 Blob 构造函数，另一种是对现有的 Blob 对象使用 slice 方法切出一部分。</p>
-<p>Blob 对象有两个只读属性：</p>
-<ul>
-<li>size：二进制数据的大小，单位为字节。（文件上传时可以在前端判断文件大小是否合适）</li>
-<li>type：二进制数据的 MIME 类型，全部为小写，如果类型未知，则该值为空字符串。（文件上传时可以在前端判断文件类型是否合适）</li>
+<p>参考链接:<br><a href="https://blog.csdn.net/missmecn/article/details/51941050" title="linux用户登录启动配置文件" target="_blank" rel="noopener">linux用户登录启动配置文件</a><br><a href="https://blog.csdn.net/sch0120/article/details/70256318" target="_blank" rel="noopener">关于“.bash_profile”和“.bashrc”区别的总结</a></p>
+<h1 id="变量相关"><a href="#变量相关" class="headerlink" title="变量相关"></a>变量相关</h1><ul>
+<li>在linux下声明一个变量的方法：变量名=变量值，=左右不能有空格，使用$变量名调用变量。</li>
+<li>set命令可以查看所有变量，包括普通变量和环境变量 unset删除变量</li>
+<li>将命令的执行结果赋值给变量有两种方法，方法一：使用<code></code>包住执行的命令，方法二：将命令放入$()内执行</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'hello world'</span>];</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob(arr, &#123; <span class="string">"type"</span> : <span class="string">"text/plain"</span> &#125;); <span class="comment">// the blob</span></span><br><span class="line"><span class="built_in">console</span>.log(blob);</span><br></pre></td></tr></table></figure>
-<h1 id="FileReader"><a href="#FileReader" class="headerlink" title="FileReader"></a>FileReader</h1><p><code>FileReader</code>对象用于读取文件，即把文件内容读入内存。它的参数是 File 对象或 Blob 对象。<br>对于不同类型的文件，FileReader 提供不同的方法读取文件。</p>
-<ul>
-<li>readAsBinaryString(Blob|File)：返回二进制字符串，该字符串每个字节包含一个0到255之间的整数。</li>
-<li>readAsText(Blob|File, encode)：返回文本字符串。默认情况下，文本编码格式是 UTF-8，可以通过可选的格式参数，指定其他编码格式的文本</li>
-<li>readAsDataURL(Blob|File)：返回一个基于 Base64 编码的 data-uri 对象（可用于 <code>&lt;img&gt;</code> 标签中的 src 属性，从而达到上传图片预览的效果）</li>
-<li>readAsArrayBuffer(Blob|File)：返回一个 ArrayBuffer 对象</li>
+<h1 id="压缩-and-解压"><a href="#压缩-and-解压" class="headerlink" title="压缩 and 解压"></a>压缩 and 解压</h1><ul>
+<li><p>tar命令 </p>
+<pre><code>tar -czvf a.tar.gz a.jpg  
+// c 压缩, z 有gzip属性的, v 显示所有过程, f 使用档案名字,这个参数是最后一个参数，后面只能接档案名。
+
+tar -xf file.tar -C ./file  
+// x 解压, -C 解压时指定释放的路径。
+
+tar -cjf a.tar.bz2 a.jp  // j 有bz2属性的
+</code></pre></li>
+<li>其他命令<ol>
+<li>zip/unzip</li>
+<li>rar/unrar<br> rar a a.rar a.jpg</li>
+<li>gzip -d/gunzip</li>
+</ol>
+</li>
 </ul>
-<p><code>FileReader</code> 对象采用异步方式读取文件，内置回调函数。</p>
-<ul>
-<li>onabort 方法：读取中断或调用 reader.abort() 方法时触发。</li>
-<li>onerror 方法：读取出错时触发。</li>
-<li>onload 方法：读取成功后触发。</li>
-<li>onloadend 方法：读取完成后触发，不管是否成功。触发顺序排在 onload 或 onerror 后面。</li>
-<li>onloadstart 方法：读取将要开始时触发。</li>
-<li>onprogress 方法：读取过程中周期性触发。<code>（可以用来获取文件读取的进度）</code></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(reader.result)</span><br><span class="line">  <span class="built_in">console</span>.log(e.target.result)</span><br><span class="line">  <span class="keyword">var</span> text = reader.result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">'hello world'</span>];</span><br><span class="line"><span class="keyword">var</span> blob = <span class="keyword">new</span> Blob(arr, &#123; <span class="string">"type"</span> : <span class="string">"text/plain"</span> &#125;); <span class="comment">// the blob</span></span><br><span class="line"><span class="comment">// console.log(blob);</span></span><br><span class="line"><span class="keyword">var</span> encoding = <span class="string">'UTF-8'</span></span><br><span class="line">reader.readAsText(blob, encoding);</span><br></pre></td></tr></table></figure>
-<h1 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h1><blockquote>
-<p>除了可以使用base64字符串作为内容的DataURI将一个文件嵌入到另外一个文档里，还可以使用URL对象。URL对象用于生成指向File对象或Blob对象的URL。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.URL</span><br></pre></td></tr></table></figure>
-<ul>
-<li>URL.createObjectURL()</li>
-</ul>
-<p>该方法会创建一个 DOMString，其中包含一个表示参数中给出的对象的URL。这个 URL 的生命周期和创建它的窗口中的 document 绑定。这个新的URL 对象表示指定的 File 对象或 Blob 对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">objectURL = URL.createObjectURL(blob);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>URL.revokeObjectURL()</li>
-</ul>
-<p>该方法用来释放一个之前通过调用 URL.createObjectURL() 创建的已经存在的 URL 对象。当你结束使用某个 URL 对象时，应该通过调用这个方法来让浏览器知道不再需要保持这个文件的引用了。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// objectURL 是一个 DOMString，表示通过调用 URL.createObjectURL() 方法产生的 URL 对象</span></span><br><span class="line"><span class="built_in">window</span>.URL.revokeObjectURL(objectURL);</span><br></pre></td></tr></table></figure>
-<h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><p>用 <code>FormData</code> 对象,我们可以通过JavaScript用一些键值对来模拟一系列表单控件,我们还可以使用XMLHttpRequest的send()方法来异步的提交这个”form”.比起普通的ajax,使用FormData的最大优点就是我们可以异步上传一个二进制文件。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> FormData (form? : HTMLFormElement)</span><br></pre></td></tr></table></figure>
-<p>form 参数可选，是一个HTML表单元素，可以包含任何形式的表单控件,包括文件输入框。</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p><code>append() 给当前FormData对象添加一个键/值对</code></p>
+<h1 id="mount命令是经常会使用到的命令-它用于挂载Linux系统外的文件。"><a href="#mount命令是经常会使用到的命令-它用于挂载Linux系统外的文件。" class="headerlink" title="mount命令是经常会使用到的命令,它用于挂载Linux系统外的文件。"></a><code>mount</code>命令是经常会使用到的命令,它用于挂载Linux系统外的文件。</h1><h1 id="vim-常用操作"><a href="#vim-常用操作" class="headerlink" title="vim 常用操作"></a>vim 常用操作</h1><pre><code>- 翻页
+    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ctrl+f forward向前翻一页</span></span><br><span class="line"><span class="comment"># ctrl+b backward向后翻一页</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ctlr+u up向上翻半页</span></span><br><span class="line"><span class="comment"># ctrl+d down向下翻半页</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># zz 让光标所在的行居屏幕中央</span></span><br><span class="line"><span class="comment"># zt 让光标所在的行居屏幕最上一行 t=top</span></span><br><span class="line"><span class="comment"># zb 让光标所在的行居屏幕最下一行 b=bottomE</span></span><br></pre></td></tr></table></figure>
+
+- 搜索
+        ?.. 在光标之前搜索
+        /.. 在光标之后搜索，按 n/N 分别是向后，向前
+- 替换
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># `:n1,n2(填$s时表示文件末尾)/替换的字符/替换成为的/g`</span></span><br></pre></td></tr></table></figure>
+
+- 定位：
+
+    gg: 命令将光标移动到文档开头
+    G: 移动的这个文件的最后一行
+
+    输入冒号(:)，打开命令输入框 输入命令：1或者0
+    输入冒号(:)，打开命令输入框 输入命令：$
+</code></pre><h1 id="dev-null-空设备"><a href="#dev-null-空设备" class="headerlink" title="/dev/null 空设备"></a>/dev/null 空设备</h1><pre><code>&gt; /dev/null属于字符特殊文件，它属于空设备，是一个特殊的设备文件，它会丢弃一切写入其中的数据，写入它的内容都会永远丢失，而且没有任何可以读取的内容。
+&gt;
+&gt; `cat $filename &gt;/dev/null` 与 `cat $filename 1&gt;/dev/null`一样。其中 1：表示标准输出（stdout）（默认值）， 0：表示标准输入流（stdin）， 2：表示标准错误输出（stderr）
+</code></pre><h1 id="head-和-tail"><a href="#head-和-tail" class="headerlink" title="head 和 tail"></a>head 和 tail</h1><pre><code>&gt; head 显示文件开头部分内容，默认10行 -n 显示行数
+&gt; tail 显示文件结尾部分内容，默认10行 -f 监听文件 -n 显示行数
+</code></pre><h1 id="iptables-防火墙"><a href="#iptables-防火墙" class="headerlink" title="iptables 防火墙"></a>iptables 防火墙</h1><pre><code>&gt; [参考链接](https://www.cnblogs.com/jtestroad/p/8031850.html)
+- 命令行方式
+    1. 开放端口命令： /sbin/iptables -I INPUT -p tcp --dport 8080(端口) -j ACCEPT(开放)|DROP(关闭)
+    2. 保存：/etc/rc.d/init.d/iptables save
+    3. 重启服务：/etc/init.d/iptables restart
+    4. 查看端口是否开放：iptables  -L -n
+- 编辑/etc/sysconfig/iptables文件
+    1. 编辑/etc/sysconfig/iptables文件：vim /etc/sysconfig/iptables
+       加入内容并保存：-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080(开放的端口) -j ACCEPT
+    1. 重启服务：/etc/init.d/iptables restart
+    2.  查看端口是否开放：/sbin/iptables -L -n
+
+&gt; 注意： Centos升级到7之后，内置的防火墙已经从iptables变成了firewalld。所以，端口的开启还是要从两种情况来说明的，即iptables和firewalld。参考链接：https://www.cnblogs.com/moxiaoan/p/5683743.html
+</code></pre><h1 id="ps-查看进程-用于显示当前进程-process-的状态。"><a href="#ps-查看进程-用于显示当前进程-process-的状态。" class="headerlink" title="ps 查看进程 用于显示当前进程 (process) 的状态。"></a>ps 查看进程 用于显示当前进程 (process) 的状态。</h1><pre><code>1. 常用参数
+
+        -a 显示同一终端下的所有程序
+        -A 显示所有进程 （等价于-e）
+        -w 显示加宽可以显示较多的资讯
+
+        -au 显示较详细的资讯
+        -aux 显示所有包含其他使用者的进程
+
+        c  显示进程的真实名称
+        -C&lt;命令&gt; 列出指定命令的状况  显示一个名为getty的进程的信息 ps -C getty
+
+        -d 显示所有进程，但省略所有的会话引线(utility)
+
+        -e 等于&quot;-A&quot;
+        e  显示环境变量
+
+        -f 全部列出，通常和其他选项联用。如：ps -fa or ps -fx and so on.
+        f  显示程序间的关系(树形结构  pstree命令也是显示树形结构)
+
+        x 显示所有程序，不以终端机来区分。
+        -x 显示没有控制终端的进程，同时显示各个命令的具体路径。dx不可合用。（utility）
+
+2. ps aux 和ps -ef  
+两者的输出结果差别不大，但展示风格不同。aux是BSD风格，-ef是System V风格。这是次要的区别，一个影响使用的区别是aux会截断command列，而-ef不会。当结合grep时这种区别会影响到结果。 
+举例请参考：http://www.2cto.com/os/201303/197697.html
+</code></pre><h1 id="Linux下查看和添加环境变量-PATH"><a href="#Linux下查看和添加环境变量-PATH" class="headerlink" title="Linux下查看和添加环境变量 PATH"></a>Linux下查看和添加环境变量 PATH</h1><h2 id="PATH-变量"><a href="#PATH-变量" class="headerlink" title="$PATH 变量"></a>$PATH 变量</h2><p>$PATH：决定了shell将到哪些目录中寻找命令或程序，PATH的值是一系列目录，当您运行一个程序时，Linux在这些目录下进行搜寻编译链接。<br>格式: <code>PATH=$PATH:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;</code><br>可以自己加上指定的路径，中间用冒号隔开。环境变量更改后，在用户下次登陆时生效，如果想立刻生效，则可执行下面的语句：$ source .bash_profile</p>
+<h2 id="查看PATH"><a href="#查看PATH" class="headerlink" title="查看PATH"></a>查看PATH</h2><ol>
+<li>使用 <code>export</code> 命令查看PATH值</li>
+<li><code>echo $PATH</code></li>
+</ol>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><ol>
+<li><p>临时添加PATH环境变量</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[yonjim@localhost ~]$ <span class="built_in">export</span> PATH=/binPath/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久添加环境变量(仅影响当前用户)</p>
+<ol>
+<li>编辑<code>~/.bashrc</code>或者<code>~/.bash_profile</code>文件 <code>vim ~/.bash_profile</code> 在文档最后，添加:<code>export PATH=&quot;/binPath/bin:$PATH&quot;</code>保存，退出</li>
+<li>使用修改内容生效 <code>source ~/.bash_profile</code></li>
+</ol>
+</li>
+<li>永久添加环境变量(影响所有用户)<ol>
+<li>编辑/etc/profile文件 <code>vim /etc/profile</code> 在文档最后，添加:<code>export PATH=&quot;/binPath/bin:$PATH&quot;</code>保存，退出</li>
+<li>使用修改内容生效 <code>source /etc/profile</code></li>
+</ol>
+</li>
+</ol>
 <blockquote>
-<p>1 void append(DOMString 键, Blob 值, [可选] DOMString 文件名);<br>2 void append(DOMString 键, DOMString 值);</p>
+<p>参考链接：<a href="https://www.cnblogs.com/aaronLinux/p/5837702.html" target="_blank" rel="noopener">https://www.cnblogs.com/aaronLinux/p/5837702.html</a></p>
 </blockquote>
-<ul>
-<li>name 字段名称</li>
-<li>value 字段值，可以是Blob value，或者一个字符串，如果全都不是，则该值会被自动转换成字符串</li>
-</ul>
-<!-- ```js
-var fd = new FormData(); // 构造FromData对象
-fd.append('hello', 'hello world');
-``` -->
-<blockquote>
-<p>参考链接：<br><a href="https://segmentfault.com/a/1190000006600936" target="_blank" rel="noopener">JavaScript进阶学习（三）—— 基于html5 File API的文件操作</a><br><a href="https://blog.csdn.net/mr_wuch/article/details/70141674?utm_source=blogxgwz0" target="_blank" rel="noopener">Html5——File、FileReader、Blob、Fromdata对象</a><br><a href="http://javascript.ruanyifeng.com/htmlapi/file.html" target="_blank" rel="noopener">文件和二进制数据的操作</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/FormData</a> FormData</p>
-</blockquote>
+<h1 id="nohup-和-amp-和-daemon"><a href="#nohup-和-amp-和-daemon" class="headerlink" title="nohup 和 &amp; 和 daemon"></a>nohup 和 &amp; 和 daemon</h1><h2 id="linux下的常见信号"><a href="#linux下的常见信号" class="headerlink" title="linux下的常见信号"></a>linux下的常见信号</h2><p>在了解nohup 和 &amp; 和 daemon之前，我们要先简单了解一下linux下的信号。</p>
+<h3 id="信号本质"><a href="#信号本质" class="headerlink" title="信号本质"></a>信号本质</h3><p>软中断信号（signal，又简称为信号）用来通知进程发生了异步事件。在软件层次上是对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</p>
+<h4 id="Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到Linux信号（signal-机制分析）"><a href="#Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到Linux信号（signal-机制分析）" class="headerlink" title="Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到Linux信号（signal) 机制分析）"></a>Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到<a href="https://blog.csdn.net/dai_xiangjun/article/details/41871647" target="_blank" rel="noopener">Linux信号（signal) 机制分析</a>）</h4><ol>
+<li><p>SIGHUP：终端挂起或者控制进程终止</p>
+<p>SIGHUP会在以下3种情况下被发送给相应的进程：</p>
+<p> 1、终端关闭时，该信号被发送到session首进程以及作为job提交的进程（即用 &amp; 符号提交的进程）</p>
+<p> 2、session首进程退出时，该信号被发送到该session中的前台进程组中的每一个进程</p>
+<p> 3、若父进程退出导致进程组成为孤儿进程组，且该进程组中有进程处于停止状态（收到SIGSTOP或SIGTSTP信号），该信号会被发送到该进程组中的每一个进程。</p>
+<p> 系统对SIGHUP信号的默认处理是终止收到该信号的进程。所以若程序中没有捕捉该信号，当收到该信号时，进程就会退出。</p>
+</li>
+<li><p>SIGINT： 程序中止信号，在用户键入INTR字符（通常是Ctrl+C）时发出。</p>
+</li>
+</ol>
+<h2 id="nohup（不挂起）"><a href="#nohup（不挂起）" class="headerlink" title="nohup（不挂起）"></a>nohup（不挂起）</h2><p>用途：不挂断地运行命令。<br>语法：nohup Command [Arg…] [&amp;]<br>描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的nohup 命令，添加&amp;（表示”and”的符号）到命令的尾部。</p>
+<h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>就是将程序放在后台运行。对于shell来说，通过&amp; 可以把一个程序放在后台运行。其就是作为一个job来运行的。此时如果终端断开，程序还是会被SIGHUP信号导致退出的。即上面SIGHUP信号的第一种场景。</p>
+<h2 id="nohup与-amp"><a href="#nohup与-amp" class="headerlink" title="nohup与&amp;"></a>nohup与&amp;</h2><ol>
+<li><p>使用&amp;后台运行程序：</p>
+<p> 结果会输出到终端<br> 使用Ctrl + C发送SIGINT信号，程序免疫<br> 关闭session发送SIGHUP信号，程序关闭</p>
+</li>
+<li><p>使用nohup运行程序：</p>
+<p> 结果默认会输出到nohup.out<br> 使用Ctrl + C发送SIGINT信号，程序关闭<br> 关闭session发送SIGHUP信号，程序免疫  </p>
+</li>
+<li><p>平日线上经常使用nohup和&amp;配合来启动程序：</p>
+<p> 同时免疫SIGINT和SIGHUP信号</p>
+</li>
+</ol>
+<h2 id="daemon"><a href="#daemon" class="headerlink" title="daemon"></a>daemon</h2><p>Daemon进程也就是守护进程，linux大多数的服务进程都是通过守护进程实现的。比如0号进程(调度进程) ，1号进程(init进程)。从其名字守护看出其一般就是机器启动就运行，关机才停止。所以其应该不会受到终端的影响。同时其实在后台运行的。</p>
+<p>参考链接：<br><a href="https://blog.csdn.net/dai_xiangjun/article/details/41871647" target="_blank" rel="noopener">Linux信号（signal) 机制分析</a><br><a href="https://blog.csdn.net/lovemdx/article/details/20529563" target="_blank" rel="noopener">linux 的nohup &amp; 和daemon 总结</a><br><a href="https://mp.weixin.qq.com/s/nyT-FPdIUdJUiUCYVGEnTg" target="_blank" rel="noopener">一分钟了解nohup和&amp;的功效</a></p>
+<h1 id="ln命令-软链接"><a href="#ln命令-软链接" class="headerlink" title="ln命令 软链接"></a>ln命令 软链接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 常用来设置软链接</span><br><span class="line">ln -s 源目标 目标文件</span><br></pre></td></tr></table></figure>
+<p>注意：路径的问题，用绝对路径没那么多问题，相对路径的话。。</p>
+<p>了解更多：<a href="http://www.runoob.com/linux/linux-comm-ln.html" target="_blank" rel="noopener">http://www.runoob.com/linux/linux-comm-ln.html</a></p>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2018/12/20/web/js/FileAPI/#更多" rel="contents">
+              <a class="btn" href="/2018/11/05/linux/linux/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">11月</div>
+			<div class="post-day">03</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/03/blog/hexo/tagPlugins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/03/blog/hexo/tagPlugins/" itemprop="url">
+                  使用 hexo 标签插件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-03 22:56:45" itemprop="dateCreated datePublished" datetime="2018-11-03T22:56:45+08:00">2018-11-03</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/03/blog/hexo/tagPlugins/" class="leancloud_visitors" data-flag-title="使用 hexo 标签插件">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&emsp;&emsp;hexo的标签插件和markdown的原生语法的作用差不多，但还是有挺大的区别的，写个博客记录一下。</p>
+<h2 id="引用资源"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源</h2><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_path</span> 11.png %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_img</span> 11.png This is an example image %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">asset_link</span> 11.png This is an example image %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<h2 id="插入图片-Image"><a href="#插入图片-Image" class="headerlink" title="插入图片 Image"></a>插入图片 Image</h2><p>在文章中插入指定大小的图片（也可以用img标签实现）<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% img [class names] /path/to/image [width] [height] [title text [alt text]] %&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="插入图片-Link"><a href="#插入图片-Link" class="headerlink" title="插入图片 Link"></a>插入图片 Link</h2><p>在文章中插入链接，并自动给外部链接添加 target=”_blank” 属性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% link text url [external] [title] %&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>简单的写法，它使用三个反引号来包裹。<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` [language] [title] [url] [link text] </span><br><span class="line"><span class="keyword">code</span> snippet</span><br><span class="line">```</span><br></pre></td></tr></table></figure></p>
+<p>在文章中插入代码。<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock <span class="string">[title 说明]</span> <span class="string">[lang:language 指定语言（原生语法也可以指定语言）]</span> <span class="string">[url 网址]</span> <span class="string">[link text 连接显示的文本]</span> %&#125;</span><br><span class="line">code snippet</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>附加说明和网址（多了的）<br><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock _.compact ht<span class="symbol">tp:</span>//underscorejs.org/#compact Underscore.js %&#125;</span><br><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">false</span>, <span class="number">2</span>, '', <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>使用效果：<br><figure class="highlight excel"><figcaption><span>_.compact</span><a href="http://underscorejs.org/#compact" target="_blank" rel="noopener">Underscore.js</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">false</span>, <span class="number">2</span>, '', <span class="number">3</span>]);</span><br><span class="line">=&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h2><p>在文章中插入引言，可包含作者、来源和标题。<br>（跟 &gt; 差不多，区别在于它提供了一个标准格式，可以很方便地插入引言，可包含作者、来源和标题。）<br><figure class="highlight twig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">blockquote</span> [author[, <span class="name">source</span>]] [link] [source_link_title] %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">content</span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">endblockquote</span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure></p>
+<p>效果：<br><blockquote><p>content</p>
+<footer><strong>YongJian</strong><cite><a href="https://YongJianh.github.io" target="_blank" rel="noopener">myBlog</a></cite></footer></blockquote></p>
+<h2 id="插入-Swig-标签"><a href="#插入-Swig-标签" class="headerlink" title="插入 Swig 标签"></a>插入 Swig 标签</h2><p>如果您想在文章中插入 Swig 标签，可以尝试使用 Raw 标签，以免发生解析异常。</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">raw</span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name">set</span> foo = [1,2,3] %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">for</span></span> bar <span class="keyword">in</span> foo %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">        </span><span class="template-tag">&#123;% <span class="name">bar</span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endfor</span></span> %&#125;</span><span class="xml"></span></span><br><span class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">endraw</span> %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure>
+<h1 id="NexT主题的内置标签"><a href="#NexT主题的内置标签" class="headerlink" title="NexT主题的内置标签"></a>NexT主题的内置标签</h1><h2 id="Bootstrap-Callout"><a href="#Bootstrap-Callout" class="headerlink" title="Bootstrap Callout"></a>Bootstrap Callout</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% note class_name %&#125; Content (md partial supported) &#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#其中，class_name 可以是以下列表中的一个值：default, primary, success, info, warning, danger</span></span><br></pre></td></tr></table></figure>
+<h2 id="文本居中的引用"><a href="#文本居中的引用" class="headerlink" title="文本居中的引用"></a>文本居中的引用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span><br><span class="line">&lt;!-- 其中 class=<span class="string">"blockquote-center"</span> 是必须的 --&gt;</span><br><span class="line">&lt;blockquote class=<span class="string">"blockquote-center"</span>&gt;blah blah blah&lt;/blockquote&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 标签 方式，要求版本在0.4.5或以上 --&gt;</span><br><span class="line">&#123;% centerquote %&#125;blah blah blah&#123;% endcenterquote %&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 标签别名 --&gt;</span><br><span class="line">&#123;% cq %&#125; blah blah blah &#123;% endcq %&#125;</span><br></pre></td></tr></table></figure>
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/11/03/blog/hexo/tagPlugins/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -846,7 +1087,7 @@ fd.append('hello', 'hello world');
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/12/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -891,7 +1132,7 @@ fd.append('hello', 'hello world');
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

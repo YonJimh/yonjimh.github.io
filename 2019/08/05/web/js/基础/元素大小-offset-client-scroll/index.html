@@ -167,7 +167,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/05/web/js/基础/元素大小-offset-client-scroll/offset.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/05/web/js/基础/元素大小-offset-client-scroll/client.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/05/web/js/基础/元素大小-offset-client-scroll/scroll.png">
-<meta property="og:updated_time" content="2019-08-05T12:45:37.523Z">
+<meta property="og:updated_time" content="2019-08-17T08:56:29.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="元素大小 offset client scroll">
 <meta name="twitter:description" content="clientHeight、offsetHeight、offsetTop、scrollHeight、scrollTop等DOM的属性非常容易混乱，每次用到的时候都会找一文档，还有一大堆的兼容问题，最近看了一下红宝书这一部分的内容，这里复习记录一下。 窗口大小在了解DOM的元素大小之前，我们先来简单看一下window对象的innerWidth 、 innerHeight 、 outerWidth 和">
@@ -564,6 +564,10 @@
 html加了`<!DOCTYPE html>`
 
 ![clien.png](./clien.png) -->
+<!-- 混杂模式 标准模式-->
+<!-- 在标准模式下， document.compatMode 的值等于 "CSS1Compat" ，而在混杂模式下， document.compatMode 的值等于 "BackCompat"混杂模式又称怪异模式或兼容模式
+1）混杂模式又称怪异模式或兼容模式，指浏览器按照自己的方式来解析代码，页面以宽松的向后兼容的解析方式，是实现IE5.5以下版本浏览器的渲染模式。就严格度上来说不如严格模式，但是模拟老式浏览器的行为可以防止站点无法工作
+2）标准模式又称严格模式，是一种要求严格地DTD（档类型定义(Document Type Definition)），排版和js运作模式根据web标准去解析页面的模式 -->
 
       
     </div>
@@ -681,7 +685,7 @@ html加了`<!DOCTYPE html>`
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

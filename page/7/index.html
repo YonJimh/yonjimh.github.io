@@ -396,11 +396,11 @@
   
   
   <div class="post-date">
-			<div class="post-month">02月</div>
-			<div class="post-day">21</div>
+			<div class="post-month">01月</div>
+			<div class="post-day">14</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/web/js/基础/js的for-in和for-of/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/14/web/webGL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -419,8 +419,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/21/web/js/基础/js的for-in和for-of/" itemprop="url">
-                  js的for...in和for...of
+                <a class="post-title-link" href="/2019/01/14/web/webGL/" itemprop="url">
+                  webGL初了解
                 </a>
               
             
@@ -446,7 +446,7 @@
                 
               
 
-              <time title="创建时间：2019-02-21 23:20:15" itemprop="dateCreated datePublished" datetime="2019-02-21T23:20:15+08:00">2019-02-21</time>
+              <time title="创建时间：2019-01-14 15:00:19" itemprop="dateCreated datePublished" datetime="2019-01-14T15:00:19+08:00">2019-01-14</time>
             
 
             
@@ -478,7 +478,7 @@
 
           
           
-             <span id="/2019/02/21/web/js/基础/js的for-in和for-of/" class="leancloud_visitors" data-flag-title="js的for...in和for...of">
+             <span id="/2019/01/14/web/webGL/" class="leancloud_visitors" data-flag-title="webGL初了解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -511,21 +511,19 @@
       
         
           
-            <h1 id="for…in-用来循环对象"><a href="#for…in-用来循环对象" class="headerlink" title="for…in 用来循环对象"></a>for…in 用来循环对象</h1><p>循环时，返回的是所有能够通过对象访问的、可枚举的（enumerated）属性，其中既包括存在于实例中的属性，也包括存在于原型中的属性。</p>
-<ol>
-<li>屏蔽了原型中不可枚举属性（即将[[Enumerable]] 标记为 false 的属性）的实例属性也会在 for-in 循环中返回（早版本的IE不会）</li>
-</ol>
-<h1 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h1><p>循环可以使用的范围包括数组、Set 和 Map 结构、某些类似数组的对象（比如arguments对象、DOM NodeList 对象）、后文的 Generator 对象，以及字符串。</p>
-<p>一个数据结构只要部署了Symbol.iterator属性，就被视为具有 iterator 接口，就可以用for…of循环遍历它的成员。也就是说，for…of循环内部调用的是数据结构的Symbol.iterator方法。</p>
-<ol>
-<li>循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性。</li>
-<li>for…in循环读取键名，for…of循环读取键值。如果要通过for…of循环，获取数组的索引，可以借助数组实例的entries方法和keys方法。</li>
-<li>for…of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性。这一点跟for…in循环也不一样。</li>
-</ol>
+            <h1 id="WebGL"><a href="#WebGL" class="headerlink" title="WebGL"></a>WebGL</h1><p>WebGL (Web图形库 Web Graphics Library) 是一种JavaScript API，用于在任何兼容的Web浏览器中呈现交互式3D和2D图形，而无需使用插件。WebGL通过引入一个与OpenGL ES 2.0紧密相符合的API，可以在HTML5 <code>&lt;canvas&gt;</code> 元素中使用。</p>
+<h2 id="WebGL框架"><a href="#WebGL框架" class="headerlink" title="WebGL框架"></a>WebGL框架</h2><p>three.js（这个比较火）、Babylon.jS</p>
+<h1 id="OpenGL-ES"><a href="#OpenGL-ES" class="headerlink" title="OpenGL ES"></a>OpenGL ES</h1><p>OpenGL ES (OpenGL for Embedded Systems) 是 OpenGL 三维图形 API 的子集，针对手机、PDA和游戏主机等嵌入式设备而设计。该API由Khronos集团定义推广，Khronos是一个图形软硬件行业协会，该协会主要关注图形和多媒体方面的开放标准。</p>
+<blockquote>
+<p>现在主要使用的两个版本：OpenGL ES 2.0 和 OpenGL ES 3.0</p>
+</blockquote>
+<h1 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h1><p>OpenGL是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。它为我们提供了大量的功能,我们可以使用它来处理图形和图像。准确来说，OpenGL本身并不是一个API，只是一个规范，由<a href="https://www.khronos.org/" target="_blank" rel="noopener">Khronos组织</a>开发和维护。OpenGL规范描述了绘制2D和3D图形的抽象API。</p>
+<p>这套接口是Khronos这个组织在维护，怎么维护呢?就是写一个规范，指导各个GPU厂家，如果他们要支持OpenGL的话，要怎么实现一个具体的OpenGL库。Khronos说要实现glDrawArray这个接口，那么厂家就得在他的库里实现这个接口。如果不实现，那么就不算支持OpenGL。也有一些接口不一定要实现。</p>
+<p>参考资料：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API" target="_blank" rel="noopener">WebGL</a><br><a href="https://blog.csdn.net/qq_30100043/article/details/82014971" target="_blank" rel="noopener">Three.js和其它webgl框架</a><br><a href="https://www.zhihu.com/question/51867884" target="_blank" rel="noopener">OpenGL是什么?</a></p>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2019/02/21/web/js/基础/js的for-in和for-of/#更多" rel="contents">
+              <a class="btn" href="/2019/01/14/web/webGL/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -581,11 +579,11 @@
   
   
   <div class="post-date">
-			<div class="post-month">02月</div>
-			<div class="post-day">21</div>
+			<div class="post-month">01月</div>
+			<div class="post-day">13</div>
 	</div>
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/web/js/js数组去重/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/SoftwareEngineering/softwareTest/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="YonJim">
@@ -604,8 +602,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/21/web/js/js数组去重/" itemprop="url">
-                  js数组去重
+                <a class="post-title-link" href="/2019/01/13/SoftwareEngineering/softwareTest/" itemprop="url">
+                  软件测试基本概念
                 </a>
               
             
@@ -631,31 +629,13 @@
                 
               
 
-              <time title="创建时间：2019-02-21 20:46:35" itemprop="dateCreated datePublished" datetime="2019-02-21T20:46:35+08:00">2019-02-21</time>
+              <time title="创建时间：2019-01-13 18:31:28" itemprop="dateCreated datePublished" datetime="2019-01-13T18:31:28+08:00">2019-01-13</time>
             
 
             
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -663,7 +643,7 @@
 
           
           
-             <span id="/2019/02/21/web/js/js数组去重/" class="leancloud_visitors" data-flag-title="js数组去重">
+             <span id="/2019/01/13/SoftwareEngineering/softwareTest/" class="leancloud_visitors" data-flag-title="软件测试基本概念">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -696,35 +676,235 @@
       
         
           
-            <p>这段时间我就在面试的时候做到了数组去重的题目，回来找一下资料发现，这是不只是一道简单的面试题，还是一道送命题啊。所以我记录一下去重的几种方法ヽ(ー<em>ー)ノヽ(ー</em>ー)ノヽ(ー_ー)ノ||。</p>
-<h1 id="使用Array-prototype-indexOf-方法"><a href="#使用Array-prototype-indexOf-方法" class="headerlink" title="使用Array.prototype.indexOf()方法"></a>使用Array.prototype.indexOf()方法</h1><ol>
-<li><p>方法一</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq1</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = []; <span class="comment">//一个新的临时数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) <span class="comment">//遍历当前数组</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果当前数组的第i已经保存进了临时数组，那么跳过，</span></span><br><span class="line">        <span class="comment">//否则把当前项push到临时数组里面</span></span><br><span class="line">        <span class="keyword">if</span> (n.indexOf(arr[i]) === <span class="number">-1</span>) n.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="什么是软件测试"><a href="#什么是软件测试" class="headerlink" title="什么是软件测试"></a>什么是软件测试</h1><p>是为了度量和提高被测软件质量，是对被测软件进行工程设计、实施和维护的整个生命周期的过程。</p>
+<h2 id="软件测试的目的"><a href="#软件测试的目的" class="headerlink" title="软件测试的目的"></a>软件测试的目的</h2><ul>
+<li>测试以发现缺陷为目的</li>
+<li>最大可能找出最多错误</li>
+<li>执行有限测试用例并发现错误</li>
+<li>检查软件是否满足定义的各种需求</li>
+<li>执行测试用例，发现至今未发现错误即为成功的测试</li>
+</ul>
+<h2 id="软件研发模型"><a href="#软件研发模型" class="headerlink" title="软件研发模型"></a>软件研发模型</h2><p>软件研发模型是软件生产过程中分析、设计、研发活动所遵循的框架模式。采取合适的研发模型将会提高软件研发效率，降低研发成本，提高质量。<br>目前较为流行的研发模型主要有：瀑布模型、原型模型、螺旋模型、RUP模型、敏捷模型和DevOps。</p>
+<p><img src="/2019/01/13/SoftwareEngineering/softwareTest/软件开发的演变.jpeg" width="76%" height="76%"><br><!-- 使用这里使用了了相对路径 --></p>
+<h3 id="瀑布模型"><a href="#瀑布模型" class="headerlink" title="瀑布模型"></a>瀑布模型</h3><p>瀑布模型将软件生命周期划分为开发计划、需求分析、设计、编码、测试和运行维护这6个基本活动过程。</p>
+<p><img src="/2019/01/13/SoftwareEngineering/softwareTest/瀑布模型.png"></p>
+<h4 id="需求测试（Requirement-Testing）"><a href="#需求测试（Requirement-Testing）" class="headerlink" title="需求测试（Requirement Testing）"></a>需求测试（Requirement Testing）</h4><p>需求测试是在需求分析阶段开始就搞。需求测试的重点是：检查规格说明书中是否存在描述不正确、定义模糊、需求用例不正确、语言存在二义性等问题。完整性、正确性、无二义性、可测试性、一致性。</p>
+<h3 id="敏捷模型"><a href="#敏捷模型" class="headerlink" title="敏捷模型"></a>敏捷模型</h3><p>敏捷开发以用户的需求进化为核心，采用迭代、循序渐进的方法进行软件开发。在敏捷开发中，软件项目在构建初期被切分成多个子项目，各个子项目的成果都经过测试，具备可视、可集成和可运行使用的特征。换言之，就是把一个大项目分为多个相互联系，但也可独立运行的小项目，并分别完成，在此过程中软件一直处于可使用状态。（来自百度百科!!!∑(ﾟДﾟノ)ノ）</p>
+<p><img src="/2019/01/13/SoftwareEngineering/softwareTest/agile.png" width="76%" height="76%"></p>
+<h4 id="持续集成（CI）-持续交付（CD）-持续部署（CD）"><a href="#持续集成（CI）-持续交付（CD）-持续部署（CD）" class="headerlink" title="持续集成（CI）/ 持续交付（CD）/ 持续部署（CD）"></a><a href="https://blog.csdn.net/qq_32261399/article/details/76651376" title="重点" target="_blank" rel="noopener">持续集成（CI）/ 持续交付（CD）/ 持续部署（CD）</a></h4><ol>
+<li><p>持续集成（Continuous Integration）<br> 是一种软件开发实践，即团队开发成员经常集成他们的工作，通常每个成员每天至少集成一次，也就意味着每天可能会发生多次集成。每次集成都通过自动化的构建（包括编译，发布，自动化测试）来验证，从而尽早地发现集成错误。<a href="https://www.jianshu.com/p/1cd01bcc77f2" target="_blank" rel="noopener">为什么要持续集成</a></p>
+<p> <img src="/2019/01/13/SoftwareEngineering/softwareTest/持续集成.png" width="76%" height="76%"><br> 持续集成强调开发人员提交了新代码之后，立刻进行构建、（单元）测试。根据测试结果，我们可以确定新代码和原有代码能否正确地集成在一起。</p>
 </li>
-<li><p>方法二</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniq2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = [<span class="keyword">this</span>[<span class="number">0</span>]]; <span class="comment">//结果数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>.length; i++) <span class="comment">//从第二项开始遍历</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//如果当前数组的第i项在当前数组中第一次出现的位置不是i，</span></span><br><span class="line">        <span class="comment">//那么表示第i项是重复的，忽略掉。否则存入结果数组</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.indexOf(<span class="keyword">this</span>[i]) == i) n.push(<span class="keyword">this</span>[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 这两个方法都用到了数组的indexOf方法。目的是寻找存入参数在数组中第一次出现的位置。很显然，js引擎在实现这个方法的时候会遍历数组直到找到目标为止。所以此函数会浪费掉很多时间。（这就是这道题的坑了）</p>
+<li><p>持续交付（Continuous Delivery）<br> <img src="/2019/01/13/SoftwareEngineering/softwareTest/持续交付.png" width="76%" height="76%"><br> 持续交付（Continuous delivery）指的是，频繁地将软件的新版本，交付给质量团队或者用户，以供评审。如果评审通过，代码就进入生产阶段。定时地、自动地将过去一个稳定的发布版本部署到生产环境里。持续交付可以看作持续集成的下一步。它强调的是，不管怎么更新，软件是随时随地可以交付的。出于业务考虑，可以选择不部署。如果要实施持续部署，必须先实施持续交付。</p>
+</li>
+<li><p>持续部署（Continuous Deployment）<br> <img src="/2019/01/13/SoftwareEngineering/softwareTest/持续部署.png" width="76%" height="76%"><br> 持续部署（continuous deployment）是持续交付的下一步，指的是代码通过评审以后，自动部署到生产环境。<br> 持续部署的目标是，代码在任何时刻都是可部署的，可以进入生产阶段。<br> 持续部署的前提是能自动化完成测试、构建、部署等步骤。<br> 持续部署则是在持续交付的基础上，把部署到生产环境的过程自动化。</p>
 </li>
 </ol>
-<h1 id="使用对象key来去重"><a href="#使用对象key来去重" class="headerlink" title="使用对象key来去重"></a>使用对象key来去重</h1><p>这种方法效率最好</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ret = [];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">var</span> tmp = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!tmp[arr[i]])&#123;</span><br><span class="line">            tmp[arr[i]] = <span class="number">1</span>;</span><br><span class="line">            ret.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方法是利用了对象（tmp）的key不可以重复的特性来进行去重。但由于对象key只能为字符串，因此这种去重方法有许多局限性：  </p>
-<ol>
-<li>无法区分隐式类型转换成字符串后一样的值，比如1和’1’ <code>eg: [1, &#39;1&#39;]</code></li>
-<li>无法处理复杂数据类型，比如对象（因为对象作为key会变成[object Object]） `eg: [1, {a:1}, {}]</li>
-<li>特殊数据，比如’<strong>proto</strong>‘会挂掉，因为tmp对象的<strong>proto</strong>属性无法被重写</li>
+<p>参考：<br><a href="https://blog.csdn.net/peterxiaoq/article/details/73648732" target="_blank" rel="noopener">https://blog.csdn.net/peterxiaoq/article/details/73648732</a> 持续集成（CI）/持续部署（CD）/持续交付<br><a href="https://www.zhihu.com/question/23444990" target="_blank" rel="noopener">https://www.zhihu.com/question/23444990</a> 如何理解持续集成、持续交付、持续部署？<br><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html</a> 持续集成是什么？</p>
+<h3 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h3><p>DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。它是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例。透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。</p>
+<h4 id="DevOps生命周期"><a href="#DevOps生命周期" class="headerlink" title="DevOps生命周期"></a>DevOps生命周期</h4><p><img src="/2019/01/13/SoftwareEngineering/softwareTest/DevOps生命周期.jpeg" width="76%" height="76%"></p>
+<h4 id="DevOps生命周期的哪个阶段使用哪些工具"><a href="#DevOps生命周期的哪个阶段使用哪些工具" class="headerlink" title="DevOps生命周期的哪个阶段使用哪些工具"></a>DevOps生命周期的哪个阶段使用哪些工具</h4><p><img src="/2019/01/13/SoftwareEngineering/softwareTest/DevOps生命周期的哪个阶段使用哪些工具.jpeg" width="76%" height="76%"></p>
+<p>参考：<br><a href="http://www.sohu.com/a/283593991_115128" target="_blank" rel="noopener">http://www.sohu.com/a/283593991_115128</a><br><a href="https://www.zhihu.com/question/58702398" target="_blank" rel="noopener">https://www.zhihu.com/question/58702398</a><br><a href="https://blog.csdn.net/dtttyc/article/details/72921607" target="_blank" rel="noopener">https://blog.csdn.net/dtttyc/article/details/72921607</a></p>
+<h2 id="软件测试级别"><a href="#软件测试级别" class="headerlink" title="软件测试级别"></a>软件测试级别</h2><p>单元测试 集成测试 系统测试 验证测试 验收测试（Alpha测试 Beta测试 UAT测试）</p>
+<h2 id="软件测试类型"><a href="#软件测试类型" class="headerlink" title="软件测试类型"></a>软件测试类型</h2><p>功能测试 性能测试 负载测试 压力测试 安全性测试 兼容性测试 确认测试 冒烟测试 回归测试</p>
+<h1 id="软件测试模型及流程"><a href="#软件测试模型及流程" class="headerlink" title="软件测试模型及流程"></a>软件测试模型及流程</h1><h2 id="v模型"><a href="#v模型" class="headerlink" title="v模型"></a>v模型</h2><p><img src="/2019/01/13/SoftwareEngineering/softwareTest/v.png" width="50%" height="50%"></p>
+<h2 id="w模型"><a href="#w模型" class="headerlink" title="w模型"></a>w模型</h2><p><img src="/2019/01/13/SoftwareEngineering/softwareTest/w.png" width="50%" height="50%"></p>
+<h1 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h1><p>测试用例（Test Case）是为某个特殊目标而编制的一组测试输入、执行条件以及预期结果，以便测试某个程序路径或核实是否满足某个特定需求。</p>
+<h2 id="常见的软件测试方法"><a href="#常见的软件测试方法" class="headerlink" title="常见的软件测试方法"></a>常见的软件测试方法</h2><ol>
+<li>黑盒测试<br>黑盒测试又称功能测试、数据驱动测试或基于需求规格说明书的功能测试。该测试方法验证被测对象使用质量及外部质量表现。<br>黑盒测试的测试方法有：等价类划分、边界值分析法、猜错法、随机数法、因果图。</li>
+<li>白盒测试<br> 白盒测试，又称为结构测试、逻辑驱动测试或基于程序代码内部构成的测试。<br> 白盒测试的测试方法有：代码检查法、程序变异、静态结构分析法、静态质量度量法、符号测试法、逻辑覆盖法、域测试、Z路径覆盖和基本路径测试法。</li>
+<li>灰盒测试<br> 灰盒测试就是白盒测试加黑盒测试，性能测试和自动化测试就采用了灰盒测试的方法。</li>
+<li>静态测试<br> 不执行被测对象的程序代码、不运行被测对象而实施的测试活动，发现缺陷的过程。<br> 静态测试包含阅读程序代码、文档资料等。</li>
+<li>动态测试<br>动态测试运行被测对象的程序代码，执行测试用例，检查系统软件运行结果与预期结果的差异。</li>
+<li>手工测试</li>
+<li>自动化测试</li>
 </ol>
-<p>对于第一点，有人提出可以为对象的key增加一个类型，或者将类型放到对象的value中来解决：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ret = [];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">var</span> tmp = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> tmpKey;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">        tmpKey = <span class="keyword">typeof</span> arr[i] + arr[i];</span><br><span class="line">        <span class="keyword">if</span>(!tmp[tmpKey])&#123;</span><br><span class="line">            tmp[tmpKey] = <span class="number">1</span>;</span><br><span class="line">            ret.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>该方案也同时解决第三个问题。</p>
-<p>而第二个问题，如果像上文所说，在允许对对象进行自定义的比较规则，也可以将对象序列化之后作为key来使用。这里为简单起见，使用JSON.stringify()进行序列化。<code>[1, &#39;1&#39;, {a:1}, {a:1}, function(){}, function(){return 1}]</code>这种情况还是会出现</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> ret = [];</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">var</span> tmp = &#123;&#125;;</span><br><span class="line">    <span class="keyword">var</span> tmpKey;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">        tmpKey = <span class="keyword">typeof</span> arr[i] + <span class="built_in">JSON</span>.stringify(arr[i]);</span><br><span class="line">        <span class="keyword">if</span>(!tmp[tmpKey])&#123;</span><br><span class="line">            tmp[tmpKey] = <span class="number">1</span>;</span><br><span class="line">            ret.push(arr[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="使用Set"><a href="#使用Set" class="headerlink" title="使用Set"></a>使用Set</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unique</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(arr));</span><br><span class="line"><span class="comment">// return [...new Set(arr)]</span></span><br><span class="line">&#125;</span><br><span class="line">unique([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]) <span class="comment">//[1, 2, 3]</span></span><br><span class="line">unique([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, &#123;&#125;, &#123;&#125;]) <span class="comment">// [1, 2, 3, &#123;&#125;, &#123;&#125;] 引用类型的值 Set里面两个对象总是不相等的。</span></span><br></pre></td></tr></table></figure>
-<p>参考资料：<br><a href="https://blog.csdn.net/chengxuyuan20100425/article/details/8497277" target="_blank" rel="noopener">js数组去重的4个方法</a><br><a href="https://segmentfault.com/a/1190000008031081" target="_blank" rel="noopener">也谈JavaScript数组去重</a></p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="测试用例管理工具"><a href="#测试用例管理工具" class="headerlink" title="测试用例管理工具"></a>测试用例管理工具</h2><p>   TestLink</p>
+<h2 id="缺陷管理工具"><a href="#缺陷管理工具" class="headerlink" title="缺陷管理工具"></a>缺陷管理工具</h2><pre><code>BugFree
+</code></pre><h2 id="自动化测试工具"><a href="#自动化测试工具" class="headerlink" title="自动化测试工具"></a>自动化测试工具</h2><pre><code>QTP
+</code></pre><h2 id="性能测试工具"><a href="#性能测试工具" class="headerlink" title="性能测试工具"></a>性能测试工具</h2><pre><code>Loadrunner
+</code></pre><p><a href="http://www.51testing.com/html/index.html" target="_blank" rel="noopener">软件测试网</a></p>
 
              
             <div class="post-button text-center">
-              <a class="btn" href="/2019/02/21/web/js/js数组去重/#更多" rel="contents">
+              <a class="btn" href="/2019/01/13/SoftwareEngineering/softwareTest/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">01月</div>
+			<div class="post-day">11</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/11/web/js/基础/js的运算符和运算符优先级/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/11/web/js/基础/js的运算符和运算符优先级/" itemprop="url">
+                  js的运算符和运算符优先级
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-11 22:15:21" itemprop="dateCreated datePublished" datetime="2019-01-11T22:15:21+08:00">2019-01-11</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/11/web/js/基础/js的运算符和运算符优先级/" class="leancloud_visitors" data-flag-title="js的运算符和运算符优先级">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span>:<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> b = a;</span><br><span class="line">a.x = a = &#123;<span class="attr">n</span>:<span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(a.x);<span class="comment">// --&gt; undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x);<span class="comment">// --&gt; &#123;n: 2&#125;</span></span><br></pre></td></tr></table></figure>
+<p>记录一下这道经典的面试题引发的惨案。今天去面试了，面试时没有做出来，回过神来我才发现原来我以前做过这道面试题(⇀‸↼‶)！！考的是引用类型和运算符优先级。</p>
+<p>参考链接：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence" target="_blank" rel="noopener">运算符优先级</a><br><a href="https://www.jianshu.com/p/09353145e645" target="_blank" rel="noopener">JS指针理解之引用类型（含有运算符表格）</a><br><a href="https://www.cnblogs.com/thinkguo/p/7446880.html" target="_blank" rel="noopener">JavaScript基础之运算符及全面的运算符优先级总结</a></p>
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/01/11/web/js/基础/js的运算符和运算符优先级/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -769,7 +949,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -814,7 +994,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
