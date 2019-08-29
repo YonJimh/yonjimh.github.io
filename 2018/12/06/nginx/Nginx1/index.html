@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;Nginx (engine x) 是一个高性能的HTTP和反向代理服务，也是一个IMAP/POP3/SMTP服务。我使用的是CentOS 6系统，Nginx1.14.2的版本。  Nginx优势 [I/O多路复用]epoll   I/O multiplexing 这里面的 multiplexing 指的其实是在**单个线程**通过记录跟踪每一个Sock(I/O流)的状态(">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-08T10:39:41.505Z">
+<meta property="og:updated_time" content="2019-08-28T09:42:20.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx（一）安装、相关目录与编译参数">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;Nginx (engine x) 是一个高性能的HTTP和反向代理服务，也是一个IMAP/POP3/SMTP服务。我使用的是CentOS 6系统，Nginx1.14.2的版本。  Nginx优势 [I/O多路复用]epoll   I/O multiplexing 这里面的 multiplexing 指的其实是在**单个线程**通过记录跟踪每一个Sock(I/O流)的状态(">
@@ -527,6 +527,7 @@ select, poll, epoll 都是I/O多路复用的具体的实现。epoll 可以说是
 </ol>
 <h1 id="Linux系统安装Nginx"><a href="#Linux系统安装Nginx" class="headerlink" title="Linux系统安装Nginx"></a>Linux系统安装<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">Nginx</a></h1><blockquote>
 <p>window系统直接到官网下载，配置一下环境变量就可以用啦</p>
+</blockquote>
 <ol>
 <li>版本<ul>
 <li>Mainline version  开发板</li>
@@ -534,13 +535,13 @@ select, poll, epoll 都是I/O多路复用的具体的实现。epoll 可以说是
 <li>Legacy version    历史版本</li>
 </ul>
 </li>
-<li>使用yum安装<ol>
+<li><p>使用yum安装</p>
+<ol>
 <li>增加yum源 /etc/yum.repos.d/nginx.repo<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 替换"OS"成"rhel"或"centos"，，"OSRELEASE"成"6"或"7"，分别为6 x或7.x的版本。</span></span><br><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
 </ol>
-</blockquote>
 <h1 id="文件目录-使用-rpm-ql-nginx-dpkg-S-nginx-查看-eg：注意版本不同可能会有区别-￣▽￣-，下面是使用1-14-2版本的"><a href="#文件目录-使用-rpm-ql-nginx-dpkg-S-nginx-查看-eg：注意版本不同可能会有区别-￣▽￣-，下面是使用1-14-2版本的" class="headerlink" title="文件目录 ( 使用 rpm -ql nginx || dpkg -S nginx 查看 ) eg：注意版本不同可能会有区别 (￣▽￣)~*，下面是使用1.14.2版本的"></a>文件目录 ( 使用 <code>rpm -ql nginx</code> || <code>dpkg -S nginx</code> 查看 ) eg：注意版本不同可能会有区别 (￣▽￣)~*，下面是使用1.14.2版本的</h1><table>
 <thead>
 <tr>
@@ -620,7 +621,8 @@ select, poll, epoll 都是I/O多路复用的具体的实现。epoll 可以说是
 </tr>
 </tbody>
 </table>
-<h1 id="nginx-常用命令-help"><a href="#nginx-常用命令-help" class="headerlink" title="nginx 常用命令 (help)"></a>nginx 常用命令 (help)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nginx -V  显示版本和配置选项</span></span><br><span class="line"><span class="comment"># nginx -t  测试配置</span></span><br><span class="line"><span class="comment"># nginx -c  用来指定启动Nginx服务使用的配置文件（默认值：/etc/nginx/nginx.conf）</span></span><br><span class="line"><span class="comment"># nginx -p  prefix路径 用来改变Nginx的安装路径，常用在平滑升级Nginx服务器的场合</span></span><br><span class="line"><span class="comment"># nginx -g  'directives' 用来补充Nginx配置文件，向Nginx服务指定启动时应用于全局的配置。eg: nginx -g 'daemon off'</span></span><br><span class="line"><span class="comment"># nginx -s  signal 用来向Nginx服务的主进程发送信号 stop, quit, reopen, reload</span></span><br></pre></td></tr></table></figure>
+<h1 id="nginx-常用命令-help"><a href="#nginx-常用命令-help" class="headerlink" title="nginx 常用命令 (help)"></a>nginx 常用命令 (help)</h1><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nginx -V  显示版本和配置选项</span></span><br><span class="line"><span class="comment"># nginx -t  测试配置</span></span><br><span class="line"><span class="comment"># nginx -c  用来指定启动Nginx服务使用的配置文件（默认值：/etc/nginx/nginx.conf）</span></span><br><span class="line"><span class="comment"># nginx -p  prefix路径 用来改变Nginx的安装路径，常用在平滑升级Nginx服务器的场合</span></span><br><span class="line"><span class="comment"># nginx -g  'directives' 用来补充Nginx配置文件，向Nginx服务指定启动时应用于全局的配置。eg: nginx -g 'daemon off'</span></span><br><span class="line"><span class="comment"># nginx -s  signal 用来向Nginx服务的主进程发送信号 stop, quit, reopen, reload</span></span><br></pre></td></tr></table></figure>
+</code></pre>
       
     </div>
 
@@ -737,7 +739,7 @@ select, poll, epoll 都是I/O多路复用的具体的实现。epoll 可以说是
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

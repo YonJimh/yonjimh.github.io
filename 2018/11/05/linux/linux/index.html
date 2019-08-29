@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="一些linux的知识点。未分类。未分类。未分类。说三遍。 sh, bash, source, ./- source 用法 `source filename` 可以用`.`来代替。source(或.)命令通常用于重新执行刚修改的初始化文档。（会改变当前process环境） - bash/sh 用法 都是打开一个subshell去读取、执行脚本，subshell里运行的脚本里设置变量，不会影响到父sh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-30T10:07:13.746Z">
+<meta property="og:updated_time" content="2019-08-28T14:42:51.875Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Commands">
 <meta name="twitter:description" content="一些linux的知识点。未分类。未分类。未分类。说三遍。 sh, bash, source, ./- source 用法 `source filename` 可以用`.`来代替。source(或.)命令通常用于重新执行刚修改的初始化文档。（会改变当前process环境） - bash/sh 用法 都是打开一个subshell去读取、执行脚本，subshell里运行的脚本里设置变量，不会影响到父sh">
@@ -663,7 +663,7 @@ tar -cjf a.tar.bz2 a.jp  // j 有bz2属性的
 <h2 id="daemon"><a href="#daemon" class="headerlink" title="daemon"></a>daemon</h2><p>Daemon进程也就是守护进程，linux大多数的服务进程都是通过守护进程实现的。比如0号进程(调度进程) ，1号进程(init进程)。从其名字守护看出其一般就是机器启动就运行，关机才停止。所以其应该不会受到终端的影响。同时其实在后台运行的。</p>
 <p>参考链接：<br><a href="https://blog.csdn.net/dai_xiangjun/article/details/41871647" target="_blank" rel="noopener">Linux信号（signal) 机制分析</a><br><a href="https://blog.csdn.net/lovemdx/article/details/20529563" target="_blank" rel="noopener">linux 的nohup &amp; 和daemon 总结</a><br><a href="https://mp.weixin.qq.com/s/nyT-FPdIUdJUiUCYVGEnTg" target="_blank" rel="noopener">一分钟了解nohup和&amp;的功效</a></p>
 <h1 id="ln命令-软链接"><a href="#ln命令-软链接" class="headerlink" title="ln命令 软链接"></a>ln命令 软链接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 常用来设置软链接</span><br><span class="line">ln -s 源目标 目标文件</span><br></pre></td></tr></table></figure>
-<p>注意：路径的问题，用绝对路径没那么多问题，相对路径的话。。</p>
+<p>注意：路径的问题，用绝对路径没那么多问题，相对路径的话（同一个目录下使用，不然会出问题）。。</p>
 <p>了解更多：<a href="http://www.runoob.com/linux/linux-comm-ln.html" target="_blank" rel="noopener">http://www.runoob.com/linux/linux-comm-ln.html</a></p>
 
       
@@ -782,7 +782,7 @@ tar -cjf a.tar.bz2 a.jp  // j 有bz2属性的
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

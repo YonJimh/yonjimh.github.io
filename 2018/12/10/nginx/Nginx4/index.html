@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="常见Nginx中间件架构 静态资源web服务 代理服务 负载均衡调度器SLB 动态缓存  静态资源web服务 （优化配置之类的）ngx_http_core_module 模块的 Directive sendfile “零拷贝” ngx_http_core_module  sendfile系统调用在两个文件描述符之间直接传递数据(完全在内核中操作)，从而避免了数据在内核缓冲区和用户缓冲区之间的拷贝，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-15T05:46:42.248Z">
+<meta property="og:updated_time" content="2019-08-28T09:52:39.733Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx（四）常见Nginx架构场景">
 <meta name="twitter:description" content="常见Nginx中间件架构 静态资源web服务 代理服务 负载均衡调度器SLB 动态缓存  静态资源web服务 （优化配置之类的）ngx_http_core_module 模块的 Directive sendfile “零拷贝” ngx_http_core_module  sendfile系统调用在两个文件描述符之间直接传递数据(完全在内核中操作)，从而避免了数据在内核缓冲区和用户缓冲区之间的拷贝，">
@@ -629,9 +629,11 @@ Context: http
 # inactive 指定的时间内未访问的缓存数据 将从缓存中删除，无论其新鲜度如何。默认情况下，inactive设置为10分钟。
 # max_size 设置的最大缓存大小。超过此大小时，它会删除最近最少使用的数据。
 # use_temp_path 临时文件的目录 eg: use_temp_path=off 命令指示NGINX将在缓存这些文件时将它们写入同一个目录下。(并不是关闭临时文件存储)
-</code></pre><h3 id="proxy-cache-定义用于缓存的共享内存区域。"><a href="#proxy-cache-定义用于缓存的共享内存区域。" class="headerlink" title="proxy_cache 定义用于缓存的共享内存区域。"></a>proxy_cache 定义用于缓存的共享内存区域。</h3><pre><code>Syntax: proxy_cache zone | off;
+</code></pre><h3 id="proxy-cache-定义用于缓存的共享内存区域。"><a href="#proxy-cache-定义用于缓存的共享内存区域。" class="headerlink" title="proxy_cache 定义用于缓存的共享内存区域。"></a>proxy_cache 定义用于缓存的共享内存区域。</h3><pre><code>Syntax: proxy_cache zone | off;  
 Default: proxy_cache off;
 Context: http, server, location
+
+zone 是 keys_zone 设置的 name
 </code></pre><h3 id="proxy-cache-valid-设置不同响应状态码的缓存时间。"><a href="#proxy-cache-valid-设置不同响应状态码的缓存时间。" class="headerlink" title="proxy_cache_valid  设置不同响应状态码的缓存时间。"></a>proxy_cache_valid  设置不同响应状态码的缓存时间。</h3><pre><code>eg: proxy_cache_valid 200 302 10m;
     proxy_cache_valid 404      1m;
     proxy_cache_valid any 1h;       # any 指定缓存任何响应
@@ -767,7 +769,7 @@ Context: http, server, location
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
