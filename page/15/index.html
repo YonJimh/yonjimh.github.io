@@ -400,6 +400,242 @@
 			<div class="post-day">31</div>
 	</div>
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/blog/blog-buliding/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/blog/blog-buliding/" itemprop="url">
+                  搭建个人博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-31 19:15:22" itemprop="dateCreated datePublished" datetime="2018-10-31T19:15:22+08:00">2018-10-31</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/31/blog/blog-buliding/" class="leancloud_visitors" data-flag-title="搭建个人博客">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&emsp;&emsp;一直想搭个博客，也可以学习一下markdown。折腾了一天终于将第一个博客搭起来了，简单记录一下这个过程。</p>
+<h1 id="搭建博客的选择"><a href="#搭建博客的选择" class="headerlink" title="搭建博客的选择"></a>搭建博客的选择</h1><ol>
+<li><p>选择网上流行的论坛或者社区平台</p>
+<p> 这里列出常见的几个： <a href="https://www.jianshu.com/" title="简书" target="_blank" rel="noopener">简书</a>, <a href="https://juejin.im/" title="掘金" target="_blank" rel="noopener">掘金</a>, <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">知乎</a>,<a href="https://www.jianshu.com/" title="博客园" target="_blank" rel="noopener">博客园</a>,<a href="https://www.csdn.net/" title="CSDN" target="_blank" rel="noopener">CSDN</a>,<a href="https://segmentfault.com/" title="SegmentFault" target="_blank" rel="noopener">SegmentFault</a>等。相信这里面总有一个你见过的,我就直接进入主题吧。</p>
+</li>
+<li><p>选择自己搭建</p>
+<p> 现在网上常见的几个方法：</p>
+<ol>
+<li><p>使用WordPress （PHP语言开发的博客平台，也可以当一个CMS来使用）搭建。 （要氪金）<br>需要配置服务器，域名，数据库等。如果你熟悉PHP和web知识可以选择这个哦。</p>
+</li>
+<li><p>hexo/jekyll + Github Pages/Coding Pages（氪金，不存在的！）<br>hexo和jekyll都是静态博客框架，在本地生成静态html后上传到Github或者Coding等代码托管平台。可以简单快捷搭建出一个静态博客，我就是用了hexo + Github Pages搭建的。</p>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="Hexo-Github-Pages-博客搭建"><a href="#Hexo-Github-Pages-博客搭建" class="headerlink" title="Hexo + Github Pages 博客搭建"></a>Hexo + Github Pages 博客搭建</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><ol>
+<li><p>Hexo 官网 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">https://hexo.io/docs/</a></p>
+<p> 详细步骤请参考在<a href="https://hexo.io/docs/" title="hexo" target="_blank" rel="noopener">Hexo</a>的官网，我在这里简单描述一下几个重要的步骤。</p>
+</li>
+<li><p>先安装一下应用程序<br> <a href="https://nodejs.org/zh-cn/" title="node" target="_blank" rel="noopener">Node.js</a><br> <a href="https://git-scm.com/" title="Git" target="_blank" rel="noopener">Git</a></p>
+</li>
+<li><p>安装 hexo</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>初始化项目</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre></li>
+<li><p>启动服务器</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p> 打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 你会发现博客已在本地搭建成功。<br> 详细配置请到<a href="https://hexo.io/docs/" title="hexo" target="_blank" rel="noopener">官网</a>查看。</p>
+</li>
+</ol>
+<h2 id="推送到GitHub"><a href="#推送到GitHub" class="headerlink" title="推送到GitHub"></a>推送到GitHub</h2><ol>
+<li>首先你得要有一个<a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">GitHub</a>账号，注册过程非常简单，我就不展示了。</li>
+<li>新建一个仓库，仓库命名格式为 (你的github账号名称).github.io。<br> <img src="/asset/images/github-repo.png" alt="github-repo" title="github-repo"></li>
+<li><p>使用ssh密钥方式推送（也可以使用https的方式）</p>
+<ul>
+<li><p>生成秘钥（window用户需要使用Git Bash输入），按回车三下，即生成成功。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<img src="/2018/10/31/blog/blog-buliding/2018-11-04_201852.png" title="ssh-keygen">
+</li>
+<li><p>命令行输入<code>cat ~/.ssh/id_rsa.pub</code>，将显示的内容复制。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加到 github。</p>
+  <img src="/2018/10/31/blog/blog-buliding/setting.png" title="ssh-keygen">
+  <img src="/2018/10/31/blog/blog-buliding/ssh_key.png" title="ssh-keygen">
+  <img src="/2018/10/31/blog/blog-buliding/new.png" title="ssh-keygen">
+  <img src="/2018/10/31/blog/blog-buliding/add.png" title="ssh-keygen">
+<p>  点击Add SHH key按钮。就ok了。</p>
+</li>
+<li><p>测试是否成功添加。<br>  命令行输入<code>ssh git@github.com</code>。<br>  若出现<code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>，恭喜你，添加成功了。请跳过下面的步骤。</p>
+<p>  若出现<code>ssh: connect to host github.com port 22: Connection refused</code>。<br>  进入用户的.ssh目录<code>cd ~/.ssh</code>(windwo用户进入<code>C:\Users\Administrator\.ssh</code>)，新建config文件<code>touch config</code><br>  输入配置信息</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com  </span><br><span class="line">User 这里填写你注册时使用的邮箱  </span><br><span class="line">Hostname ssh.github.com  </span><br><span class="line">PreferredAuthentications publickey  </span><br><span class="line">IdentityFile ~/.ssh/id_rsa  </span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Hexo 部署（详细可以到hexo官网查看）<br>  安装 hexo-deployer-git。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>  修改配置（初始化目录下的_config.yml）。</p>
+  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repo:</span> <span class="string">git@github.com:你的github账号名称/你的github账号名称.github.io.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<p>  推送到github上之前，不要忘记执行<code>hexo g</code>命令生成静态文件。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+<p>  执行<code>hexo d</code>命令</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>  最后出现<code>INFO  Deploy done: git</code>，表示已经推送到github上了。</p>
+</li>
+</ul>
+</li>
+<li><p>您的Hexo博客已经搭建好啦~~ 打开浏览器输入https://你的github账号名称.github.io。</p>
+</li>
+<li><p>更换主题<br> 如果你想要更换主题可以到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a>，找到你喜欢的主题。<br> 把下载的主题放到初始化目录的themes目录下，修改初始化目录的_config.yml</p>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">下载的主题文件夹名称</span></span><br></pre></td></tr></table></figure>
+<p> 执行命令</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
+<p> 你会发现主题已经更换成功了！</p>
+<p> 我使用的是next的主题，附上<a href="http://theme-next.iissnan.com/getting-started.html" title="next" target="_blank" rel="noopener">主题文档</a></p>
+</li>
+</ol>
+<!-- 参考式链接 -->
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/10/31/blog/blog-buliding/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">10月</div>
+			<div class="post-day">31</div>
+	</div>
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -587,7 +823,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

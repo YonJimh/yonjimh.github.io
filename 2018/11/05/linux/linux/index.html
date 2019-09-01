@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="一些linux的知识点。未分类。未分类。未分类。说三遍。 sh, bash, source, ./- source 用法 `source filename` 可以用`.`来代替。source(或.)命令通常用于重新执行刚修改的初始化文档。（会改变当前process环境） - bash/sh 用法 都是打开一个subshell去读取、执行脚本，subshell里运行的脚本里设置变量，不会影响到父sh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T14:42:51.875Z">
+<meta property="og:updated_time" content="2019-08-29T15:15:12.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux Commands">
 <meta name="twitter:description" content="一些linux的知识点。未分类。未分类。未分类。说三遍。 sh, bash, source, ./- source 用法 `source filename` 可以用`.`来代替。source(或.)命令通常用于重新执行刚修改的初始化文档。（会改变当前process环境） - bash/sh 用法 都是打开一个subshell去读取、执行脚本，subshell里运行的脚本里设置变量，不会影响到父sh">
@@ -519,6 +519,8 @@
 - ./ 用法 打开一个subshell去读取、执行脚本，但脚本需要有&quot;执行权限&quot;, 使用chmod +x filename
 直接运行./name.sh，首先你会查找脚本第一行是否指定了解释器，如果没指定，那么就用当前系统默认的shell(大多数linux默认是bash)，如果指定了解释器，那么就将该脚本交给指定的解释器。
 </code></pre><h1 id="find-grep"><a href="#find-grep" class="headerlink" title="find / grep"></a>find / grep</h1><pre><code>find /PATH -name &quot;*.h&quot; -exec grep -in &quot;helloworld&quot; {} \;
+
+{} 代表的是由find找到的内容，而 -exec 一直到 “\;” 是关键字，代表find额外命令的开始（-exec)到结束(\;),在这中间的就是find命令内的额外命令。
 </code></pre><h1 id="service目录"><a href="#service目录" class="headerlink" title="service目录"></a>service目录</h1><pre><code>/etc/init.d  # /etc/init.d 是 /etc/rc.d/init.d 的软链接(soft link)
 </code></pre><h1 id="netstat查看网络状态、端口状态"><a href="#netstat查看网络状态、端口状态" class="headerlink" title="netstat查看网络状态、端口状态"></a>netstat查看网络状态、端口状态</h1><pre><code>&gt; netstat -luntp 查看端口被占用情况 // t 指TCP端口 u 指UDP端口
 </code></pre><h1 id="etc-profile-etc-bashrc-bash-profile-bashrc（修改之后使用source命令进行初始化）"><a href="#etc-profile-etc-bashrc-bash-profile-bashrc（修改之后使用source命令进行初始化）" class="headerlink" title="/etc/profile, /etc/bashrc, ~/.bash_profile, ~/.bashrc（修改之后使用source命令进行初始化）"></a>/etc/profile, /etc/bashrc, ~/.bash_profile, ~/.bashrc（修改之后使用source命令进行初始化）</h1><ul>
@@ -782,7 +784,7 @@ tar -cjf a.tar.bz2 a.jp  // j 有bz2属性的
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

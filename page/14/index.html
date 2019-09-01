@@ -397,6 +397,341 @@
   
   <div class="post-date">
 			<div class="post-month">11月</div>
+			<div class="post-day">05</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/05/linux/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/05/linux/linux/" itemprop="url">
+                  Linux Commands
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-05 14:54:27" itemprop="dateCreated datePublished" datetime="2018-11-05T14:54:27+08:00">2018-11-05</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/常用命令整合/" itemprop="url" rel="index"><span itemprop="name">常用命令整合</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/05/linux/linux/" class="leancloud_visitors" data-flag-title="Linux Commands">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>一些linux的知识点。未分类。未分类。未分类。说三遍。
+</code></pre><h1 id="sh-bash-source"><a href="#sh-bash-source" class="headerlink" title="sh, bash, source, ./"></a>sh, bash, source, ./</h1><pre><code>- source 用法 `source filename` 可以用`.`来代替。source(或.)命令通常用于重新执行刚修改的初始化文档。（会改变当前process环境）
+- bash/sh 用法 都是打开一个subshell去读取、执行脚本，subshell里运行的脚本里设置变量，不会影响到父shell的。
+- ./ 用法 打开一个subshell去读取、执行脚本，但脚本需要有&quot;执行权限&quot;, 使用chmod +x filename
+直接运行./name.sh，首先你会查找脚本第一行是否指定了解释器，如果没指定，那么就用当前系统默认的shell(大多数linux默认是bash)，如果指定了解释器，那么就将该脚本交给指定的解释器。
+</code></pre><h1 id="find-grep"><a href="#find-grep" class="headerlink" title="find / grep"></a>find / grep</h1><pre><code>find /PATH -name &quot;*.h&quot; -exec grep -in &quot;helloworld&quot; {} \;
+
+{} 代表的是由find找到的内容，而 -exec 一直到 “\;” 是关键字，代表find额外命令的开始（-exec)到结束(\;),在这中间的就是find命令内的额外命令。
+</code></pre><h1 id="service目录"><a href="#service目录" class="headerlink" title="service目录"></a>service目录</h1><pre><code>/etc/init.d  # /etc/init.d 是 /etc/rc.d/init.d 的软链接(soft link)
+</code></pre><h1 id="netstat查看网络状态、端口状态"><a href="#netstat查看网络状态、端口状态" class="headerlink" title="netstat查看网络状态、端口状态"></a>netstat查看网络状态、端口状态</h1><pre><code>&gt; netstat -luntp 查看端口被占用情况 // t 指TCP端口 u 指UDP端口
+</code></pre><h1 id="etc-profile-etc-bashrc-bash-profile-bashrc（修改之后使用source命令进行初始化）"><a href="#etc-profile-etc-bashrc-bash-profile-bashrc（修改之后使用source命令进行初始化）" class="headerlink" title="/etc/profile, /etc/bashrc, ~/.bash_profile, ~/.bashrc（修改之后使用source命令进行初始化）"></a>/etc/profile, /etc/bashrc, ~/.bash_profile, ~/.bashrc（修改之后使用source命令进行初始化）</h1><ul>
+<li>/etc/profile: 此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行.并从/etc/profile.d目录的配置文件中搜集shell的设置.</li>
+<li>/etc/bashrc:  为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取.</li>
+<li>~/.bash_profile: 每个用户都可使用该文件输入<code>专用于自己</code>使用的shell信息,当用户登录时,该文件仅仅执行一次!默认情况下,他设置一些<a href="#$PATH-变量">环境变量</a>,执行用户的.bashrc文件.</li>
+<li>~/.bashrc: 权限控制到用户级别,该文件包含<code>专用于你</code>的bash shell的bash信息,当登录时以及每次打开新的shell时,该文件被读取. tip: alias 一般在这里设置永久生效</li>
+</ul>
+<p>参考链接:<br><a href="https://blog.csdn.net/missmecn/article/details/51941050" title="linux用户登录启动配置文件" target="_blank" rel="noopener">linux用户登录启动配置文件</a><br><a href="https://blog.csdn.net/sch0120/article/details/70256318" target="_blank" rel="noopener">关于“.bash_profile”和“.bashrc”区别的总结</a></p>
+<h1 id="变量相关"><a href="#变量相关" class="headerlink" title="变量相关"></a>变量相关</h1><ul>
+<li>在linux下声明一个变量的方法：变量名=变量值，=左右不能有空格，使用$变量名调用变量。</li>
+<li>set命令可以查看所有变量，包括普通变量和环境变量 unset删除变量</li>
+<li>将命令的执行结果赋值给变量有两种方法，方法一：使用<code></code>包住执行的命令，方法二：将命令放入$()内执行</li>
+</ul>
+<h1 id="压缩-and-解压"><a href="#压缩-and-解压" class="headerlink" title="压缩 and 解压"></a>压缩 and 解压</h1><ul>
+<li><p>tar命令 </p>
+<pre><code>tar -czvf a.tar.gz a.jpg  
+// c 压缩, z 有gzip属性的, v 显示所有过程, f 使用档案名字,这个参数是最后一个参数，后面只能接档案名。
+
+tar -xf file.tar -C ./file  
+// x 解压, -C 解压时指定释放的路径。
+
+tar -cjf a.tar.bz2 a.jp  // j 有bz2属性的
+</code></pre></li>
+<li>其他命令<ol>
+<li>zip/unzip</li>
+<li>rar/unrar<br> rar a a.rar a.jpg</li>
+<li>gzip -d/gunzip</li>
+</ol>
+</li>
+</ul>
+<h1 id="mount命令是经常会使用到的命令-它用于挂载Linux系统外的文件。"><a href="#mount命令是经常会使用到的命令-它用于挂载Linux系统外的文件。" class="headerlink" title="mount命令是经常会使用到的命令,它用于挂载Linux系统外的文件。"></a><code>mount</code>命令是经常会使用到的命令,它用于挂载Linux系统外的文件。</h1><h1 id="vim-常用操作"><a href="#vim-常用操作" class="headerlink" title="vim 常用操作"></a>vim 常用操作</h1><pre><code>- 翻页
+    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ctrl+f forward向前翻一页</span></span><br><span class="line"><span class="comment"># ctrl+b backward向后翻一页</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ctlr+u up向上翻半页</span></span><br><span class="line"><span class="comment"># ctrl+d down向下翻半页</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># zz 让光标所在的行居屏幕中央</span></span><br><span class="line"><span class="comment"># zt 让光标所在的行居屏幕最上一行 t=top</span></span><br><span class="line"><span class="comment"># zb 让光标所在的行居屏幕最下一行 b=bottomE</span></span><br></pre></td></tr></table></figure>
+
+- 搜索
+        ?.. 在光标之前搜索
+        /.. 在光标之后搜索，按 n/N 分别是向后，向前
+- 替换
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># `:n1,n2(填$s时表示文件末尾)/替换的字符/替换成为的/g`</span></span><br></pre></td></tr></table></figure>
+
+- 定位：
+
+    gg: 命令将光标移动到文档开头
+    G: 移动的这个文件的最后一行
+
+    输入冒号(:)，打开命令输入框 输入命令：1或者0
+    输入冒号(:)，打开命令输入框 输入命令：$
+</code></pre><h1 id="dev-null-空设备"><a href="#dev-null-空设备" class="headerlink" title="/dev/null 空设备"></a>/dev/null 空设备</h1><pre><code>&gt; /dev/null属于字符特殊文件，它属于空设备，是一个特殊的设备文件，它会丢弃一切写入其中的数据，写入它的内容都会永远丢失，而且没有任何可以读取的内容。
+&gt;
+&gt; `cat $filename &gt;/dev/null` 与 `cat $filename 1&gt;/dev/null`一样。其中 1：表示标准输出（stdout）（默认值）， 0：表示标准输入流（stdin）， 2：表示标准错误输出（stderr）
+</code></pre><h1 id="head-和-tail"><a href="#head-和-tail" class="headerlink" title="head 和 tail"></a>head 和 tail</h1><pre><code>&gt; head 显示文件开头部分内容，默认10行 -n 显示行数
+&gt; tail 显示文件结尾部分内容，默认10行 -f 监听文件 -n 显示行数
+</code></pre><h1 id="iptables-防火墙"><a href="#iptables-防火墙" class="headerlink" title="iptables 防火墙"></a>iptables 防火墙</h1><pre><code>&gt; [参考链接](https://www.cnblogs.com/jtestroad/p/8031850.html)
+- 命令行方式
+    1. 开放端口命令： /sbin/iptables -I INPUT -p tcp --dport 8080(端口) -j ACCEPT(开放)|DROP(关闭)
+    2. 保存：/etc/rc.d/init.d/iptables save
+    3. 重启服务：/etc/init.d/iptables restart
+    4. 查看端口是否开放：iptables  -L -n
+- 编辑/etc/sysconfig/iptables文件
+    1. 编辑/etc/sysconfig/iptables文件：vim /etc/sysconfig/iptables
+       加入内容并保存：-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080(开放的端口) -j ACCEPT
+    1. 重启服务：/etc/init.d/iptables restart
+    2.  查看端口是否开放：/sbin/iptables -L -n
+
+&gt; 注意： Centos升级到7之后，内置的防火墙已经从iptables变成了firewalld。所以，端口的开启还是要从两种情况来说明的，即iptables和firewalld。参考链接：https://www.cnblogs.com/moxiaoan/p/5683743.html
+</code></pre><h1 id="ps-查看进程-用于显示当前进程-process-的状态。"><a href="#ps-查看进程-用于显示当前进程-process-的状态。" class="headerlink" title="ps 查看进程 用于显示当前进程 (process) 的状态。"></a>ps 查看进程 用于显示当前进程 (process) 的状态。</h1><pre><code>1. 常用参数
+
+        -a 显示同一终端下的所有程序
+        -A 显示所有进程 （等价于-e）
+        -w 显示加宽可以显示较多的资讯
+
+        -au 显示较详细的资讯
+        -aux 显示所有包含其他使用者的进程
+
+        c  显示进程的真实名称
+        -C&lt;命令&gt; 列出指定命令的状况  显示一个名为getty的进程的信息 ps -C getty
+
+        -d 显示所有进程，但省略所有的会话引线(utility)
+
+        -e 等于&quot;-A&quot;
+        e  显示环境变量
+
+        -f 全部列出，通常和其他选项联用。如：ps -fa or ps -fx and so on.
+        f  显示程序间的关系(树形结构  pstree命令也是显示树形结构)
+
+        x 显示所有程序，不以终端机来区分。
+        -x 显示没有控制终端的进程，同时显示各个命令的具体路径。dx不可合用。（utility）
+
+2. ps aux 和ps -ef  
+两者的输出结果差别不大，但展示风格不同。aux是BSD风格，-ef是System V风格。这是次要的区别，一个影响使用的区别是aux会截断command列，而-ef不会。当结合grep时这种区别会影响到结果。 
+举例请参考：http://www.2cto.com/os/201303/197697.html
+</code></pre><h1 id="Linux下查看和添加环境变量-PATH"><a href="#Linux下查看和添加环境变量-PATH" class="headerlink" title="Linux下查看和添加环境变量 PATH"></a>Linux下查看和添加环境变量 PATH</h1><h2 id="PATH-变量"><a href="#PATH-变量" class="headerlink" title="$PATH 变量"></a>$PATH 变量</h2><p>$PATH：决定了shell将到哪些目录中寻找命令或程序，PATH的值是一系列目录，当您运行一个程序时，Linux在这些目录下进行搜寻编译链接。<br>格式: <code>PATH=$PATH:&lt;PATH 1&gt;:&lt;PATH 2&gt;:&lt;PATH 3&gt;:------:&lt;PATH N&gt;</code><br>可以自己加上指定的路径，中间用冒号隔开。环境变量更改后，在用户下次登陆时生效，如果想立刻生效，则可执行下面的语句：$ source .bash_profile</p>
+<h2 id="查看PATH"><a href="#查看PATH" class="headerlink" title="查看PATH"></a>查看PATH</h2><ol>
+<li>使用 <code>export</code> 命令查看PATH值</li>
+<li><code>echo $PATH</code></li>
+</ol>
+<h2 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h2><ol>
+<li><p>临时添加PATH环境变量</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[yonjim@localhost ~]$ <span class="built_in">export</span> PATH=/binPath/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>永久添加环境变量(仅影响当前用户)</p>
+<ol>
+<li>编辑<code>~/.bashrc</code>或者<code>~/.bash_profile</code>文件 <code>vim ~/.bash_profile</code> 在文档最后，添加:<code>export PATH=&quot;/binPath/bin:$PATH&quot;</code>保存，退出</li>
+<li>使用修改内容生效 <code>source ~/.bash_profile</code></li>
+</ol>
+</li>
+<li>永久添加环境变量(影响所有用户)<ol>
+<li>编辑/etc/profile文件 <code>vim /etc/profile</code> 在文档最后，添加:<code>export PATH=&quot;/binPath/bin:$PATH&quot;</code>保存，退出</li>
+<li>使用修改内容生效 <code>source /etc/profile</code></li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>参考链接：<a href="https://www.cnblogs.com/aaronLinux/p/5837702.html" target="_blank" rel="noopener">https://www.cnblogs.com/aaronLinux/p/5837702.html</a></p>
+</blockquote>
+<h1 id="nohup-和-amp-和-daemon"><a href="#nohup-和-amp-和-daemon" class="headerlink" title="nohup 和 &amp; 和 daemon"></a>nohup 和 &amp; 和 daemon</h1><h2 id="linux下的常见信号"><a href="#linux下的常见信号" class="headerlink" title="linux下的常见信号"></a>linux下的常见信号</h2><p>在了解nohup 和 &amp; 和 daemon之前，我们要先简单了解一下linux下的信号。</p>
+<h3 id="信号本质"><a href="#信号本质" class="headerlink" title="信号本质"></a>信号本质</h3><p>软中断信号（signal，又简称为信号）用来通知进程发生了异步事件。在软件层次上是对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</p>
+<h4 id="Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到Linux信号（signal-机制分析）"><a href="#Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到Linux信号（signal-机制分析）" class="headerlink" title="Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到Linux信号（signal) 机制分析）"></a>Linux支持的信号（这里只列了SIGHUP和SIGINT信号，详细了解请到<a href="https://blog.csdn.net/dai_xiangjun/article/details/41871647" target="_blank" rel="noopener">Linux信号（signal) 机制分析</a>）</h4><ol>
+<li><p>SIGHUP：终端挂起或者控制进程终止</p>
+<p>SIGHUP会在以下3种情况下被发送给相应的进程：</p>
+<p> 1、终端关闭时，该信号被发送到session首进程以及作为job提交的进程（即用 &amp; 符号提交的进程）</p>
+<p> 2、session首进程退出时，该信号被发送到该session中的前台进程组中的每一个进程</p>
+<p> 3、若父进程退出导致进程组成为孤儿进程组，且该进程组中有进程处于停止状态（收到SIGSTOP或SIGTSTP信号），该信号会被发送到该进程组中的每一个进程。</p>
+<p> 系统对SIGHUP信号的默认处理是终止收到该信号的进程。所以若程序中没有捕捉该信号，当收到该信号时，进程就会退出。</p>
+</li>
+<li><p>SIGINT： 程序中止信号，在用户键入INTR字符（通常是Ctrl+C）时发出。</p>
+</li>
+</ol>
+<h2 id="nohup（不挂起）"><a href="#nohup（不挂起）" class="headerlink" title="nohup（不挂起）"></a>nohup（不挂起）</h2><p>用途：不挂断地运行命令。<br>语法：nohup Command [Arg…] [&amp;]<br>描述：nohup 命令运行由 Command 参数和任何相关的 Arg 参数指定的命令，忽略所有挂断（SIGHUP）信号。在注销后使用 nohup 命令运行后台中的程序。要运行后台中的nohup 命令，添加&amp;（表示”and”的符号）到命令的尾部。</p>
+<h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>就是将程序放在后台运行。对于shell来说，通过&amp; 可以把一个程序放在后台运行。其就是作为一个job来运行的。此时如果终端断开，程序还是会被SIGHUP信号导致退出的。即上面SIGHUP信号的第一种场景。</p>
+<h2 id="nohup与-amp"><a href="#nohup与-amp" class="headerlink" title="nohup与&amp;"></a>nohup与&amp;</h2><ol>
+<li><p>使用&amp;后台运行程序：</p>
+<p> 结果会输出到终端<br> 使用Ctrl + C发送SIGINT信号，程序免疫<br> 关闭session发送SIGHUP信号，程序关闭</p>
+</li>
+<li><p>使用nohup运行程序：</p>
+<p> 结果默认会输出到nohup.out<br> 使用Ctrl + C发送SIGINT信号，程序关闭<br> 关闭session发送SIGHUP信号，程序免疫  </p>
+</li>
+<li><p>平日线上经常使用nohup和&amp;配合来启动程序：</p>
+<p> 同时免疫SIGINT和SIGHUP信号</p>
+</li>
+</ol>
+<h2 id="daemon"><a href="#daemon" class="headerlink" title="daemon"></a>daemon</h2><p>Daemon进程也就是守护进程，linux大多数的服务进程都是通过守护进程实现的。比如0号进程(调度进程) ，1号进程(init进程)。从其名字守护看出其一般就是机器启动就运行，关机才停止。所以其应该不会受到终端的影响。同时其实在后台运行的。</p>
+<p>参考链接：<br><a href="https://blog.csdn.net/dai_xiangjun/article/details/41871647" target="_blank" rel="noopener">Linux信号（signal) 机制分析</a><br><a href="https://blog.csdn.net/lovemdx/article/details/20529563" target="_blank" rel="noopener">linux 的nohup &amp; 和daemon 总结</a><br><a href="https://mp.weixin.qq.com/s/nyT-FPdIUdJUiUCYVGEnTg" target="_blank" rel="noopener">一分钟了解nohup和&amp;的功效</a></p>
+<h1 id="ln命令-软链接"><a href="#ln命令-软链接" class="headerlink" title="ln命令 软链接"></a>ln命令 软链接</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 常用来设置软链接</span><br><span class="line">ln -s 源目标 目标文件</span><br></pre></td></tr></table></figure>
+<p>注意：路径的问题，用绝对路径没那么多问题，相对路径的话（同一个目录下使用，不然会出问题）。。</p>
+<p>了解更多：<a href="http://www.runoob.com/linux/linux-comm-ln.html" target="_blank" rel="noopener">http://www.runoob.com/linux/linux-comm-ln.html</a></p>
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/11/05/linux/linux/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">11月</div>
 			<div class="post-day">03</div>
 	</div>
   <div class="post-block">
@@ -783,242 +1118,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-date">
-			<div class="post-month">10月</div>
-			<div class="post-day">31</div>
-	</div>
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/31/blog/blog-buliding/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YonJim">
-      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
-      <meta itemprop="image" content="/images/293854950580539874.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YonJim">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/31/blog/blog-buliding/" itemprop="url">
-                  搭建个人博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-10-31 19:15:22" itemprop="dateCreated datePublished" datetime="2018-10-31T19:15:22+08:00">2018-10-31</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/10/31/blog/blog-buliding/" class="leancloud_visitors" data-flag-title="搭建个人博客">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>&emsp;&emsp;一直想搭个博客，也可以学习一下markdown。折腾了一天终于将第一个博客搭起来了，简单记录一下这个过程。</p>
-<h1 id="搭建博客的选择"><a href="#搭建博客的选择" class="headerlink" title="搭建博客的选择"></a>搭建博客的选择</h1><ol>
-<li><p>选择网上流行的论坛或者社区平台</p>
-<p> 这里列出常见的几个： <a href="https://www.jianshu.com/" title="简书" target="_blank" rel="noopener">简书</a>, <a href="https://juejin.im/" title="掘金" target="_blank" rel="noopener">掘金</a>, <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">知乎</a>,<a href="https://www.jianshu.com/" title="博客园" target="_blank" rel="noopener">博客园</a>,<a href="https://www.csdn.net/" title="CSDN" target="_blank" rel="noopener">CSDN</a>,<a href="https://segmentfault.com/" title="SegmentFault" target="_blank" rel="noopener">SegmentFault</a>等。相信这里面总有一个你见过的,我就直接进入主题吧。</p>
-</li>
-<li><p>选择自己搭建</p>
-<p> 现在网上常见的几个方法：</p>
-<ol>
-<li><p>使用WordPress （PHP语言开发的博客平台，也可以当一个CMS来使用）搭建。 （要氪金）<br>需要配置服务器，域名，数据库等。如果你熟悉PHP和web知识可以选择这个哦。</p>
-</li>
-<li><p>hexo/jekyll + Github Pages/Coding Pages（氪金，不存在的！）<br>hexo和jekyll都是静态博客框架，在本地生成静态html后上传到Github或者Coding等代码托管平台。可以简单快捷搭建出一个静态博客，我就是用了hexo + Github Pages搭建的。</p>
-</li>
-</ol>
-</li>
-</ol>
-<h1 id="Hexo-Github-Pages-博客搭建"><a href="#Hexo-Github-Pages-博客搭建" class="headerlink" title="Hexo + Github Pages 博客搭建"></a>Hexo + Github Pages 博客搭建</h1><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><ol>
-<li><p>Hexo 官网 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">https://hexo.io/docs/</a></p>
-<p> 详细步骤请参考在<a href="https://hexo.io/docs/" title="hexo" target="_blank" rel="noopener">Hexo</a>的官网，我在这里简单描述一下几个重要的步骤。</p>
-</li>
-<li><p>先安装一下应用程序<br> <a href="https://nodejs.org/zh-cn/" title="node" target="_blank" rel="noopener">Node.js</a><br> <a href="https://git-scm.com/" title="Git" target="_blank" rel="noopener">Git</a></p>
-</li>
-<li><p>安装 hexo</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>初始化项目</p>
-<pre><code>$ hexo init &lt;folder&gt;
-$ cd &lt;folder&gt;
-$ npm install
-</code></pre></li>
-<li><p>启动服务器</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p> 打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 你会发现博客已在本地搭建成功。<br> 详细配置请到<a href="https://hexo.io/docs/" title="hexo" target="_blank" rel="noopener">官网</a>查看。</p>
-</li>
-</ol>
-<h2 id="推送到GitHub"><a href="#推送到GitHub" class="headerlink" title="推送到GitHub"></a>推送到GitHub</h2><ol>
-<li>首先你得要有一个<a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">GitHub</a>账号，注册过程非常简单，我就不展示了。</li>
-<li>新建一个仓库，仓库命名格式为 (你的github账号名称).github.io。<br> <img src="/asset/images/github-repo.png" alt="github-repo" title="github-repo"></li>
-<li><p>使用ssh密钥方式推送（也可以使用https的方式）</p>
-<ul>
-<li><p>生成秘钥（window用户需要使用Git Bash输入），按回车三下，即生成成功。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
-<img src="/2018/10/31/blog/blog-buliding/2018-11-04_201852.png" title="ssh-keygen">
-</li>
-<li><p>命令行输入<code>cat ~/.ssh/id_rsa.pub</code>，将显示的内容复制。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加到 github。</p>
-  <img src="/2018/10/31/blog/blog-buliding/setting.png" title="ssh-keygen">
-  <img src="/2018/10/31/blog/blog-buliding/ssh_key.png" title="ssh-keygen">
-  <img src="/2018/10/31/blog/blog-buliding/new.png" title="ssh-keygen">
-  <img src="/2018/10/31/blog/blog-buliding/add.png" title="ssh-keygen">
-<p>  点击Add SHH key按钮。就ok了。</p>
-</li>
-<li><p>测试是否成功添加。<br>  命令行输入<code>ssh git@github.com</code>。<br>  若出现<code>Hi xxx! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code>，恭喜你，添加成功了。请跳过下面的步骤。</p>
-<p>  若出现<code>ssh: connect to host github.com port 22: Connection refused</code>。<br>  进入用户的.ssh目录<code>cd ~/.ssh</code>(windwo用户进入<code>C:\Users\Administrator\.ssh</code>)，新建config文件<code>touch config</code><br>  输入配置信息</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Host github.com  </span><br><span class="line">User 这里填写你注册时使用的邮箱  </span><br><span class="line">Hostname ssh.github.com  </span><br><span class="line">PreferredAuthentications publickey  </span><br><span class="line">IdentityFile ~/.ssh/id_rsa  </span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Hexo 部署（详细可以到hexo官网查看）<br>  安装 hexo-deployer-git。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>  修改配置（初始化目录下的_config.yml）。</p>
-  <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    repo:</span> <span class="string">git@github.com:你的github账号名称/你的github账号名称.github.io.git</span></span><br><span class="line"><span class="attr">    branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-<p>  推送到github上之前，不要忘记执行<code>hexo g</code>命令生成静态文件。</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-<p>  执行<code>hexo d</code>命令</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>  最后出现<code>INFO  Deploy done: git</code>，表示已经推送到github上了。</p>
-</li>
-</ul>
-</li>
-<li><p>您的Hexo博客已经搭建好啦~~ 打开浏览器输入https://你的github账号名称.github.io。</p>
-</li>
-<li><p>更换主题<br> 如果你想要更换主题可以到<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a>，找到你喜欢的主题。<br> 把下载的主题放到初始化目录的themes目录下，修改初始化目录的_config.yml</p>
- <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">下载的主题文件夹名称</span></span><br></pre></td></tr></table></figure>
-<p> 执行命令</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p> 你会发现主题已经更换成功了！</p>
-<p> 我使用的是next的主题，附上<a href="http://theme-next.iissnan.com/getting-started.html" title="next" target="_blank" rel="noopener">主题文档</a></p>
-</li>
-</ol>
-<!-- 参考式链接 -->
-
-             
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/10/31/blog/blog-buliding/#更多" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1068,7 +1167,7 @@ $ npm install
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

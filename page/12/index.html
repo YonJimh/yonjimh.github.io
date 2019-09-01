@@ -397,6 +397,267 @@
   
   <div class="post-date">
 			<div class="post-month">12月</div>
+			<div class="post-day">08</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/nginx/Nginx3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/08/nginx/Nginx3/" itemprop="url">
+                  Nginx（三）Nginx官方模块
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-08 20:18:51" itemprop="dateCreated datePublished" datetime="2018-12-08T20:18:51+08:00">2018-12-08</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/08/nginx/Nginx3/" class="leancloud_visitors" data-flag-title="Nginx（三）Nginx官方模块">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Nginx模块"><a href="#Nginx模块" class="headerlink" title="Nginx模块"></a>Nginx模块</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ol>
+<li>Nginx官方模块</li>
+<li>第三方模块</li>
+</ol>
+<h3 id="Nginx官方模块-部分-Modules-reference"><a href="#Nginx官方模块-部分-Modules-reference" class="headerlink" title="Nginx官方模块(部分) Modules reference"></a>Nginx官方模块(部分) <a href="http://nginx.org/en/docs/" title="doc" target="_blank" rel="noopener">Modules reference</a></h3><blockquote>
+<p>使用<code>nginx -V</code> 可以看到模块（module）相关的编译参数 –with-XXXXX_module。</p>
+</blockquote>
+<h4 id="ngx-http-stub-status-module-模块提供对基本状态信息的访问"><a href="#ngx-http-stub-status-module-模块提供对基本状态信息的访问" class="headerlink" title="ngx_http_stub_status_module 模块提供对基本状态信息的访问"></a><a href="http://nginx.org/en/docs/http/ngx_http_stub_status_module.html" target="_blank" rel="noopener">ngx_http_stub_status_module</a> 模块提供对基本状态信息的访问</h4><blockquote>
+<p>默认情况下不构建此模块，应使用–with-http_stub_status_module 配置参数启用它</p>
+</blockquote>
+<pre><code>Directives：stub_status
+
+Syntax：stub_status;
+Default：-
+Context：server， location
+</code></pre><h4 id="ngx-http-random-index-module-模块处理以斜杠字符（’-‘）结尾的请求，并在目录中选择一个随机文件作为索引文件"><a href="#ngx-http-random-index-module-模块处理以斜杠字符（’-‘）结尾的请求，并在目录中选择一个随机文件作为索引文件" class="headerlink" title="ngx_http_random_index_module 模块处理以斜杠字符（’/‘）结尾的请求，并在目录中选择一个随机文件作为索引文件"></a><a href="http://nginx.org/en/docs/http/ngx_http_random_index_module.html" target="_blank" rel="noopener">ngx_http_random_index_module</a> 模块处理以斜杠字符（’/‘）结尾的请求，并在目录中选择一个随机文件作为索引文件</h4><blockquote>
+<p>默认情况下不构建此模块，应使用–with-http_random_index_module 配置参数启用它 。</p>
+</blockquote>
+<pre><code>Directives：random_index
+
+Syntax: random_index on | off;
+Default: random_index off;
+Context: location
+</code></pre><h4 id="ngx-http-sub-module-模块是一个过滤器，它通过将一个指定的字符串替换为另一个字符串（HTTP内容替换）"><a href="#ngx-http-sub-module-模块是一个过滤器，它通过将一个指定的字符串替换为另一个字符串（HTTP内容替换）" class="headerlink" title="ngx_http_sub_module 模块是一个过滤器，它通过将一个指定的字符串替换为另一个字符串（HTTP内容替换）"></a><a href="http://nginx.org/en/docs/http/ngx_http_sub_module.html" target="_blank" rel="noopener">ngx_http_sub_module</a> 模块是一个过滤器，它通过将一个指定的字符串替换为另一个字符串（HTTP内容替换）</h4><blockquote>
+<p>默认情况下不构建此模块，应使用–with-http_sub_module 配置参数启用它 。</p>
+</blockquote>
+<pre><code>Directives：
+sub_filter 设置要替换的字符串和替换字符串。
+sub_filter_last_modified 允许在替换期间保留原始响应中的&quot;Last-Modified”头字段，以便于响应缓存。default： sub_filter_last_modified off;
+sub_filter_once 设置替换一次还是全部替换 default： sub_filter_once on;（替换一次）
+sub_filter_types 除了&quot;text/html&quot;之外，还在具有指定MIME类型的响应中启用字符串替换。特殊值&quot;*&quot;匹配任何MIME类型。default：sub_filter_types text/html;
+
+Syntax: sub_filter string(替换的字符) replacement(替换成的字符);
+Default: —
+Context: http, server, location
+</code></pre><h4 id="请求限制模块"><a href="#请求限制模块" class="headerlink" title="请求限制模块"></a>请求限制模块</h4><ul>
+<li><p>连接限制 <a href="http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html#limit_conn_zone" target="_blank" rel="noopener">ngx_http_limit_conn_module</a></p>
+<pre><code>limit_conn_zone 设置共享内存区域的参数，该区域将保留各种key的状态。
+Syntax: limit_conn_zone key zone=name:size;
+Default: —
+Context: http
+
+limit_conn 设置共享内存区域和给定键值的最大允许连接数
+Syntax: limit_conn zone number;
+Default: —
+Context: http, server, location
+</code></pre></li>
+<li><p>请求限制 <a href="http://nginx.org/en/docs/http/ngx_http_limit_req_module.html" target="_blank" rel="noopener">ngx_http_limit_req_module</a></p>
+<pre><code>limit_req_zone
+Syntax: limit_req_zone key zone=name:size rate=rate（请求处理速率） [sync];
+Default: —
+Context: http
+eg: limit_req_zone $binary_remote_addr zone=one:10m rate=1r/s;
+
+limit_req 设置共享内存区域和请求的最大并发。
+Syntax: limit_req zone=name [burst=number](限制并发数，默认为0) [nodelay | delay=number](延迟执行);
+Default: —
+Context: http, server, location
+</code></pre></li>
+</ul>
+<h4 id="访问控制模块"><a href="#访问控制模块" class="headerlink" title="访问控制模块"></a>访问控制模块</h4><ul>
+<li><p>基于客户端地址IP的访问控制-<a href="http://nginx.org/en/docs/http/ngx_http_access_module.html" target="_blank" rel="noopener">ngx_http_access_module</a></p>
+<pre><code>Syntax: allow允许|deny拒绝 address | CIDR | unix: | all;
+Default: —
+Context: http, server, location, limit_except
+</code></pre><ul>
+<li>局限性  通过其他的中间件（Nginx, 7lay LSB, CDN等）才到达服务端。<ol>
+<li>采用X-Forwarded-For。</li>
+<li>结合geo模块。</li>
+<li>通过HTTP自定义变量传递。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>基于用户的信任登录-<a href="http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html" target="_blank" rel="noopener">ngx_http_auth_basic_module</a> 打开页面需要填写用户名和密码</p>
+<pre><code>Directives:
+    auth_basic
+    auth_basic_user_file
+</code></pre><ul>
+<li>局限性 1.用户信息依赖文件方式 2.操作光临机械，效率低下<br>  解决方法<ol>
+<li>Nginx结合LUA实现高效验证</li>
+<li>Nginx和LDAP打通，利用nginx-auth-ladp模块</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/08/nginx/Nginx3/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">12月</div>
 			<div class="post-day">07</div>
 	</div>
   <div class="post-block">
@@ -893,296 +1154,6 @@ uname
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-date">
-			<div class="post-month">12月</div>
-			<div class="post-day">06</div>
-	</div>
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/nginx/Nginx1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YonJim">
-      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
-      <meta itemprop="image" content="/images/293854950580539874.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YonJim">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/06/nginx/Nginx1/" itemprop="url">
-                  Nginx（一）安装、相关目录与编译参数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-06 00:05:41" itemprop="dateCreated datePublished" datetime="2018-12-06T00:05:41+08:00">2018-12-06</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/12/06/nginx/Nginx1/" class="leancloud_visitors" data-flag-title="Nginx（一）安装、相关目录与编译参数">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>&emsp;&emsp;Nginx (engine x) 是一个高性能的HTTP和反向代理服务，也是一个IMAP/POP3/SMTP服务。我使用的是CentOS 6系统，Nginx1.14.2的版本。</p>
-</blockquote>
-<h1 id="Nginx优势"><a href="#Nginx优势" class="headerlink" title="Nginx优势"></a>Nginx优势</h1><ol>
-<li><p>[I/O多路复用]epoll  </p>
-<pre><code>I/O multiplexing 这里面的 multiplexing 指的其实是在**单个线程**通过记录跟踪每一个Sock(I/O流)的状态(对应空管塔里面的Fight progress strip槽)来同时管理多个I/O流。
-
-ngnix会有很多链接进来， epoll会把他们都监视起来，然后像拨开关一样，谁有数据就拨向谁，然后调用相应的代码处理。
-
-select, poll, epoll 都是I/O多路复用的具体的实现。epoll 可以说是I/O 多路复用最新的一个实现，epoll 修复了poll 和select绝大部分问题。
-</code></pre></li>
-<li>轻量级<ul>
-<li>功能模块少</li>
-<li>代码模块化</li>
-</ul>
-</li>
-<li>CPU亲和性(affinity)</li>
-<li>sendfile: Linux中的”零拷贝”</li>
-</ol>
-<h1 id="Linux系统安装Nginx"><a href="#Linux系统安装Nginx" class="headerlink" title="Linux系统安装Nginx"></a>Linux系统安装<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener">Nginx</a></h1><blockquote>
-<p>window系统直接到官网下载，配置一下环境变量就可以用啦</p>
-</blockquote>
-<ol>
-<li>版本<ul>
-<li>Mainline version  开发板</li>
-<li>Stable version    稳定版</li>
-<li>Legacy version    历史版本</li>
-</ul>
-</li>
-<li><p>使用yum安装</p>
-<ol>
-<li>增加yum源 /etc/yum.repos.d/nginx.repo<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 替换"OS"成"rhel"或"centos"，，"OSRELEASE"成"6"或"7"，分别为6 x或7.x的版本。</span></span><br><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ol>
-<h1 id="文件目录-使用-rpm-ql-nginx-dpkg-S-nginx-查看-eg：注意版本不同可能会有区别-￣▽￣-，下面是使用1-14-2版本的"><a href="#文件目录-使用-rpm-ql-nginx-dpkg-S-nginx-查看-eg：注意版本不同可能会有区别-￣▽￣-，下面是使用1-14-2版本的" class="headerlink" title="文件目录 ( 使用 rpm -ql nginx || dpkg -S nginx 查看 ) eg：注意版本不同可能会有区别 (￣▽￣)~*，下面是使用1.14.2版本的"></a>文件目录 ( 使用 <code>rpm -ql nginx</code> || <code>dpkg -S nginx</code> 查看 ) eg：注意版本不同可能会有区别 (￣▽￣)~*，下面是使用1.14.2版本的</h1><table>
-<thead>
-<tr>
-<th style="text-align:left">路径</th>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">/etc/logrotate.d/nginx</td>
-<td style="text-align:left">配置文件</td>
-<td style="text-align:left">Nginx日记轮转，用于<br>logrotate服务的日记切割</td>
-</tr>
-<tr>
-<td style="text-align:left">/etc/nginx/nginx.conf(主配置文件)<br>/etc/nginx/nginx.d/default.conf  <br>/etc/nginx/nginx.d/</td>
-<td style="text-align:left">目录、配置文件</td>
-<td style="text-align:left">Nginx主配置文件</td>
-</tr>
-<tr>
-<td style="text-align:left">/etc/nginx/fastcgi_params<br>/etc/nginx/uwsgi_params<br>/etc/nginx/scgi_params</td>
-<td style="text-align:left">配置文件</td>
-<td style="text-align:left">cgi配置，fastcgi配置</td>
-</tr>
-<tr>
-<td style="text-align:left">/etc/nginx/mime.types</td>
-<td style="text-align:left">配置文件</td>
-<td style="text-align:left">设置http协议的Content-Type与扩展名对应关系</td>
-</tr>
-<tr>
-<td style="text-align:left">/lib/systemd/system/nginx.service<br></td>
-<td style="text-align:left">配置文件</td>
-<td style="text-align:left">用于配置系统守护进程(daemon)管理器管理方式</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/share/nginx/modules/etc<br>/nginx/modules-available<br>/etc/nginx/modules-enabled</td>
-<td style="text-align:left">目录</td>
-<td style="text-align:left">Nginx模块目录</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/sbin/nginx</td>
-<td style="text-align:left">命令</td>
-<td style="text-align:left">Nginx服务的启动管理命令</td>
-</tr>
-<tr>
-<td style="text-align:left">/usr/share/doc<br>/usr/share/man/man8/nginx.8.gz</td>
-<td style="text-align:left">文件、目录</td>
-<td style="text-align:left">手册和帮助文件</td>
-</tr>
-<tr>
-<td style="text-align:left">/var/lib/nginx</td>
-<td style="text-align:left">目录</td>
-<td style="text-align:left">Nginx的缓存目录？Nginx缓存服务</td>
-</tr>
-<tr>
-<td style="text-align:left">/var/log/nginx</td>
-<td style="text-align:left">目录</td>
-<td style="text-align:left">Nginx的日记目录 Nginx日记</td>
-</tr>
-</tbody>
-</table>
-<h1 id="nginx-安装编译参数-nginx-V查看-eg：版本不同可能会有区别-￣▽￣-，我使用的是1-14-2版本"><a href="#nginx-安装编译参数-nginx-V查看-eg：版本不同可能会有区别-￣▽￣-，我使用的是1-14-2版本" class="headerlink" title="nginx 安装编译参数 (nginx -V查看)  eg：版本不同可能会有区别 (￣▽￣)~*，我使用的是1.14.2版本"></a>nginx 安装编译参数 (<code>nginx -V</code>查看)  eg：版本不同可能会有区别 (￣▽￣)~*，我使用的是1.14.2版本</h1><table>
-<thead>
-<tr>
-<th>编译选项</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>–prefix=/usr/share/nginx<br>–conf-path=/etc/nginx/nginx.conf<br>–http-log-path=/var/log/nginx/access.log<br>–error-log-path=/var/log/nginx/error.log<br>–lock-path=/var/lock/nginx.lock<br>–pid-path=/run/nginx.pid<br>–modules-path=/usr/lib/nginx/modules<br></td>
-<td>有什么作用，看看就懂了</td>
-</tr>
-<tr>
-<td>–http-client-body-temp-path=/var/lib/nginx/body<br>–http-fastcgi-temp-path=/var/lib/nginx/fastcgi<br>–http-proxy-temp-path=/var/lib/nginx/proxy<br>–http-scgi-temp-path=/var/lib/nginx/scgi<br>–http-uwsgi-temp-path=/var/lib/nginx/uwsgi<br></td>
-<td>执行对应模块是，nginx所产生保留的临时性文件</td>
-</tr>
-</tbody>
-</table>
-<h1 id="nginx-常用命令-help"><a href="#nginx-常用命令-help" class="headerlink" title="nginx 常用命令 (help)"></a>nginx 常用命令 (help)</h1><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nginx -V  显示版本和配置选项</span></span><br><span class="line"><span class="comment"># nginx -t  测试配置</span></span><br><span class="line"><span class="comment"># nginx -c  用来指定启动Nginx服务使用的配置文件（默认值：/etc/nginx/nginx.conf）</span></span><br><span class="line"><span class="comment"># nginx -p  prefix路径 用来改变Nginx的安装路径，常用在平滑升级Nginx服务器的场合</span></span><br><span class="line"><span class="comment"># nginx -g  'directives' 用来补充Nginx配置文件，向Nginx服务指定启动时应用于全局的配置。eg: nginx -g 'daemon off'</span></span><br><span class="line"><span class="comment"># nginx -s  signal 用来向Nginx服务的主进程发送信号 stop, quit, reopen, reload</span></span><br></pre></td></tr></table></figure>
-</code></pre>
-             
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/12/06/nginx/Nginx1/#更多" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1232,7 +1203,7 @@ select, poll, epoll 都是I/O多路复用的具体的实现。epoll 可以说是
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
