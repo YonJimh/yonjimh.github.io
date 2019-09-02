@@ -397,6 +397,222 @@
   
   <div class="post-date">
 			<div class="post-month">03月</div>
+			<div class="post-day">09</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/web/js/基础/事件流和事件处理程序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/09/web/js/基础/事件流和事件处理程序/" itemprop="url">
+                  事件流和事件处理程序
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-09 14:29:37" itemprop="dateCreated datePublished" datetime="2019-03-09T14:29:37+08:00">2019-03-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/09/web/js/基础/事件流和事件处理程序/" class="leancloud_visitors" data-flag-title="事件流和事件处理程序">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h1><p>JavaScript的<code>事件流</code>（事件流描述的是从页面中接收事件的顺序）有三种，分别是：事件冒泡、事件捕获、DOM事件流。</p>
+<ol>
+<li>IE 的事件流叫做事件冒泡（event bubbling），即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）</li>
+<li>Netscape Communicator团队提出的另一种事件流叫做事件捕获（event capturing）。事件捕获的思想<br>是不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。事件捕获的用意在于在<br>事件到达预定目标之前捕获它。</li>
+<li>“DOM2级事件”规定的事件流包括三个阶段：<a href="/2019/03/09/web/js/基础/事件冒泡和事件捕获/">事件捕获阶段、处于目标阶段和事件冒泡阶段。</a></li>
+</ol>
+<blockquote>
+<p>IE9、Opera、Firefox、Chrome 和 Safari 都支持 DOM 事件流；IE8 及更早版本不支持 DOM 事件流。</p>
+</blockquote>
+<h1 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h1><p>事件就是用户或浏览器自身执行的某种动作。诸如 click 、 load 和 mouseover ，都是事件的名字。而响应某个事件的函数就叫做<code>事件处理程序</code>（或<code>事件侦听器</code>）。事件处理程序的名字以 “on” 开头，因此click 事件的事件处理程序就是 onclick …</p>
+<h2 id="HTML事件处理程序"><a href="#HTML事件处理程序" class="headerlink" title="HTML事件处理程序"></a>HTML事件处理程序</h2><p>某个元素支持的每种事件，都可以使用一个与相应事件处理程序同名的<code>HTML 特性</code>来指定。这个特性的值应该是能够执行的 JavaScript 代码。例如，要在按钮被单击时执行一些 JavaScript，可以像下面这样编写代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"Click Me"</span> onclick=<span class="string">"alert('Clicked')"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>缺点：  </p>
+<ol>
+<li>样扩展事件处理程序的作用域链在不同浏览器中会导致不同结果。不同 JavaScript引擎遵循的标识符解析规则略有差异，很可能会在访问非限定对象成员时出错。</li>
+<li>HTML 与 JavaScript 代码紧密耦合。如果要更换事件处理程序，就要改动两个地方：HTML 代码和 JavaScript 代码。</li>
+</ol>
+<h2 id="DOM0-级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）"><a href="#DOM0-级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）" class="headerlink" title="DOM0 级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）"></a>DOM0 级事件处理程序（事件处理程序会在事件流的冒泡阶段被处理）</h2><p>通过 JavaScript 指定事件处理程序的传统方式，就是<code>将一个函数赋值给一个事件处理程序属性</code>。这种为事件处理程序赋值的方法是在第四代 Web 浏览器中出现的，而且至今仍然<code>为所有现代浏览器所支持</code>。原因一是简单，二是具有跨浏览器的优势。<code>以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。~~</code></p>
+<p>每个元素（包括 window 和 document ）都有自己的事件处理程序属性，这些属性通常全部小写，例如 onclick 。将这种属性的值设置为一个函数，就可以指定事件处理程序，如下所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Clicked"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>缺点：  </p>
+<ol>
+<li>一个元素只能添加一个事件处理程序。</li>
+</ol>
+<h3 id="移除-DOM0-级方法指定的事件处理程序"><a href="#移除-DOM0-级方法指定的事件处理程序" class="headerlink" title="移除 DOM0 级方法指定的事件处理程序"></a>移除 DOM0 级方法指定的事件处理程序</h3><p>只要像下面这样将事件处理程序属性的值设置为 null 即可：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="literal">null</span>; <span class="comment">//删除事件处理程序</span></span><br></pre></td></tr></table></figure>
+<h2 id="DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）"><a href="#DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）" class="headerlink" title="DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）"></a>DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）</h2><p><code>“DOM2级事件”</code>定义了两个方法，用于处理指定和删除事件处理程序的操作： <code>addEventListener()</code>和 <code>removeEventListener()</code> 。所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：要处理的事件名（没有on）、作为事件处理程序的函数和一个布尔值。<code>最后这个布尔值参数如果是 true ，表示在捕获阶段调用事件处理程序；如果是 false ，表示在冒泡阶段调用事件处理程序</code>。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">    btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="移除-DOM2-级事件处理程序"><a href="#移除-DOM2-级事件处理程序" class="headerlink" title="移除 DOM2 级事件处理程序"></a>移除 DOM2 级事件处理程序</h3><p>传入 removeEventListener() 中的事件处理程序函数必须与传入addEventListener() 中的相同才可以移除！！！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;;</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 这里省略了其他代码</span></span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>); <span class="comment">// 有效！</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>IE9、Firefox、Safari、Chrome和 Opera 支持 DOM2 级事件处理程序。</p>
+</blockquote>
+<h2 id="IE事件处理程序-（只支持事件冒泡）"><a href="#IE事件处理程序-（只支持事件冒泡）" class="headerlink" title="IE事件处理程序 （只支持事件冒泡）"></a>IE事件处理程序 （只支持事件冒泡）</h2><p>IE 实现了与 DOM 中类似的两个方法： <code>attachEvent() 和 detachEvent()</code>。这两个方法接受相同的两个参数：事件处理程序名称（<code>以 &quot;on&quot; 开头的, 区别DOM</code>）与事件处理程序函数。由于 IE8 及更早版本只支持事件冒泡，所以通过attachEvent() 添加的事件处理程序都会被添加到冒泡阶段。 移除跟 DOM2 级事件处理程序一样参数必须相同！</p>
+<p>要使用 attachEvent() 为按钮添加一个事件处理程序，可以使用以下代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Clicked"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="注意！"><a href="#注意！" class="headerlink" title="注意！"></a>注意！</h3><p>在 IE 中使用 attachEvent() 与使用 DOM0 级方法的主要区别在于事件处理程序的作用域。在使用 DOM0 级方法的情况下，事件处理程序会在其所属元素的作用域内运行；<code>在使用 attachEvent() 方法的情况下，事件处理程序会在全局作用域中运行，因此 this 等于 window 。</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">    btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span> === <span class="built_in">window</span>); <span class="comment">//true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>支持 IE 事件处理程序的浏览器有 IE 和 Opera。</p>
+</blockquote>
+<p>整理自<code>JavaScript高级程序设计</code>。</p>
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/03/09/web/js/基础/事件流和事件处理程序/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">03月</div>
 			<div class="post-day">06</div>
 	</div>
   <div class="post-block">
@@ -729,165 +945,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-date">
-			<div class="post-month">02月</div>
-			<div class="post-day">23</div>
-	</div>
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/23/SoftwareEngineering/开发中的各种环境/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YonJim">
-      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
-      <meta itemprop="image" content="/images/293854950580539874.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YonJim">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/23/SoftwareEngineering/开发中的各种环境/" itemprop="url">
-                  开发中的各种环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-23 23:43:33" itemprop="dateCreated datePublished" datetime="2019-02-23T23:43:33+08:00">2019-02-23</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/02/23/SoftwareEngineering/开发中的各种环境/" class="leancloud_visitors" data-flag-title="开发中的各种环境">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>记录一下开发中的各种环境。</p>
-<p>local：本地开发环境<br>dev：内部开发环境<br>test：供测试人员测试环境<br>stage：试运行环境（新功能部分目标用户使用）<br>production：对外开放的产品环境</p>
-<p><a href="https://segmentfault.com/q/1010000006921696/a-1020000006921997" target="_blank" rel="noopener">https://segmentfault.com/q/1010000006921696/a-1020000006921997</a></p>
-
-             
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/02/23/SoftwareEngineering/开发中的各种环境/#更多" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -937,7 +994,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -976,7 +1033,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
