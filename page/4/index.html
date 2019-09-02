@@ -397,6 +397,238 @@
   
   <div class="post-date">
 			<div class="post-month">08月</div>
+			<div class="post-day">05</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/web/js/基础/元素大小-offset-client-scroll/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/web/js/基础/元素大小-offset-client-scroll/" itemprop="url">
+                  元素大小 offset client scroll
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-05 00:39:08" itemprop="dateCreated datePublished" datetime="2019-08-05T00:39:08+08:00">2019-08-05</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/08/05/web/js/基础/元素大小-offset-client-scroll/" class="leancloud_visitors" data-flag-title="元素大小 offset client scroll">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>clientHeight、offsetHeight、offsetTop、scrollHeight、scrollTop等DOM的属性非常容易混乱，每次用到的时候都会找一文档，还有一大堆的兼容问题，最近看了一下红宝书这一部分的内容，这里复习记录一下。</p>
+<h2 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h2><p>在了解DOM的元素大小之前，我们先来简单看一下window对象的<code>innerWidth 、 innerHeight 、 outerWidth 和 outerHeight</code>这几个属性。区别在JQuery里有着几个方法，也是非常容易让人混乱。</p>
+<ul>
+<li><code>innerHeight</code>   返回窗口的文档显示区的高度。</li>
+<li><code>innerWidth</code>    返回窗口的文档显示区的宽度。</li>
+<li><code>outerHeight</code>   返回一个窗口的外部高度，包括所有界面元素（如工具栏/滚动）</li>
+<li><code>outerWidth</code>    返回窗口的外部宽度，包括所有的界面元素（如工具栏/滚动）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.innerHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.innerWidth)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.outerHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.outerWidth)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>IE8 及更早版本没有提供取得当前浏览器窗口尺寸的属性；不过，它通过 DOM 提供了页面可见区域<br>的相关信息。它用 document.documentElement 或 document.body （与 IE 的版本相关）的 clientWidth 和 clientHeight 属性作为替代。</p>
+<p>混杂模式下，需要用 document.body 代替 document.documentElement</p>
+</blockquote>
+<h2 id="元素大小"><a href="#元素大小" class="headerlink" title="元素大小"></a>元素大小</h2><h3 id="偏移量（offset-dimension）"><a href="#偏移量（offset-dimension）" class="headerlink" title="偏移量（offset dimension）"></a>偏移量（offset dimension）</h3><p>包括元素在屏幕上占用的所有可见的空间。元素的可见大小由其<code>高度、宽度决定，包括所有内边距、滚动条和边框大小（注意，不包括外边距）</code>。</p>
+<ul>
+<li><code>offsetHeight</code> — 元素在垂直方向上占用的空间大小，以像素计。包括元素的高度、（可见的）<br>水平滚动条的高度、上边框高度和下边框高度。(height + borderWidth + paddingLeft/Right + scrollbar)</li>
+<li><code>offsetWidth</code>  — 元素在水平方向上占用的空间大小，以像素计。包括元素的宽度、（可见的）垂<br>直滚动条的宽度、左边框宽度和右边框宽度。(width + borderWidth + paddingTop/Bottom + scrollbar)</li>
+<li><code>offsetLeft</code> — 元素的左外边框至包含元素的左内边框之间的像素距离。</li>
+<li><code>offsetTop</code> — 元素的上外边框至包含元素的上内边框之间的像素距离。</li>
+</ul>
+<blockquote>
+<p>还有一个 offsetParent 属性 返回的是ele元素最近的并且是定位过(relative, absolute)的父元素，如果没有父元素或者是父元素中没有一个是定位过的，返回值就是body元素</p>
+</blockquote>
+<p><img src="/2019/08/05/web/js/基础/元素大小-offset-client-scroll/offset.png" alt="offset"></p>
+<h3 id="客户区大小（client-dimension）"><a href="#客户区大小（client-dimension）" class="headerlink" title="客户区大小（client dimension）"></a>客户区大小（client dimension）</h3><p><code>元素内容及其内边距</code>所占据的空间大小，从字面上看，客户区大小就是元素内部的空间大小</p>
+<ul>
+<li><code>clientWidth</code> — 属性是元素内容区宽度加上左右内边距宽度。</li>
+<li><code>clientHeight</code> — 属性是元素内容区高度加上上下内边距高度。</li>
+</ul>
+<p><img src="/2019/08/05/web/js/基础/元素大小-offset-client-scroll/client.png" alt="client"></p>
+<h3 id="滚动大小（scroll-dimension）"><a href="#滚动大小（scroll-dimension）" class="headerlink" title="滚动大小（scroll dimension）"></a>滚动大小（scroll dimension）</h3><p>指的是包含滚动内容的元素的大小。</p>
+<ul>
+<li>scrollHeight — 在没有滚动条的情况下，元素内容的总高度（这里理解为没有滚动条下的文档）。</li>
+<li>scrollWidth — 在没有滚动条的情况下，元素内容的总宽度。</li>
+<li>scrollLeft — 被隐藏在内容区域左侧的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+<li>scrollTop — 被隐藏在内容区域上方的像素数。通过设置这个属性可以改变元素的滚动位置。</li>
+</ul>
+<p><img src="/2019/08/05/web/js/基础/元素大小-offset-client-scroll/scroll.png" alt="scroll"></p>
+<h3 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect()</a></h3><p>IE、Firefox 3+、Safari 4+、Opera 9.5及 Chrome为每个元素都提供了一个 getBoundingClientRect() 方法。这个方法返回会一个矩形对象，包含left 、 top 、 right 和 bottom 等属性。</p>
+<h2 id="document-documentElement-与-document-body-傻傻分不清"><a href="#document-documentElement-与-document-body-傻傻分不清" class="headerlink" title="document.documentElement 与 document.body 傻傻分不清"></a>document.documentElement 与 document.body 傻傻分不清</h2><p>我们知道 document.documentElement 与 document.body 分别指向文档的 <code>&lt;html&gt;</code>元素 和 <code>&lt;body&gt;</code>元素。</p>
+<p>这两个属性的问题大多数都是因为<code>文档模式</code>引起的，标准声明的存在会对document.body和document.documentElement的属性值有影响。</p>
+<h3 id="在chrome上document-body-scrollTop为0"><a href="#在chrome上document-body-scrollTop为0" class="headerlink" title="在chrome上document.body.scrollTop为0"></a>在chrome上document.body.scrollTop为0</h3><p>在混杂模式下，可以通过 <code>&lt;body&gt;</code> 元素的 scrollLeft 和 scrollTop 来监控到这一变化<br>而在标准模式下，除 Safari（使用pageXOffset/pageYOffset） 之外的所有浏览器都会通过 <code>&lt;html&gt;</code> 元素来反映这一变化</p>
+<p>使用以下代码解决</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.pageYOffset || <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop || <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>主流浏览器（IE要9+）都支持 pageXOffset 和 pageYOffset 属性</p>
+</blockquote>
+<p>MDN上<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/scrollingElement" target="_blank" rel="noopener">scrollingElement</a>属性（返回滚动文档的 Element 对象的引用）说明中有提到<br>在标准模式下, 这是文档的根元素, document.documentElement。<br>当在怪异模式下， scrollingElement 属性返回 HTML body 元素（若不存在返回 null ）。</p>
+<p><a href="https://stackoverflow.com/questions/28633221/document-body-scrolltop-firefox-returns-0-only-js" target="_blank" rel="noopener">document.body.scrollTop Firefox returns 0 : ONLY JS</a></p>
+<!-- ### document.documentElement.clientHeight 与 document.body.clientHeight
+
+html加了`<!DOCTYPE html>`
+
+![clien.png](./clien.png) -->
+<!-- 混杂模式 标准模式-->
+<!-- 在标准模式下， document.compatMode 的值等于 "CSS1Compat" ，而在混杂模式下， document.compatMode 的值等于 "BackCompat"混杂模式又称怪异模式或兼容模式
+1）混杂模式又称怪异模式或兼容模式，指浏览器按照自己的方式来解析代码，页面以宽松的向后兼容的解析方式，是实现IE5.5以下版本浏览器的渲染模式。就严格度上来说不如严格模式，但是模拟老式浏览器的行为可以防止站点无法工作
+2）标准模式又称严格模式，是一种要求严格地DTD（档类型定义(Document Type Definition)），排版和js运作模式根据web标准去解析页面的模式 -->
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/05/web/js/基础/元素大小-offset-client-scroll/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">08月</div>
 			<div class="post-day">02</div>
 	</div>
   <div class="post-block">
@@ -559,240 +791,6 @@
              
             <div class="post-button text-center">
               <a class="btn" href="/2019/08/02/web/js/基础/location对象/#更多" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-date">
-			<div class="post-month">07月</div>
-			<div class="post-day">14</div>
-	</div>
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/bookmarks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YonJim">
-      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
-      <meta itemprop="image" content="/images/293854950580539874.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YonJim">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/14/bookmarks/" itemprop="url">
-                  Awesome
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-14 23:54:12" itemprop="dateCreated datePublished" datetime="2019-07-14T23:54:12+08:00">2019-07-14</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/07/14/bookmarks/" class="leancloud_visitors" data-flag-title="Awesome">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>个人技术收藏集</strong><br><strong>一些平时用到的库，常用，有趣的网站和小工具。</strong></p>
-<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ul>
-<li><a href="https://github.com/hammerjs/hammer.js" target="_blank" rel="noopener">hammer</a> 移动端手势库</li>
-<li><a href="https://github.com/xx45/dayjs" target="_blank" rel="noopener">dayjs</a> 一个轻量级类 API 时间库 moment.js</li>
-<li><a href="https://github.com/hotoo/pinyin" target="_blank" rel="noopener">pinyin</a> 汉字拼音转换</li>
-<li><a href="https://github.com/transloadit/uppy" target="_blank" rel="noopener">uppy</a> 一款时尚的模块化JavaScript文件上传器</li>
-<li><a href="https://github.com/pqina/filepond" target="_blank" rel="noopener">Filepond</a> 一个小巧灵活而有趣的JavaScript文件上传库</li>
-<li><a href="https://regex101.com/" target="_blank" rel="noopener">Regular Expressions</a> 在线正则网站 挺好用的</li>
-<li><a href="https://jex.im/regulex/" target="_blank" rel="noopener">jex</a> 正则可视化网站，可以导出图片，配合上面的 Regular Expressions，写正则方便很多</li>
-<li><a href="https://github.com/sindresorhus/awesome-nodejs" target="_blank" rel="noopener">awesome-nodejs</a> Node.js包和资源</li>
-<li><a href="https://github.com/PrismJS/prism" target="_blank" rel="noopener">primjs</a> 让页面支持代码高亮 pre标签 code标签</li>
-<li><a href="https://github.com/highlightjs/highlight.js" target="_blank" rel="noopener">highlight.js</a> Javascript语法高亮</li>
-<li><a href="https://github.com/RevillWeb/img-2" target="_blank" rel="noopener">img-2</a> 一个提高图片加载性能和体验的库，懒加载、web worker、模糊预览</li>
-<li><a href="https://github.com/transloadit/uppy" target="_blank" rel="noopener">uppy</a> 浏览器上传器</li>
-<li><a href="https://github.com/h5bp/html5-boilerplate" target="_blank" rel="noopener">html5-boilerplate</a> 一个专业的前端模板，用于构建快速，健壮且适应性强的Web应用程序或站点</li>
-</ul>
-<h3 id="Css"><a href="#Css" class="headerlink" title="Css"></a>Css</h3><ul>
-<li><a href="http://apps.eky.hk/css-triangle-generator/" target="_blank" rel="noopener">CSS triangle generator</a> 帮你快速用 css 做出三角形</li>
-<li><a href="http://www.cssarrowplease.com/" target="_blank" rel="noopener">cssarrowplease</a> 帮你做对话框三角的</li>
-<li><a href="http://bennettfeely.com/clippy/" target="_blank" rel="noopener">clippy</a> 在线帮你使用 css clip-path 做出各种形状的</li>
-<li><a href="https://www.toptal.com/developers/css/sprite-generator" target="_blank" rel="noopener">sprite-generator</a> 生成雪碧图</li>
-<li><a href="https://github.com/QiShaoXuan/css_tricks" target="_blank" rel="noopener">css_tricks</a> Some CSS tricks,一些 CSS 常用样式</li>
-</ul>
-<h3 id="一些前端开发中可能会用到的"><a href="#一些前端开发中可能会用到的" class="headerlink" title="一些前端开发中可能会用到的"></a>一些前端开发中可能会用到的</h3><ul>
-<li><a href="https://github.com/WickyNilliams/headroom.js" target="_blank" rel="noopener">Headroom.js</a>  Hide your header until you need it. 控制header的显示隐藏</li>
-<li><a href="https://github.com/greensock/GreenSock-JS" target="_blank" rel="noopener">gsap</a> JavaScript动画库</li>
-<li><a href="https://github.com/mattboldt/typed.js" target="_blank" rel="noopener">typed.js</a> 打字机效果</li>
-<li><a href="https://github.com/Browsersync/browser-sync" target="_blank" rel="noopener">browser-sync</a> 浏览器同步测试工具</li>
-<li><a href="https://github.com/rstacruz/nprogress" target="_blank" rel="noopener">NProgress</a> 进度</li>
-<li><a href="https://github.com/defunkt/jquery-pjax" target="_blank" rel="noopener">jquery-pjax</a> pjax是一个jQuery插件，它使用ajax和pushState通过真实的永久链接，页面标题和工作后退按钮提供快速浏览体验。</li>
-<li><a href="https://css.loli.net/" target="_blank" rel="noopener">css.loli.net</a> 常用前端公共库 &amp; 和谐使用 Google 公共库、字体库的方法 Google Fonts</li>
-<li><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="noopener">fastclick</a> 解决移动端浏览器在派发点击事件的时候会出现300ms左右的延迟</li>
-<li><a href="https://github.com/fancyapps/fancybox" target="_blank" rel="noopener">fancyBox</a> JQ图片预览的插件</li>
-<li><a href="https://github.com/julianshapiro/velocity" target="_blank" rel="noopener">velocity</a> 非常火的一个动画库</li>
-<li><a href="https://github.com/zenorocha/clipboard.js/" target="_blank" rel="noopener">clipboard.js</a> 前端复制粘贴的库</li>
-</ul>
-<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ul>
-<li><a href="https://github.com/baianat/vee-validate" target="_blank" rel="noopener">vee-validate</a> 基于 vue 的验证</li>
-<li><a href="https://github.com/shentao/vue-multiselect" target="_blank" rel="noopener">vue-multiselect</a> select 组件</li>
-</ul>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
-<li><a href="https://obfuscator.io/" target="_blank" rel="noopener">JavaScript Obfuscator Tool</a> js 代码混淆工具</li>
-<li><a href="https://www.hipdf.cn/" target="_blank" rel="noopener">hipdf</a> 一站式在线 PDF 解决方案</li>
-<li><a href="https://github.com/RelaxedJS/ReLaXed" target="_blank" rel="noopener">ReLaXed</a> 一个将 document html 转成 PDF 的工具</li>
-<li><a href="https://tinypng.com" target="_blank" rel="noopener">tinypng</a> 压缩图片</li>
-<li><a href="https://picsum.photos/" target="_blank" rel="noopener">Lorem Picsum</a> 提供免费的占位图 相比dummyimage的图片是很好看的</li>
-<li><a href="https://sm.ms/" target="_blank" rel="noopener">sm.ms</a> 免费图床</li>
-<li><a href="https://colorkitty.com/" target="_blank" rel="noopener">colorkitty</a> 从你的图片中提取配色</li>
-<li><a href="https://devhints.io/" target="_blank" rel="noopener">devhints.io</a> cheatsheets  开发者语言速查</li>
-<li><a href="https://github.com/gre/bezier-easing" target="_blank" rel="noopener">bezier-easing</a> JavaScript动画缓动的cubic-bezier实现</li>
-<li><a href="https://github.com/gkajs/gka" target="_blank" rel="noopener">gka</a> 一款高效、高性能的帧动画生成工具</li>
-<li><a href="https://github.com/joshbuchea/HEAD" target="_blank" rel="noopener">HEAD</a> 放在文档head标签的所有内容列表</li>
-</ul>
-<h2 id="Chrome拓展"><a href="#Chrome拓展" class="headerlink" title="Chrome拓展"></a>Chrome拓展</h2><ul>
-<li><a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank" rel="noopener">Tampermonkey</a> 油猴 最强的浏览器插件</li>
-<li><a href="https://chrome.google.com/webstore/detail/extension-manager/gjldcdngmdknpinoemndlidpcabkggco/related?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">扩展管理器</a> 一键管理所有扩展，快速开启/禁用、批量闪电管理，智能排序，右键卸载、锁定、选项配置，角标提醒，大小布局随心配。快捷、简单、安全。</li>
-<li><a href="https://chrome.google.com/webstore/detail/the-great-suspender/klbibkeccnjlkjkiokjodocebajanakg" target="_blank" rel="noopener">The Great Suspender</a> chrome 太吃内存了，当页面开的很多时候会很卡，它就完美的解决了这个问题。我就经常放着一大堆网页没有关闭，对我帮助很大。多标签爱好者福音,临时冻结不用网页。</li>
-<li><a href="https://chrome.google.com/webstore/detail/infinity-new-tab-pro/nnnkddnnlpamobajfibfdgfnbcnkgngh?utm_source=chrome-ntp-icon" target="_blank" rel="noopener">infinity</a> 非常实用的chrome新标签页</li>
-<li><a href="https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb" target="_blank" rel="noopener">Adblock Plus</a> 免费广告拦截程序 装机必备</li>
-<li><a href="https://chrome.google.com/webstore/detail/save-all-resources/abpdnfjocnmdomablahdcfnoggeeiedb" target="_blank" rel="noopener">Save All Resources</a> 可以直接下载浏览器sources资源 安装完DevTools会多了一个ResourceSaver，之后就是下载了</li>
-<li><a href="https://chrome.google.com/webstore/detail/web%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bfehelper/pkgccpejnmalmdinmhkkfafefagiiiad" target="_blank" rel="noopener">WEB 前端助手</a> 包含多个独立小应用，比如：Json工具、代码美化工具、代码压缩、二维码工具、markdown工具、网页油猴工具、便签笔记工具、信息加密与解密、随机密码生成、Crontab等等！</li>
-<li><a href="https://chrome.google.com/webstore/detail/json-handle/iahnhfdhidomcpggpaimmmahffihkfnj" target="_blank" rel="noopener">JSON-handle</a> 对JSON格式的内容进行浏览和编辑，以树形图样式展现JSON文档，并可实时编辑。</li>
-<li><a href="https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndnagc" target="_blank" rel="noopener">Octotree</a> github 上看代码显示目录结构</li>
-<li><a href="https://github.com/npmhub/npmhub" target="_blank" rel="noopener">npmhub</a>在 README 下方显示 npm 依赖信息 可能快速找到相应依赖的代码库</li>
-<li><a href="https://www.crx4chrome.com/crx/37241/" target="_blank" rel="noopener">hostAdmin App</a> 修改host的应用 安装方式：修改下载的crx为zip解压 然后加载chrome的扩展程序中点击加载已解压的扩展程序按钮</li>
-</ul>
-<h2 id="有趣"><a href="#有趣" class="headerlink" title="有趣"></a>有趣</h2><ul>
-<li><a href="https://github.com/Blankj/awesome-comment" target="_blank" rel="noopener">awesome-comment</a> 里面收集了很多有趣的代码注释</li>
-<li><a href="https://hitokoto.cn/" target="_blank" rel="noopener">hitokoto</a> 提供一句话服务。</li>
-<li><a href="http://www.alloyteam.com/" target="_blank" rel="noopener">alloyteam</a> 腾讯全端 AlloyTeam 团队 里面有很多有意思的项目</li>
-</ul>
-<h2 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h2><ul>
-<li><a href="https://github.com/kentcdodds/cross-env" target="_blank" rel="noopener">cross-env</a> 解决跨平台设置NODE_ENV的问题</li>
-<li><a href="https://www.npmjs.com/package/yargs" target="_blank" rel="noopener">yargs</a> Yargs通过解析参数和生成优雅的用户界面来帮助您构建交互式命令行工具</li>
-<li><a href="https://www.npmjs.com/package/nodemon" target="_blank" rel="noopener">nodemon</a> 监视源中的任何更改并自动重新启动服务器 让node自动重启</li>
-<li><a href="https://www.npmjs.com/package/localtunnel" target="_blank" rel="noopener">localtunnel</a> 实现内网穿透 相似的还有ngrok</li>
-<li><a href="https://www.npmjs.com/package/pm2" target="_blank" rel="noopener">pm2</a> node进程管理</li>
-</ul>
-
-             
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/14/bookmarks/#更多" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
