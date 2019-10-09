@@ -164,7 +164,7 @@
 <meta property="og:site_name" content="YonJim">
 <meta property="og:description" content="事件流JavaScript的事件流（事件流描述的是从页面中接收事件的顺序）有三种，分别是：事件冒泡、事件捕获、DOM事件流。  IE 的事件流叫做事件冒泡（event bubbling），即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档） Netscape Communicator团队提出的另一种事件流叫做事件捕获（event capturi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-17T13:47:48.645Z">
+<meta property="og:updated_time" content="2019-09-19T05:16:34.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件流和事件处理程序">
 <meta name="twitter:description" content="事件流JavaScript的事件流（事件流描述的是从页面中接收事件的顺序）有三种，分别是：事件冒泡、事件捕获、DOM事件流。  IE 的事件流叫做事件冒泡（event bubbling），即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档） Netscape Communicator团队提出的另一种事件流叫做事件捕获（event capturi">
@@ -532,7 +532,7 @@
 </ol>
 <h3 id="移除-DOM0-级方法指定的事件处理程序"><a href="#移除-DOM0-级方法指定的事件处理程序" class="headerlink" title="移除 DOM0 级方法指定的事件处理程序"></a>移除 DOM0 级方法指定的事件处理程序</h3><p>只要像下面这样将事件处理程序属性的值设置为 null 即可：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="literal">null</span>; <span class="comment">//删除事件处理程序</span></span><br></pre></td></tr></table></figure>
-<h2 id="DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）"><a href="#DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）" class="headerlink" title="DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）"></a>DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）</h2><p><code>“DOM2级事件”</code>定义了两个方法，用于处理指定和删除事件处理程序的操作： <code>addEventListener()</code>和 <code>removeEventListener()</code> 。所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：要处理的事件名（没有on）、作为事件处理程序的函数和一个布尔值。<code>最后这个布尔值参数如果是 true ，表示在捕获阶段调用事件处理程序；如果是 false ，表示在冒泡阶段调用事件处理程序</code>。</p>
+<h2 id="DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）"><a href="#DOM2-级事件处理程序-（可以设置事件在捕获还是冒泡处理）" class="headerlink" title="DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）"></a>DOM2 级事件处理程序 （可以设置事件在捕获还是冒泡处理）</h2><p><code>“DOM2级事件”</code>定义了两个方法，用于处理指定和删除事件处理程序的操作： <code>addEventListener()</code>和 <code>removeEventListener()</code> 。所有 DOM 节点中都包含这两个方法，并且它们都接受 3 个参数：要处理的事件名（没有on）、作为事件处理程序的函数和一个布尔值。<code>最后这个布尔值参数如果是 true ，表示在捕获阶段调用事件处理程序；如果是 false ，表示在冒泡阶段调用事件处理程序</code>，ES6新增最后一个参数可以传一个选项对象<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters" target="_blank" rel="noopener">MDN</a>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">    btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="移除-DOM2-级事件处理程序"><a href="#移除-DOM2-级事件处理程序" class="headerlink" title="移除 DOM2 级事件处理程序"></a>移除 DOM2 级事件处理程序</h3><p>传入 removeEventListener() 中的事件处理程序函数必须与传入addEventListener() 中的相同才可以移除！！！</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;;</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">// 这里省略了其他代码</span></span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, handler, <span class="literal">false</span>); <span class="comment">// 有效！</span></span><br></pre></td></tr></table></figure>
@@ -665,7 +665,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

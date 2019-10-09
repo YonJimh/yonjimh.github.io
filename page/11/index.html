@@ -222,8 +222,6 @@
   </style>
 </noscript>
 
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -382,6 +380,218 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-date">
+			<div class="post-month">12月</div>
+			<div class="post-day">26</div>
+	</div>
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/nginx/Nginx6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="YonJim">
+      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
+      <meta itemprop="image" content="/images/293854950580539874.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="YonJim">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/26/nginx/Nginx6/" itemprop="url">
+                  Nginx（六）进阶 高级模块 （secure_link和geoip）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-26 21:27:11" itemprop="dateCreated datePublished" datetime="2018-12-26T21:27:11+08:00">2018-12-26</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/12/26/nginx/Nginx6/" class="leancloud_visitors" data-flag-title="Nginx（六）进阶 高级模块 （secure_link和geoip）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="secure-link-module-模块"><a href="#secure-link-module-模块" class="headerlink" title="secure_link_module 模块"></a><a href="http://nginx.org/en/docs/http/ngx_http_secure_link_module.html" target="_blank" rel="noopener">secure_link_module 模块</a></h1><p>ngx_http_secure_link_module模块用于检查请求链接的真伪，保护资源免受未经授权的访问，并限制链接的寿命。</p>
+<p>该模块提供两种备选操作模式。第一种模式由secure_link_secret指令启用，用于检查请求链接的真实性以及保护资源免受未经授权的访问。第二种模式由secure_link和secure_link_md5指令启用， 可以用于限制链接的生命周期。</p>
+<p>默认情况下不构建此模块，应使用–with-http_secure_link_module 配置参数启用它。</p>
+<ol>
+<li>制定并允许检查请求的链接的真实性以及保护资源避遭未经授权的访问</li>
+<li>限制链接生效周期</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location /s/ &#123;</span><br><span class="line">    #资源链接由后端生成，请求中传递的MD5哈希值以base64url编码。</span><br><span class="line">    # secure_link定义一个包含变量的字符串，从中提取链接的校验和值和生命周期。</span><br><span class="line">    secure_link $arg_md5,$arg_expires;</span><br><span class="line"></span><br><span class="line">    # $secure_link_expiress是请求中传递的链接的生命周期;仅用于secure_link_md5指令。</span><br><span class="line">    secure_link_md5 &quot;$secure_link_expires$uri$remote_addr secret&quot;;</span><br><span class="line"></span><br><span class="line">    # 将从字符串中提取的校验和值与secure_link_md5指令定义的表达式的MD5哈希值进行比较。如果校验和不同，则将$secure_link变量设置为空字符串。如果校验和相同，则检查链路生存期。请求中传递的MD5哈希值以base64url编码。</span><br><span class="line">    if ($secure_link = &quot;&quot;) &#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if ($secure_link = &quot;0&quot;) &#123;</span><br><span class="line">        return 410;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="geoip-module-模块"><a href="#geoip-module-模块" class="headerlink" title="geoip_module 模块"></a><a href="http://nginx.org/en/docs/http/ngx_http_geoip_module.html" target="_blank" rel="noopener">geoip_module 模块</a></h1><p>http_geoip_module模块会机遇IP地址匹配MaxMind GeoIP二进制文件，读取IP所在地域信息。</p>
+<p>默认情况下不构建此模块，应使用–with-http_geoip_module 配置参数启用它。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ol>
+<li>区别国内外作HTTP访问规则</li>
+<li>区别国内城市地域作HTTP访问规则</li>
+</ol>
+<h2 id="Centos-进行安装使用geoip-module"><a href="#Centos-进行安装使用geoip-module" class="headerlink" title="Centos 进行安装使用geoip_module"></a>Centos 进行安装使用geoip_module</h2><ol>
+<li><p>yum安装 （记得配置nginx的源，安装nginx前应该已经配置好了）</p>
+<pre><code>yum install nginx-module-geoip
+</code></pre></li>
+<li><p>安装完成到 <code>/etc/nginx/modules</code> 目录可以看到<code>geoip_module</code>相关文件</p>
+</li>
+<li><p>在nginx配置文件中动态加载<code>geoip_module</code></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">load_module &quot;module/ngx_http_geoip_module.so&quot;;</span><br><span class="line">load_module &quot;module/ngx_stream_geoip_module.so&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>到 <a href="https://dev.maxmind.com/zh-hans/geoip/geoip2/geolite2/" title="MaxMind" target="_blank" rel="noopener">MaxMind</a> 下载IP地域文件（GeoLite2 City和GeoLite2 Country） 解压</p>
+<blockquote>
+<p>注意：MaxMind从2018年4月1日起停止更新GeoLite Legacy数据库。GeoLite Legacy数据库不再可供下载。尝试下载GeoLite Legacy数据库文件将导致错误：”找不到数据库版本”。<br>现在只能下载GeoLite2数据库了,GeoLite2数据库是GeoLite Legacy地理定位数据库的免费，更现代的版本。</p>
+</blockquote>
+</li>
+<li><p>在配置文件中配置geoip_module的 geoip_country 和 geoip_city 指令 （两个指令都在http块配置）</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">geoip_country /yourPath/GeoLite2-Country.mmdb;</span><br><span class="line">geoip_city /yourPath/GeoLite2-City.mmdb;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在已经可以读取客户端的IP所在地域信息啦，详细参数请到<a href="http://nginx.org/en/docs/http/ngx_http_geoip_module.html#geoip_country" target="_blank" rel="noopener">这里</a>查看</p>
+<pre><code>$geoip_country_code 两个字母的国家/地区代码
+$geoip_country_code3 三个字母的国家/地区代码
+$geoip_country_name 国家/地区名称
+$geoip_city 城市名称
+</code></pre></li>
+</ol>
+
+             
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/26/nginx/Nginx6/#更多" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -771,252 +981,11 @@ Context: server, location, if
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-date">
-			<div class="post-month">12月</div>
-			<div class="post-day">12</div>
-	</div>
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/12/PHP/当初就不该学PHP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="YonJim">
-      <meta itemprop="description" content="我不知道将去何方，但我已在路上。">
-      <meta itemprop="image" content="/images/293854950580539874.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YonJim">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/12/PHP/当初就不该学PHP/" itemprop="url">
-                  当初就不该学PHP
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-12 21:43:15" itemprop="dateCreated datePublished" datetime="2018-12-12T21:43:15+08:00">2018-12-12</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/php/" itemprop="url" rel="index"><span itemprop="name">php</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/12/12/PHP/当初就不该学PHP/" class="leancloud_visitors" data-flag-title="当初就不该学PHP">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>舍友推荐的一首歌，真的扎心了。这里附上他的<a href="http://www.huangzhongxin.cn/" target="_blank" rel="noopener">博客</a> 有兴趣的去逛一逛哈。</p>
-<blockquote>
-<p>当初就不该学php – 黄灰红 词 : 黄绿蓝 曲 : 黄绿蓝</p>
-</blockquote>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=472112352&auto=0&height=66"></iframe>
-
-<pre><code>2013的某一天
-他认识了PHP
-可他从不敢相信
-那是噩梦的开启
-2015的某一天
-加班到无法休息
-忙里偷闲打开微信
-却没人发消息
-2017的某一天
-面试之前认真复习
-上上知乎问问建议
-当初就不该学PHP
-他们说用Python的
-看不起用Java的啊
-Java的也只能骂PHP啦
-就算你们都是用Python的呀
-Python3和Python2也势不两立啊
-用AS的看不起用Eclipse的啊
-可苹果也看不起做Android的
-Vim和Emacs吵个不停啦
-还天天骂Sublime的智障吗
-用React的看不起用Angular的
-Git用户天天骂SVN傻瓜
-Docker用户说
-Puppet是上个世纪的吗
-用图形界面不用命令
-智商不够用吗
-用Debian的瞧不起用Ubuntu的
-用MBP的说用win没钱吗
-BAT的说小公司也算公司吗
-独角兽说我分十亿你分得起吗
-黑轴茶轴天天纠缠不休啊
-难怪双飞燕的妹子插不上话
-坐Aeron的看不起坐办公椅的
-站着打代码的说你俩会长胖的
-985的看不起211的啊
-他们还天天骂北大青鸟呢
-考计算机二级是有病吗
-Gayhub没有一千星星别来丢人啦
-啊别再骂啦
-女朋友呢 找到了吗
-</code></pre><!-- 
-        <div id="aplayer-lMdxXjgO" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-lMdxXjgO"),
-            narrow: false,
-            autoplay: false,
-            showlrc: false,
-            music: {
-              title: "她的睫毛",
-              author: "周杰伦",
-              url: "http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3",
-              pic: "http://home.ustc.edu.cn/~mmmwhy/jay.jpg",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script> –&gt;-->
-             
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/12/12/PHP/当初就不该学PHP/#更多" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1061,7 +1030,7 @@ Gayhub没有一千星星别来丢人啦
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
