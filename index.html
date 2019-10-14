@@ -508,6 +508,7 @@
 <li><a href="https://github.com/RevillWeb/img-2" target="_blank" rel="noopener">img-2</a> 一个提高图片加载性能和体验的库，懒加载、web worker、模糊预览</li>
 <li><a href="https://github.com/transloadit/uppy" target="_blank" rel="noopener">uppy</a> 浏览器上传器</li>
 <li><a href="https://github.com/h5bp/html5-boilerplate" target="_blank" rel="noopener">html5-boilerplate</a> 一个专业的前端模板，用于构建快速，健壮且适应性强的Web应用程序或站点</li>
+<li><a href="https://github.com/yiminghe/async-validator" target="_blank" rel="noopener">async-validator</a> 异步表单验证</li>
 </ul>
 <h3 id="Css"><a href="#Css" class="headerlink" title="Css"></a>Css</h3><ul>
 <li><a href="http://apps.eky.hk/css-triangle-generator/" target="_blank" rel="noopener">CSS triangle generator</a> 帮你快速用 css 做出三角形</li>
@@ -730,125 +731,16 @@
 
       
         
+          <p>记录一下面试中的一些问题</p>
+          <!--noindex-->
           
-            <p>记录一下面试中的一些问题</p>
-<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><ol>
-<li><p>导航守卫（路由钩子）的实际应用场景</p>
-<ol>
-<li>登录验证、内容保存或清除  权限控制  </li>
-<li>路由进入前最典型的可以做一些权限控制, 路由离开时清除或存储一些信息,任务等等</li>
-<li><p>beforeRouteLeave使用场景很多</p>
-<ol>
-<li>清除当前组件中的定时器</li>
-<li>当页面中有未关闭的窗口, 或未保存的内容时, 阻止页面跳转</li>
-<li>保存相关内容到Vuex中或Session中</li>
-</ol>
-<p>参考链接：<br><a href="https://segmentfault.com/a/1190000018199848?utm_medium=referral&amp;utm_source=tuicool" target="_blank" rel="noopener">Vue-router有哪些钩子？使用场景？</a><br><a href="https://www.jb51.net/article/127678.htm" target="_blank" rel="noopener">详解Vue路由钩子及应用场景</a></p>
-</li>
-</ol>
-</li>
-<li><p>v-if 和 v-show</p>
-<p> 官网文档里写的很明白 v-if vs v-show</p>
-<blockquote>
-<p>v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。</p>
-<p>v-if 也是惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。</p>
-<p>相比之下，v-show 就简单得多——不管初始条件是什么，元素总是会被渲染，并且只是简单地基于 CSS 进行切换。</p>
-<p>一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 &gt; v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好。</p>
-</blockquote>
-</li>
-<li><p>watch 和 computed</p>
-</li>
-<li><p><a href="https://cn.vuejs.org/v2/api/#key" target="_blank" rel="noopener">key特性</a></p>
-<p> Vue 会尽可能高效地渲染元素，通常会复用已有元素而不是从头开始渲染。如果不使用 <code>key</code>，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试修复/再利用相同类型元素的算法。</p>
-<p> 用 <code>key</code> 管理可复用的元素，Vue 为你提供了一种方式来表达“这两个元素是完全独立的，不要复用它们”。只需添加一个具有唯一值的 <code>key</code> 属性</p>
-</li>
-<li><p>different router the same component vue（切换路由的时候有相同的组件）。真实的业务场景中，这种情况很多。</p>
-<p> 官方说你可以通过watch $route的变化来和beforeRouteUpdate导航守卫做处理，发现其实可以简单的在 <code>router-view</code>上加上一个唯一的<code>key</code>，来保证路由切换时都会重新渲染触发钩子了</p>
-<p> 参考链接：<a href="https://juejin.im/post/59097cd7a22b9d0065fb61d2#heading-16" target="_blank" rel="noopener">https://juejin.im/post/59097cd7a22b9d0065fb61d2#heading-16</a></p>
-</li>
-<li><p>点击当前侧边栏 刷新当前路由 的情况</p>
-<ul>
-<li><p>方法1</p>
-<p>方法也很简单，通过不断改变 url 的 query 来触发 view 的变化。我们监听侧边栏每个 link 的 click 事件，每次点击都给 router push 一个不一样的 query 来确保会重新刷新 view。切换路由的时候有相同的组件，还要给<code>router-view</code>上加上一个的<code>key</code>。</p>
-</li>
-<li><p>方法2</p>
-<p>判断当前点击的菜单路由和当前的路由是否一致，但一致的时候，会先跳转到一个专门 Redirect 的页面，它会将路由重定向到我想去的页面，这样就起到了刷新的效果了。</p>
-<p>参考链接：<a href="https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html#%E7%82%B9%E5%87%BB%E4%BE%A7%E8%BE%B9%E6%A0%8F-%E5%88%B7%E6%96%B0%E5%BD%93%E5%89%8D%E8%B7%AF%E7%94%B1" target="_blank" rel="noopener">https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html#%E7%82%B9%E5%87%BB%E4%BE%A7%E8%BE%B9%E6%A0%8F-%E5%88%B7%E6%96%B0%E5%BD%93%E5%89%8D%E8%B7%AF%E7%94%B1</a></p>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ol>
-<li><p>html语义化 html5的新标签</p>
-<ul>
-<li><p>html5的新标签</p>
-<p>有<code>&lt;header&gt;、&lt;footer&gt;、&lt;aside&gt;、&lt;nav&gt;、&lt;video&gt;、&lt;audio&gt;、&lt;canvas&gt;</code>等…</p>
-</li>
-</ul>
-<ol>
-<li>易于用户阅读，样式丢失的时候能让页面呈现清晰的结构。</li>
-<li>有利于SEO，搜索引擎根据标签来确定上下文和各个关键字的权重。</li>
-<li>方便其他设备解析，如盲人阅读器根据语义渲染网页</li>
-<li><p>有利于开发和维护，语义化更具可读性，代码更好维护，与CSS3关系更和谐</p>
-<p>参考链接：<a href="https://juejin.im/post/5d87985d6fb9a06add4e6ac3" target="_blank" rel="noopener">初级前端面试题</a></p>
-</li>
-</ol>
-</li>
-<li><p>单位的问题 rpx rem em vh vw</p>
-<ul>
-<li>rem 相对长度单位，是指相对于根元素html的font-size计算值的大小</li>
-<li><p>em 相对长度单位，相对于当前对象内文本的字体尺寸</p>
-<p>  有一个比较普遍的误解，认为 em 单位是相对于父元素的字体大小。 事实上，根据W3标准 ，<code>它们是相对于使用em单位的元素的字体大小</code>。</p>
-<p>  父元素的字体大小可以影响 em 值，但这种情况的发生，纯粹是因为继承。</p>
-<p>  参考链接：<a href="https://blog.csdn.net/romantic_love/article/details/80875462" target="_blank" rel="noopener">rem与em的使用和区别详解</a><br>  <a href="https://www.w3cplus.com/css/rem-vs-em.html" target="_blank" rel="noopener">REM vs EM</a><br>  <a href="https://www.runoob.com/w3cnote/px-em-rem-different.html" target="_blank" rel="noopener">px、em、rem区别介绍</a></p>
-</li>
-</ul>
-</li>
-<li><p>less sass css 优缺点</p>
-</li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/--*" target="_blank" rel="noopener">自定义属性 (–*)：CSS变量</a></li>
-<li><p>link 和 @import</p>
-<p> 今天面试完才发现css可以使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import" target="_blank" rel="noopener">@import</a> 引入，一看到这个我就以为是 sass 的 @import，但是是不一样的，sass 的<a href="https://www.sass.hk/guide/" target="_blank" rel="noopener">文档</a>中有提到</p>
-<blockquote>
-<p>css有一个特别不常用的特性，即@import规则，它允许在一个css文件中导入其他css文件。然而，后果是只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。</p>
-<p>sass也有一个@import规则，但不同的是，sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求。另外，所有在被导入文件中定义的变量和混合器均可在导入文件中使用。</p>
-</blockquote>
-</li>
-</ol>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><ol>
-<li><p>深拷贝 使用JSON.stringify 对象有Object的问题，怎么使用递归</p>
-<p> 参考链接： <a href="https://github.com/wengjq/Blog/issues/3" target="_blank" rel="noopener">javaScript中浅拷贝和深拷贝的实现</a></p>
-</li>
-<li><p>跨文档消息传送（cross-document messaging），有时候简称为 XDM，指的是在来自不同域的页面间<br>传递消息。</p>
-<p> XDM 的核心是 postMessage() 方法。<br> 接收到 XDM 消息时，会触发 window 对象的 message 事件。</p>
-</li>
-<li>重复声明 JavaScript 变量 如果再次声明某个 JavaScript 变量，将不会丢它的值</li>
-</ol>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
-<li><p>浏览器内核</p>
-<ol>
-<li>IE浏览器内核：Trident内核，也是俗称的IE内核；</li>
-<li>Chrome浏览器内核：统称为Chromium内核或Chrome内核，以前是Webkit内核，现在是Blink内核；</li>
-<li>Firefox浏览器内核：Gecko内核，俗称Firefox内核；</li>
-<li>Safari浏览器内核：Webkit内核；</li>
-<li>Opera浏览器内核：最初是自己的Presto内核，后来是Webkit，现在是Blink内核；</li>
-<li>360浏览器、猎豹浏览器内核：IE+Chrome双内核；</li>
-<li>搜狗、遨游、QQ浏览器内核：Trident（兼容模式）+Webkit（高速模式）；</li>
-<li>百度浏览器、世界之窗内核：IE内核；</li>
-<li><p>2345浏览器内核：以前是IE内核，现在也是IE+Chrome双内核；</p>
-<p><a href="https://blog.csdn.net/yuyanjing123456789/article/details/78689595" target="_blank" rel="noopener">五大主流浏览器及四大内核</a><br><a href="https://www.cnblogs.com/EasonJim/p/6140097.html" target="_blank" rel="noopener">css3中-moz、-ms、-webkit,-o分别代表的意思，以及微信浏览器内核分析</a></p>
-</li>
-</ol>
-</li>
-</ol>
-
-             
             <div class="post-button text-center">
-              <a class="btn" href="/2019/10/09/other/面试问题记录/#更多" rel="contents">
+              <a class="btn" href="/2019/10/09/other/面试问题记录/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
-          
+         
+          <!--/noindex-->
         
       
     </div>
